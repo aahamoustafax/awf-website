@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Full palette, type scale and fonts arrive in Phase 2;
+ * components must use these tokens, never raw hex values.
+ */
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}

@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# allow the env template
+!.env.example
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# claude code (personal, uncommitted settings)
+.claude/settings.local.json
