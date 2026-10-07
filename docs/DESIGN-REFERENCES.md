@@ -34,7 +34,9 @@ before designing any new page.
 | [Aga Khan Foundation](https://akfusa.org), [UNHCR](https://www.unhcr.org), [IRC](https://www.rescue.org)         | Institutional credibility, transparency pages, partner logos       | Governance page, partner strip, Partner page                                                   |
 | [Khan Academy](https://www.khanacademy.org)                                                                      | The mission is shown through the product itself                    | Children's Education page shows the real weekend curriculum                                    |
 
-## Visual direction (finalized in Phase 2)
+## Visual direction (implemented in Phase 2: see `/en/styleguide` and `src/styles/globals.css`)
+
+- **Rule:** the logo sky blue is never used for text on light backgrounds (2.7:1 contrast). Blue text uses `accent`.
 
 - **Colours, from the logo:** deep navy (primary), sky blue (accent), saffron/gold (calls to action),
   warm off-white backgrounds.

@@ -1,15 +1,90 @@
 @import "tailwindcss";
 
 /*
- * Design tokens. Full palette, type scale and fonts arrive in Phase 2;
- * components must use these tokens, never raw hex values.
+ * AWF design tokens: the ONLY place colours, fonts and type sizes are defined.
+ * Components use the Tailwind classes these generate (bg-primary, text-muted, font-display…),
+ * never raw hex values. Contrast ratios are listed so changes keep WCAG 2.1 AA (≥ 4.5:1 for text).
  */
 @theme {
-  --color-background: #ffffff;
-  --color-foreground: #171717;
+  /* Surfaces */
+  --color-background: #faf7f2; /* warm off-white page background */
+  --color-surface: #ffffff; /* cards, panels */
+  --color-surface-muted: #efe8dc; /* alternating sections */
+  --color-border: #ddd3c3;
+
+  /* Text */
+  --color-foreground: #16202b; /* body text: 15.4:1 on background */
+  --color-muted: #535d6b; /* secondary text: 6.3:1 on background, 5.5:1 on surface-muted */
+
+  /* Brand */
+  --color-primary: #0b2545; /* deep navy: headings, dark sections. 14.4:1 on background */
+  --color-primary-hover: #13365f;
+  --color-on-primary: #ffffff; /* text on navy: 15.4:1 */
+  --color-accent: #1c6497; /* links and blue text: 5.9:1 on background */
+  --color-brand-sky: #4a9fd8; /* logo blue. Decorative, or text ON navy only (5.3:1). Never text on light */
+
+  /* Call to action (Donate / Partner) */
+  --color-cta: #e9a93a; /* saffron */
+  --color-cta-hover: #f0bc5e;
+  --color-on-cta: #0b2545; /* navy on saffron: 7.5:1 */
+
+  /* Status */
+  --color-alert: #9a3412; /* urgent appeal banner background; white text 7.3:1 */
+
+  /* Fonts (loaded in src/styles/fonts.ts) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  /* Display type scale: fluid between phone and desktop widths */
+  --text-display-xl: clamp(2.75rem, 1.6rem + 4.8vw, 5.5rem);
+  --text-display-xl--line-height: 1.02;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-lg: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  --text-display-lg--line-height: 1.08;
+  --text-display-lg--letter-spacing: -0.015em;
+  --text-display-md: clamp(1.75rem, 1.35rem + 1.6vw, 2.5rem);
+  --text-display-md--line-height: 1.15;
+  --text-display-sm: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --text-display-sm--line-height: 1.25;
+
+  /* Layout */
+  --container-site: 76rem; /* max content width (1216px) */
 }
 
-body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  /* One consistent, highly visible keyboard focus style everywhere. */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-cta);
+    color: var(--color-on-cta);
+  }
+
+  /* Respect users who ask the OS for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
