@@ -65,3 +65,18 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
   style. A `className` passed in should only add layout (margin, width, colour inheritance).
 - **`/en/styleguide`** shows every token and primitive. It's hidden from search engines and covered
   by an axe contrast test, so a token change that breaks contrast fails CI.
+
+## Site layout and navigation
+
+- `app/[lang]/layout.tsx` loads site content, programs and the dictionary once, builds the
+  navigation, and renders `Header` → page → `Footer` around every page.
+- `src/lib/navigation.ts` is the **single menu definition**, used by the desktop menu, the mobile
+  menu and the footer. The Programs submenu is generated from `getPrograms()`, so adding a program
+  adds it to every menu.
+- Every internal link goes through `localePath(locale, path)` in `src/i18n/paths.ts`.
+- Interactive parts are small Client Components:
+  - `DesktopNav`: dropdowns. Hover opens them for mouse users; click or keyboard toggles them;
+    Escape and outside clicks close them.
+  - `MobileNav`: a native `<dialog>`, which provides focus trapping and Escape for free; groups use
+    `<details>`.
+- Unknown URLs hit `app/[lang]/[...rest]` → `notFound()` → the styled `[lang]/not-found.tsx`.

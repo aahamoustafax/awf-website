@@ -1,15 +1,20 @@
-import Link from "next/link";
+import { ButtonLink, Eyebrow, Heading, Lead, Section } from "@/components/ui";
+import { getDictionary, getLocale } from "@/i18n/dictionaries";
+import { localePath } from "@/i18n/paths";
 
-// Placeholder; styled in Phase 3.
-export default function NotFound() {
+export default async function NotFound() {
+  const [dict, locale] = await Promise.all([getDictionary(), getLocale()]);
+
   return (
-    <section className="mx-auto max-w-3xl px-4 py-24">
-      <h1 className="text-3xl font-semibold">Page not found</h1>
-      <p className="mt-4">
-        <Link href="/" className="underline">
-          Return to the home page
-        </Link>
-      </p>
-    </section>
+    <Section aria-labelledby="not-found-title" className="py-24 sm:py-32">
+      <Eyebrow className="text-accent">404</Eyebrow>
+      <Heading level={1} size="lg" id="not-found-title" className="mt-4 text-primary">
+        {dict.notFound.title}
+      </Heading>
+      <Lead className="mt-6 text-muted">{dict.notFound.body}</Lead>
+      <ButtonLink href={localePath(locale, "/")} className="mt-10">
+        {dict.notFound.home}
+      </ButtonLink>
+    </Section>
   );
 }

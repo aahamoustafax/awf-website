@@ -18,7 +18,9 @@ test("home page has no serious accessibility violations", async ({ page }) => {
   expect(serious).toEqual([]);
 });
 
-test("unknown pages return the not-found page", async ({ page }) => {
+test("unknown pages return the styled not-found page", async ({ page }) => {
   const response = await page.goto("/en/this-page-does-not-exist");
   expect(response?.status()).toBe(404);
+  await expect(page.getByRole("heading", { name: "We couldn't find that page" })).toBeVisible();
+  await expect(page.getByRole("banner")).toBeVisible();
 });

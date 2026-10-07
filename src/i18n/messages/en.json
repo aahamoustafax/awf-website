@@ -1,6 +1,41 @@
 {
   "site": {
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "announcement": "Announcement"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Home",
+    "about": "About",
+    "whoWeAre": "Who we are",
+    "whoWeServe": "Who we serve",
+    "governance": "Governance & reports",
+    "programs": "Programs",
+    "allPrograms": "All programs",
+    "getInvolved": "Get involved",
+    "contact": "Contact",
+    "partner": "Partner with us",
+    "donate": "Donate",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menu": "Menu"
+  },
+  "footer": {
+    "about": "About",
+    "programs": "Programs",
+    "getInvolved": "Get involved",
+    "volunteer": "Volunteer",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "accessibility": "Accessibility",
+    "basedIn": "Based in Hamilton, Ontario. Serving communities in Canada and Afghanistan.",
+    "followUs": "Follow us",
+    "rights": "All rights reserved."
+  },
+  "notFound": {
+    "title": "We couldn't find that page",
+    "body": "The page may have moved, or the link may be out of date.",
+    "home": "Go to the home page"
   },
   "home": {
     "comingSoon": "Our new website is on its way."

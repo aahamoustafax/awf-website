@@ -50,6 +50,8 @@ docs/                  Architecture, ADRs, design references, content guide.
   `alt` (or `alt=""` if decorative), visible focus, colour contrast ≥ 4.5:1, respect `prefers-reduced-motion`.
 - **Next.js 16 APIs:** `proxy.ts` (not middleware), async `params`, `next/root-params`,
   Cache Components. Read `node_modules/next/dist/docs/` before using an API you are unsure of.
+- **Don't pass display or visibility classes** (`hidden`, `flex`, `block`…) to `ui/` primitives. They
+  set their own display, and the two classes conflict. Wrap the primitive instead: `<div className="hidden sm:block"><ButtonLink…/></div>`.
 - Small files, one job each. Name components in PascalCase, everything else camelCase.
 
 ## Definition of done

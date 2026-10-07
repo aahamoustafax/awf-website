@@ -1,7 +1,8 @@
 import "server-only";
 
+import { programs } from "@/content/programs";
 import { site } from "@/content/site";
-import type { Site } from "@/content/types";
+import type { Program, Site } from "@/content/types";
 
 /**
  * The content layer: the ONLY module pages and components use to get content.
@@ -13,4 +14,12 @@ import type { Site } from "@/content/types";
 
 export async function getSite(): Promise<Site> {
   return site;
+}
+
+export async function getPrograms(): Promise<Program[]> {
+  return programs;
+}
+
+export async function getProgram(slug: string): Promise<Program | undefined> {
+  return programs.find((program) => program.slug === slug);
 }

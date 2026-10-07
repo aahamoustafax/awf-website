@@ -1,8 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
-import { locales, getDirection } from "@/i18n/config";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { getDirection, locales } from "@/i18n/config";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
-import { getSite } from "@/lib/content";
+import { localePath } from "@/i18n/paths";
+import { getPrograms, getSite } from "@/lib/content";
+import { buildNavigation } from "@/lib/navigation";
+import { siteUrl } from "@/lib/siteUrl";
 import { fontVariables } from "@/styles/fonts";
 
 import "@/styles/globals.css";
@@ -14,14 +19,29 @@ export async function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getSite();
   return {
+    metadataBase: siteUrl(),
     title: { default: site.name, template: `%s | ${site.name}` },
     description: site.description,
+    applicationName: site.name,
+    openGraph: {
+      type: "website",
+      siteName: site.name,
+      title: site.name,
+      description: site.description,
+      locale: "en_CA",
+    },
+    twitter: { card: "summary_large_image" },
   };
 }
 
+export const viewport: Viewport = {
+  themeColor: "#0b2545", // matches --color-primary
+};
+
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const locale = await getLocale();
-  const dict = await getDictionary();
+  const [dict, site, programs] = await Promise.all([getDictionary(), getSite(), getPrograms()]);
+  const navigation = buildNavigation(dict, locale, programs);
 
   return (
     <html
@@ -36,9 +56,22 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         >
           {dict.site.skipToContent}
         </a>
+        <Header
+          site={site}
+          navigation={navigation}
+          homeHref={localePath(locale, "/")}
+          dict={dict}
+        />
         <main id="main" className="flex-1">
           {children}
         </main>
+        <Footer
+          site={site}
+          programs={programs}
+          navigation={navigation}
+          locale={locale}
+          dict={dict}
+        />
       </body>
     </html>
   );

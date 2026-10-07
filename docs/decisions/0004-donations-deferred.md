@@ -18,3 +18,5 @@ added after registration, with no payment code of our own.
 
 - Nothing to secure or maintain for payments now.
 - Fewer impulse donations until the widget is live. Revisit once registration is confirmed.
+- Planned: a donation module on the home page itself (amount buttons tied to concrete outcomes),
+  using the same `DonationWidget`. Phase 5 reserves a home-page section for it.
