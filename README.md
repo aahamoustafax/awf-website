@@ -48,7 +48,8 @@ docs/                 Architecture, decisions (ADRs), design references, content
 .claude/              Shared Claude Code setup: permissions, hooks, commands, agents
 ```
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together.
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together. Planned features
+are in [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Common tasks
 
@@ -69,6 +70,12 @@ The repo is set up for Claude Code and other coding agents:
 - Subagents: `a11y-reviewer` (read-only WCAG review) and `content-editor` (content files only).
 
 Personal overrides go in `.claude/settings.local.json` (git-ignored).
+
+## Environment variables
+
+See `.env.example`. The contact form needs `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` and
+`CONTACT_TO_EMAIL` in production. In development, messages are printed to the terminal instead
+(ADR 0005).
 
 ## Deployment
 
