@@ -72,5 +72,41 @@
   },
   "legal": {
     "updated": "Last updated"
+  },
+  "form": {
+    "title": "Send us a message",
+    "lead": "Tell us a little about what you need and we'll get back to you.",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "topic": "What is this about?",
+    "topicPlaceholder": "Choose a topic",
+    "topics": {
+      "enroll": "Enrolling a child",
+      "donate": "Donating items or equipment",
+      "volunteer": "Volunteering",
+      "partner": "Partnership or sponsorship",
+      "other": "Something else"
+    },
+    "message": "Message",
+    "required": "required",
+    "submit": "Send message",
+    "sending": "Sending…",
+    "successTitle": "Thank you, your message is on its way.",
+    "successBody": "We'll reply by email as soon as we can.",
+    "sendAnother": "Send another message",
+    "errorSummary": "Please fix the highlighted fields.",
+    "honeypot": "Leave this field empty",
+    "errors": {
+      "nameRequired": "Please enter your name.",
+      "nameTooLong": "Please shorten your name.",
+      "emailInvalid": "Please enter a valid email address.",
+      "phoneInvalid": "Please enter a valid phone number, or leave it empty.",
+      "topicRequired": "Please choose a topic.",
+      "messageTooShort": "Please write a little more (at least 10 characters).",
+      "messageTooLong": "Please keep your message under 5,000 characters.",
+      "rateLimited": "You've sent several messages in a short time. Please try again in a few minutes.",
+      "sendFailed": "Sorry, your message couldn't be sent. Please email us directly at"
+    }
   }
 }

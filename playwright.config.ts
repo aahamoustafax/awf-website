@@ -22,5 +22,7 @@ export default defineConfig({
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
+    // Contact form emails are printed, never sent, during tests.
+    env: { EMAIL_TRANSPORT: "log" },
   },
 });

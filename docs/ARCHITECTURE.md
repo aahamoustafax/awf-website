@@ -112,3 +112,9 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
   `src/content/pages.ts`. They're built from shared sections: `PageHeader`, `CardGrid`,
   `StorySection`, `FaqList`, `ContactPanel`, `ProseSection` and `CtaBand`. `src/lib/pageHelpers.ts`
   builds breadcrumbs and metadata.
+
+## Contact form
+
+`ContactForm` (client) → `sendContactMessage` Server Action → zod validation → spam checks → rate
+limit → `sendEmail()` (Resend or log). It works as a plain HTML form without JavaScript. See
+[ADR 0005](decisions/0005-contact-form-email.md).
