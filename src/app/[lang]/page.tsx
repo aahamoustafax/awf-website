@@ -11,6 +11,7 @@ import {
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
 import { getAbout, getHome, getPrograms } from "@/lib/content";
+import { toProgramCard } from "@/lib/programs";
 
 export default async function HomePage() {
   const [home, about, programs, dict, locale] = await Promise.all([
@@ -29,7 +30,6 @@ export default async function HomePage() {
     <>
       <Hero
         {...home.hero}
-        connection={home.connection}
         giveCard={{
           ...home.hero.giveCard,
           options: home.hero.giveCard.options.map(link),
@@ -39,16 +39,9 @@ export default async function HomePage() {
       />
       <MissionQuote {...home.mission} />
       <ProgramGrid
-        {...home.programs}
+        intro={home.programs}
         learnMoreLabel={dict.programs.learnMore}
-        programs={programs.map((program) => ({
-          title: program.title,
-          summary: program.summary,
-          focus: program.focus,
-          href: path(`/programs/${program.slug}`),
-          regionLabel: dict.programs.regions[program.region],
-          statusLabel: program.status === "launching" ? dict.programs.status.launching : undefined,
-        }))}
+        programs={programs.map((program) => toProgramCard(program, dict, locale))}
       />
       <GoalsBand {...home.goals} />
       <Geographies {...home.geographies} />

@@ -1,20 +1,36 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import { defaultLocale, locales } from "@/i18n/config";
+import { getPrograms } from "@/lib/content";
+import { programPath } from "@/lib/programs";
 
 /**
- * Sends any URL without a language prefix to the default language,
- * e.g. /about → /en/about. Static files and Next internals are skipped by `matcher`.
+ * Runs before every page request:
+ * 1. Sends any URL without a language prefix to the default language (/about → /en/about).
+ * 2. Gives unknown program slugs a real 404 status. Program pages stream (Cache Components),
+ *    and a page that has started streaming can only show not-found UI with a 200 status, so the
+ *    check happens here, before rendering, by rewriting to the catch-all not-found route.
+ * Static files and Next internals are skipped by `matcher`.
  */
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const hasLocale = locales.some(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
-  );
-  if (hasLocale) return;
+  const locale = locales.find((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
 
-  request.nextUrl.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  if (!locale) {
+    request.nextUrl.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
+    return NextResponse.redirect(request.nextUrl);
+  }
+
+  const programSlug = pathname.match(/^\/[^/]+\/programs\/([^/]+)\/?$/)?.[1];
+  if (programSlug) {
+    const known = (await getPrograms()).some(
+      (p) => programPath(p.slug) === `/programs/${programSlug}`,
+    );
+    if (!known) {
+      request.nextUrl.pathname = `/${locale}/not-found`;
+      return NextResponse.rewrite(request.nextUrl);
+    }
+  }
 }
 
 export const config = {

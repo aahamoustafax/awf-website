@@ -3,7 +3,13 @@ import type { Goal } from "@/content/types";
 
 import { SectionIntro } from "./SectionIntro";
 
-type GoalsBandProps = { eyebrow: string; title: string; lead: string; items: Goal[]; note: string };
+type GoalsBandProps = {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  items: Goal[];
+  note: string;
+};
 
 /** Navy band of forward-looking targets. Always labelled as goals, never as results. */
 export function GoalsBand({ eyebrow, title, lead, items, note }: GoalsBandProps) {
