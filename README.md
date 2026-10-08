@@ -79,4 +79,28 @@ See `.env.example`. The contact form needs `RESEND_API_KEY`, `CONTACT_FROM_EMAIL
 
 ## Deployment
 
-Hosted on Vercel (Phase 9). Every pull request gets a preview URL. `main` deploys to production.
+**Live site:** https://awf-website.vercel.app (Vercel project `awf-website`, temporarily under the
+`aahamoustafax` account until it moves to a foundation-owned account).
+
+How changes go live:
+
+1. Branch off `main` and open a pull request.
+2. CI (`check` + `e2e`) must pass. Vercel also posts a **preview URL** on the PR to review the change.
+3. Merge into `main`. Vercel deploys production automatically, usually within a couple of minutes.
+
+Production environment variables (Vercel → Project → Settings → Environment Variables):
+
+| Variable                                                   | Value                                                              | Status                                                         |
+| ---------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`                                     | `https://awf-website.vercel.app` (change to the real domain later) | Set                                                            |
+| `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL` | See ADR 0005                                                       | Not set: the contact form shows the foundation's email instead |
+
+`NEXT_PUBLIC_SITE_URL` is baked in at build time. After changing it, redeploy.
+
+### Adding a custom domain later
+
+1. Buy the domain.
+2. Add it in Vercel → Project → Settings → Domains, and set the DNS records Vercel shows.
+3. Update `NEXT_PUBLIC_SITE_URL` and redeploy.
+4. Verify the domain in Resend for the contact form.
+5. Submit `/sitemap.xml` in Google Search Console.
