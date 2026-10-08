@@ -1,0 +1,38 @@
+# Content guide
+
+How to change words, numbers and images on the site. (Later, a CMS dashboard will replace this.)
+
+## Where content lives
+
+| What                                                          | File                        |
+| ------------------------------------------------------------- | --------------------------- |
+| Organization name, description, contact details, social links | `src/content/site.ts`       |
+| Programs (Phase 4)                                            | `src/content/programs.ts`   |
+| Impact numbers (Phase 4)                                      | `src/content/stats.ts`      |
+| Buttons, menu labels, form messages                           | `src/i18n/messages/en.json` |
+| Photos                                                        | `public/images/`            |
+
+The allowed fields for each item are defined in `src/content/types.ts`. If you leave out a required
+field, `npm run check` fails and names the missing field.
+
+## Steps
+
+1. Edit the file. Keep the quotes and commas as they are.
+2. Run `npm run check`.
+3. Commit, push, open a pull request, and check the preview link.
+
+Or ask Claude Code: _"use the content-editor agent to update the impact numbers to …"_.
+
+## Writing style
+
+- Clear, factual, dignified. The readers include diplomats and institutional funders.
+- Canadian English spelling (centre, honour, organization, program).
+- Numbers must be real and sourced. If a number isn't confirmed, leave a `TODO(foundation)` note
+  rather than estimating.
+
+## Photos
+
+- Use real photos of AWF's work, at least 2000px wide, in JPG or WebP format.
+- **Consent is required** for anyone identifiable. For children, get written guardian consent, or
+  use images where faces aren't identifiable.
+- Every photo needs alt text: describe what it shows and why it matters, in one sentence.
