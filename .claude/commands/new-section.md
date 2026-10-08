@@ -13,5 +13,5 @@ Create a new section component named `$1`. Purpose: $ARGUMENTS
    - Build from `src/components/ui/` primitives and design tokens; semantic HTML (`<section>` with
      an accessible heading).
 3. If it needs new content types, add them to `src/content/types.ts` and a getter in `src/lib/content`.
-4. Add an example of it to the `/styleguide` page with realistic placeholder data.
+4. Use it on its page (content in `src/content`), and screenshot desktop and mobile to check it.
 5. Run `npm run check` and report the result.

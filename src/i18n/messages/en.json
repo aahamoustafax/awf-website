@@ -37,7 +37,15 @@
     "body": "The page may have moved, or the link may be out of date.",
     "home": "Go to the home page"
   },
-  "home": {
-    "comingSoon": "Our new website is on its way."
+  "programs": {
+    "learnMore": "Learn more",
+    "regions": {
+      "hamilton": "Hamilton, ON",
+      "afghanistan": "Afghanistan"
+    },
+    "status": {
+      "launching": "Launching",
+      "active": "Active"
+    }
   }
 }

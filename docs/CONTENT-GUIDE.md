@@ -4,13 +4,14 @@ How to change words, numbers and images on the site. (Later, a CMS dashboard wil
 
 ## Where content lives
 
-| What                                                          | File                        |
-| ------------------------------------------------------------- | --------------------------- |
-| Organization name, description, contact details, social links | `src/content/site.ts`       |
-| Programs (Phase 4)                                            | `src/content/programs.ts`   |
-| Impact numbers (Phase 4)                                      | `src/content/stats.ts`      |
-| Buttons, menu labels, form messages                           | `src/i18n/messages/en.json` |
-| Photos                                                        | `public/images/`            |
+| What                                                                  | File                        |
+| --------------------------------------------------------------------- | --------------------------- |
+| Organization name, description, contact details, social links         | `src/content/site.ts`       |
+| Programs: summaries, detail text, schedules, most-needed items, goals | `src/content/programs.ts`   |
+| Home page: hero, goals, ways to help, partner band                    | `src/content/home.ts`       |
+| About: intro, mission, vision, values, leadership                     | `src/content/about.ts`      |
+| Buttons, menu labels, form messages                                   | `src/i18n/messages/en.json` |
+| Photos                                                                | `public/images/`            |
 
 The allowed fields for each item are defined in `src/content/types.ts`. If you leave out a required
 field, `npm run check` fails and names the missing field.
@@ -25,12 +26,19 @@ Or ask Claude Code: _"use the content-editor agent to update the impact numbers 
 
 ## Writing style
 
+- **Goals, not results.** Programs are launching, so figures are labelled as goals or targets.
+  When real results exist, publish them as results and keep the goals for comparison.
+- Links in content are site paths without the language, e.g. `/partner`. The site adds `/en`.
+
 - Clear, factual, dignified. The readers include diplomats and institutional funders.
 - Canadian English spelling (centre, honour, organization, program).
 - Numbers must be real and sourced. If a number isn't confirmed, leave a `TODO(foundation)` note
   rather than estimating.
 
 ## Photos
+
+- Images live in `src/content/images/`. The home hero is a stock photo for now; its source is kept in
+  the `credit` field. Replace it with AWF's own consented photo when available.
 
 - Use real photos of AWF's work, at least 2000px wide, in JPG or WebP format.
 - **Consent is required** for anyone identifiable. For children, get written guardian consent, or

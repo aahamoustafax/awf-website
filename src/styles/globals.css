@@ -24,7 +24,7 @@
   --color-brand-sky: #4a9fd8; /* logo blue. Decorative, or text ON navy only (5.3:1). Never text on light */
 
   /* Call to action (Donate / Partner) */
-  --color-cta: #e9a93a; /* saffron */
+  --color-cta: #e9a93a; /* saffron. Fills only: as text on light backgrounds it fails contrast */
   --color-cta-hover: #f0bc5e;
   --color-on-cta: #0b2545; /* navy on saffron: 7.5:1 */
 
@@ -85,6 +85,34 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Motion tokens: `animate-draw` (an SVG line slowly draws in, once) and `animate-pulse-ring` (pins).
+   Both are neutralised by the prefers-reduced-motion rule above. */
+@theme {
+  --animate-draw: draw 2.8s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out 2.2s 3;
+
+  /* Requires pathLength="1" and stroke-dasharray="1" on the path. */
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      opacity: 0.9;
+      transform: scale(0.6);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.6);
     }
   }
 }
