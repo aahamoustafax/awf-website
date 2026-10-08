@@ -57,7 +57,7 @@ docs/                  Architecture, ADRs, design references, content guide.
 ## Definition of done
 
 1. `npm run check` passes. Run `npm run test:e2e` too if you touched routes, layout or interactivity.
-2. New sections/primitives appear on `/styleguide` (from Phase 2).
+2. New `ui/` primitives appear on `/styleguide`. New sections are reviewed on the page that uses them.
 3. Docs updated if you changed structure or made a decision. Significant decisions go in a new ADR in
    `docs/decisions/`.
 
@@ -67,7 +67,7 @@ docs/                  Architecture, ADRs, design references, content guide.
 - Read, print or commit `.env*` files or secrets (only `.env.example` is committed).
 - Publish identifiable photos or names of children without recorded consent. Use program-level
   stories, not individual children.
-- Invent statistics, partners or testimonials. Use a visible `TODO(foundation)` placeholder instead.
+- Present goals as results, or invent statistics, partners or testimonials. Use a visible `TODO(foundation)` placeholder instead.
 - Push, deploy or change Vercel settings without the user asking.
 
 ## More detail

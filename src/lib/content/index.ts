@@ -1,8 +1,10 @@
 import "server-only";
 
+import { about } from "@/content/about";
+import { home } from "@/content/home";
 import { programs } from "@/content/programs";
 import { site } from "@/content/site";
-import type { Program, Site } from "@/content/types";
+import type { About, Home, Program, Site } from "@/content/types";
 
 /**
  * The content layer: the ONLY module pages and components use to get content.
@@ -14,6 +16,14 @@ import type { Program, Site } from "@/content/types";
 
 export async function getSite(): Promise<Site> {
   return site;
+}
+
+export async function getHome(): Promise<Home> {
+  return home;
+}
+
+export async function getAbout(): Promise<About> {
+  return about;
 }
 
 export async function getPrograms(): Promise<Program[]> {

@@ -80,3 +80,15 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
   - `MobileNav`: a native `<dialog>`, which provides focus trapping and Escape for free; groups use
     `<details>`.
 - Unknown URLs hit `app/[lang]/[...rest]` → `notFound()` → the styled `[lang]/not-found.tsx`.
+
+## Page sections
+
+- `src/components/sections/` holds page-level blocks (Hero, ProgramGrid, GoalsBand…), exported from
+  `@/components/sections`. They take plain props and know nothing about where content comes from.
+- A route gets content, adds the language to every href (`localePath`), and passes the result in.
+  See `app/[lang]/page.tsx`.
+- The hero is a background photo (`next/image` `fill`, static import, blur placeholder) fading into
+  navy, with `HeroGiveCard` (charity: water-style help card; becomes the donation module later). Across its bottom,
+  `ConnectionLine` joins Afghanistan → Canada with an inline-SVG line that fills slowly once when it
+  first comes into view (`DrawOnView`, a small client component, plus the `animate-draw` token).
+- `WaysToGive` is the reserved slot for the home-page donation module (ADR 0004).
