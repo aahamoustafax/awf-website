@@ -1,10 +1,13 @@
+import type { ResolvingMetadata } from "next";
+
 import { CardGrid, CtaBand, PageHeader, StorySection } from "@/components/sections";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { localePath, localizeHrefs } from "@/i18n/paths";
 import { getPage } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
-export const generateMetadata = () => pageMetadata("whoWeServe");
+export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
+  pageMetadata("whoWeServe", "/who-we-serve", parent);
 
 export default async function WhoWeServePage() {
   const [page, dict, locale] = await Promise.all([

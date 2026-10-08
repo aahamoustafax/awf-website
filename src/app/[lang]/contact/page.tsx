@@ -1,3 +1,5 @@
+import type { ResolvingMetadata } from "next";
+
 import { ContactForm } from "@/components/forms/ContactForm";
 import { CardGrid, ContactPanel, PageHeader, SectionIntro } from "@/components/sections";
 import { Section } from "@/components/ui";
@@ -5,7 +7,8 @@ import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { getPage, getSite } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
-export const generateMetadata = () => pageMetadata("contact");
+export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
+  pageMetadata("contact", "/contact", parent);
 
 /** Contact details, the contact form, and common reasons to get in touch. */
 export default async function ContactPage() {

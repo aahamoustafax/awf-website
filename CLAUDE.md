@@ -58,7 +58,9 @@ docs/                  Architecture, ADRs, design references, content guide.
 
 ## Definition of done
 
-1. `npm run check` passes. Run `npm run test:e2e` too if you touched routes, layout or interactivity.
+1. `npm run check` passes. New static page? Add its path to `src/lib/routes.ts` (sitemap) and use
+   `pageMetadata` for its metadata.
+   Run `npm run test:e2e` too if you touched routes, layout or interactivity.
 2. New `ui/` primitives appear on `/styleguide`. New sections are reviewed on the page that uses them.
 3. Docs updated if you changed structure or made a decision. Significant decisions go in a new ADR in
    `docs/decisions/`.

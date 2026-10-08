@@ -31,6 +31,7 @@ export function Hero({ title, lead, image, imageFocus, giveCard }: HeroProps) {
           alt={image.alt}
           fill
           preload
+          fetchPriority="high"
           placeholder="blur"
           sizes="(min-width: 1024px) 70vw, 100vw"
           className="object-cover"

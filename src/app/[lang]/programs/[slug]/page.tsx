@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 import {
@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
 import { getPage, getProgram, getPrograms } from "@/lib/content";
+import { pageSeo } from "@/lib/pageHelpers";
 import { toProgramCard } from "@/lib/programs";
 
 /** Every program page is prerendered at build time. */
@@ -23,11 +24,21 @@ export async function generateStaticParams() {
   return programs.map((program) => ({ slug: program.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps<"/[lang]/programs/[slug]">): Promise<Metadata> {
-  const program = await getProgram((await params).slug);
-  return program ? { title: program.title, description: program.summary } : {};
+export async function generateMetadata(
+  { params }: PageProps<"/[lang]/programs/[slug]">,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const [{ slug }, locale] = await Promise.all([params, getLocale()]);
+  const program = await getProgram(slug);
+  if (!program) return {};
+  return pageSeo(
+    {
+      title: program.title,
+      description: program.summary,
+      url: localePath(locale, `/programs/${slug}`),
+    },
+    parent,
+  );
 }
 
 export default async function ProgramPage({ params }: PageProps<"/[lang]/programs/[slug]">) {

@@ -10,13 +10,18 @@ export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  // Not preloaded: body text shows instantly in a size-matched fallback, leaving early bandwidth on
+  // slow phones for the display font and hero image (the largest-paint elements).
+  preload: false,
 });
 
 export const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
-  axes: ["opsz", "SOFT"],
+  // Optical sizing only: refines letter shapes at large display sizes. (The unused "SOFT" axis was
+  // dropped: it added ~40% to the download and slowed the first paint on phones.)
+  axes: ["opsz"],
 });
 
 export const fontVariables = `${inter.variable} ${fraunces.variable}`;

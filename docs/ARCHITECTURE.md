@@ -118,3 +118,20 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
 `ContactForm` (client) → `sendContactMessage` Server Action → zod validation → spam checks → rate
 limit → `sendEmail()` (Resend or log). It works as a plain HTML form without JavaScript. See
 [ADR 0005](decisions/0005-contact-form-email.md).
+
+## SEO, sharing and performance
+
+- `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt`. Add new static
+  pages to `src/lib/routes.ts`; program pages are added automatically.
+- Every page sets a canonical URL and its own share title through `pageMetadata` / `pageSeo`
+  (`src/lib/pageHelpers.ts`). These spread the parent's Open Graph data, so the generated share image
+  (`app/[lang]/opengraph-image.tsx`) isn't lost.
+- The root layout embeds schema.org `NGO` JSON-LD (`src/lib/structuredData.ts`).
+- `NEXT_PUBLIC_SITE_URL` must be set **at build time** in production. It's baked into the canonical
+  links, the sitemap and share URLs.
+- Performance budget: Lighthouse mobile ≥ 95 in all categories (measured 95–97 on 2026-10-07).
+  What keeps it there:
+  - the hero image uses `fetchPriority="high"` and is served as AVIF/WebP;
+  - the display font loads only the `opsz` axis;
+  - the body font isn't preloaded.
+- Smooth wheel scrolling: `SmoothScroll` (Lenis), see ADR 0006.

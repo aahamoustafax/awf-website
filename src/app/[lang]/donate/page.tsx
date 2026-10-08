@@ -1,3 +1,5 @@
+import type { ResolvingMetadata } from "next";
+
 import { Reveal } from "@/components/motion";
 import { CardGrid, CtaBand, PageHeader } from "@/components/sections";
 import { Container, Heading } from "@/components/ui";
@@ -6,7 +8,8 @@ import { localePath, localizeHrefs } from "@/i18n/paths";
 import { getPage } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
-export const generateMetadata = () => pageMetadata("donate");
+export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
+  pageMetadata("donate", "/donate", parent);
 
 /** Ways to give today. Online giving (DonationWidget) arrives after registration (ADR 0004). */
 export default async function DonatePage() {

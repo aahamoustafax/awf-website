@@ -1,6 +1,7 @@
 // Motion helpers. All of them respect prefers-reduced-motion and leave content visible without JS.
 export { InView } from "./InView";
 export { Reveal } from "./Reveal";
+export { SmoothScroll } from "./SmoothScroll";
 
 /**
  * Classes for an SVG path that draws itself when its InView ancestor (marked `group`) appears.
