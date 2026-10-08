@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import {
   CtaBand,
   Geographies,
@@ -12,6 +14,10 @@ import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
 import { getAbout, getHome, getPrograms } from "@/lib/content";
 import { toProgramCard } from "@/lib/programs";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return { alternates: { canonical: localePath(await getLocale(), "/") } };
+}
 
 export default async function HomePage() {
   const [home, about, programs, dict, locale] = await Promise.all([

@@ -1,10 +1,13 @@
+import type { ResolvingMetadata } from "next";
+
 import { CtaBand, FaqList, PageHeader } from "@/components/sections";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
 import { getPage } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
-export const generateMetadata = () => pageMetadata("faq");
+export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
+  pageMetadata("faq", "/faq", parent);
 
 export default async function FaqPage() {
   const [page, dict, locale] = await Promise.all([getPage("faq"), getDictionary(), getLocale()]);

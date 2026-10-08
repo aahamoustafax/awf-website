@@ -12,10 +12,10 @@ type MissionQuoteProps = {
 };
 
 /**
- * Mission statement beside the globe of the two countries.
- * Desktop: side by side. The globe sits in an absolutely positioned box, so it always takes
+ * Mission statement with the globe of the two countries: quote first, then the globe (on the
+ * right on desktop, below on phones). Desktop: side by side. The globe sits in an absolutely positioned box, so it always takes
  * exactly the quote's height (from the eyebrow to the attribution) and never adds height itself.
- * Phones: stacked, globe at a compact fixed height under the quote.
+ * Phones: stacked, globe at a compact fixed height below the quote.
  */
 export function MissionQuote({ eyebrow, quote, emphasis, attribution, map }: MissionQuoteProps) {
   return (
@@ -32,7 +32,6 @@ export function MissionQuote({ eyebrow, quote, emphasis, attribution, map }: Mis
           </blockquote>
           <figcaption className="mt-6 text-muted">{attribution}</figcaption>
         </figure>
-
         <div className="relative h-72 sm:h-80 lg:h-auto">
           <div className="absolute inset-0">
             <GlobeMap {...map} />

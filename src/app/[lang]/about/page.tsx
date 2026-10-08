@@ -1,3 +1,5 @@
+import type { ResolvingMetadata } from "next";
+
 import { Reveal } from "@/components/motion";
 import { CardGrid, CtaBand, PageHeader, StorySection, ValuesList } from "@/components/sections";
 import { Card, Heading } from "@/components/ui";
@@ -6,7 +8,8 @@ import { localePath } from "@/i18n/paths";
 import { getAbout, getPage } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
-export const generateMetadata = () => pageMetadata("about");
+export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
+  pageMetadata("about", "/about", parent);
 
 export default async function AboutPage() {
   const [page, about, dict, locale] = await Promise.all([

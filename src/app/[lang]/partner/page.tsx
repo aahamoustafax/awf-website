@@ -1,10 +1,13 @@
+import type { ResolvingMetadata } from "next";
+
 import { CardGrid, CtaBand, PageHeader } from "@/components/sections";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { localePath, localizeHrefs } from "@/i18n/paths";
 import { getPage } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
-export const generateMetadata = () => pageMetadata("partner");
+export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
+  pageMetadata("partner", "/partner", parent);
 
 /** The page for sponsors, institutions and diplomatic partners. */
 export default async function PartnerPage() {

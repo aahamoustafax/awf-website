@@ -1,9 +1,12 @@
+import type { ResolvingMetadata } from "next";
+
 import { PageHeader, ProseSection } from "@/components/sections";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { getPage } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
-export const generateMetadata = () => pageMetadata("accessibility");
+export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
+  pageMetadata("accessibility", "/accessibility", parent);
 
 export default async function AccessibilityPage() {
   const [page, dict, locale] = await Promise.all([

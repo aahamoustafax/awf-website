@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
 import type { PageKey } from "@/content/pages";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
+
+import { getLocale } from "@/i18n/dictionaries";
 
 import { getPage } from "./content";
 
@@ -20,9 +22,34 @@ export function breadcrumb(dict: Dictionary, locale: Locale, trail: Crumb[]) {
   };
 }
 
-/** Title and description for a standalone page, taken from its intro copy. */
-export async function pageMetadata(key: PageKey): Promise<Metadata> {
-  const page = await getPage(key);
-  const intro = (page as { intro: { title: string; lead: string } }).intro;
-  return { title: intro.title, description: intro.lead };
+/**
+ * Title, description and canonical URL for a standalone page, from its intro copy.
+ * `path` is the page's site path without the language, e.g. "/partner".
+ */
+export async function pageMetadata(
+  key: PageKey,
+  path: string,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const [page, locale] = await Promise.all([getPage(key), getLocale()]);
+  const { title, lead } = page.intro;
+  return pageSeo({ title, description: lead, url: localePath(locale, path) }, parent);
+}
+
+/**
+ * Per-page SEO that keeps the inherited share image. A page that sets `openGraph` replaces the
+ * parent's object entirely, so the generated opengraph-image would be lost; spreading the
+ * parent's resolved openGraph keeps it.
+ */
+export async function pageSeo(
+  { title, description, url }: { title: string; description: string; url: string },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const inherited = (await parent).openGraph ?? {};
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { ...inherited, title, description, url },
+  };
 }
