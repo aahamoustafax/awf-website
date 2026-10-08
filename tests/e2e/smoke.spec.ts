@@ -1,5 +1,6 @@
-import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+
+import { expectNoSeriousA11yViolations } from "./a11y";
 
 test("root redirects to the default language", async ({ page }) => {
   await page.goto("/");
@@ -8,14 +9,7 @@ test("root redirects to the default language", async ({ page }) => {
 });
 
 test("home page has no serious accessibility violations", async ({ page }) => {
-  await page.goto("/en");
-  const results = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-    .analyze();
-  const serious = results.violations.filter(
-    (v) => v.impact === "serious" || v.impact === "critical",
-  );
-  expect(serious).toEqual([]);
+  await expectNoSeriousA11yViolations(page, "/en");
 });
 
 test("unknown pages return the styled not-found page", async ({ page }) => {

@@ -9,5 +9,5 @@ export { Heading } from "./Heading";
 export { ImagePlaceholder } from "./ImagePlaceholder";
 export { Lead } from "./Lead";
 export { Logo } from "./Logo";
-export { Section } from "./Section";
+export { Section, type SectionTone } from "./Section";
 export { Stat, StatList } from "./Stat";

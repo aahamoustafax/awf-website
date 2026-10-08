@@ -88,7 +88,27 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
 - A route gets content, adds the language to every href (`localePath`), and passes the result in.
   See `app/[lang]/page.tsx`.
 - The hero is a background photo (`next/image` `fill`, static import, blur placeholder) fading into
-  navy, with `HeroGiveCard` (charity: water-style help card; becomes the donation module later). Across its bottom,
-  `ConnectionLine` joins Afghanistan → Canada with an inline-SVG line that fills slowly once when it
-  first comes into view (`DrawOnView`, a small client component, plus the `animate-draw` token).
+  navy, with `HeroGiveCard` (charity: water-style help card; becomes the donation module later). The two countries
+  appear as `GlobeMap` under the mission quote (line-art globe; the arc draws in once via `InView`).
 - `WaysToGive` is the reserved slot for the home-page donation module (ADR 0004).
+
+## Inner pages and motion
+
+- Every inner page opens with `PageHeader` (breadcrumb, title, lead, optional illustration).
+- Program pages live at `app/[lang]/programs/[slug]`. All slugs are prerendered from `getPrograms()`.
+  Unknown slugs get a real 404 from `proxy.ts`, because a streamed page can only return 200.
+- `ProgramIllustration` draws one line-art mark per program (the `icon` field). It's animated in
+  page headers and static on cards.
+- `src/components/motion` holds the motion helpers:
+  - `InView` marks an element when it first scrolls into view.
+  - `Reveal` fades content up as it appears.
+  - `drawOnViewClass` makes SVG lines draw in.
+
+  They play once, are skipped for reduced motion, and leave content visible without JS.
+
+- Accessibility e2e scans use `tests/e2e/a11y.ts`, which switches animations off first so contrast is
+  measured on final colours.
+- Standalone pages (about, partner, donate…) read their copy with `getPage("<key>")` from
+  `src/content/pages.ts`. They're built from shared sections: `PageHeader`, `CardGrid`,
+  `StorySection`, `FaqList`, `ContactPanel`, `ProseSection` and `CtaBand`. `src/lib/pageHelpers.ts`
+  builds breadcrumbs and metadata.

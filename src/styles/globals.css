@@ -89,10 +89,10 @@
   }
 }
 
-/* Motion tokens: `animate-draw` (an SVG line slowly draws in, once) and `animate-pulse-ring` (pins).
+/* Motion tokens: `animate-draw` (an SVG line quickly draws in, once) and `animate-pulse-ring` (pins).
    Both are neutralised by the prefers-reduced-motion rule above. */
 @theme {
-  --animate-draw: draw 2.8s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
+  --animate-draw: draw 1.2s cubic-bezier(0.33, 1, 0.68, 1) both;
   --animate-pulse-ring: pulse-ring 2.4s ease-out 2.2s 3;
 
   /* Requires pathLength="1" and stroke-dasharray="1" on the path. */

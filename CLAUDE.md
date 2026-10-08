@@ -52,6 +52,8 @@ docs/                  Architecture, ADRs, design references, content guide.
   Cache Components. Read `node_modules/next/dist/docs/` before using an API you are unsure of.
 - **Don't pass display or visibility classes** (`hidden`, `flex`, `block`…) to `ui/` primitives. They
   set their own display, and the two classes conflict. Wrap the primitive instead: `<div className="hidden sm:block"><ButtonLink…/></div>`.
+- **Motion** only through `src/components/motion` (`Reveal`, `InView`, `drawOnViewClass`), never ad-hoc
+  animation code. It must play once, respect reduced motion, and leave content visible without JS.
 - Small files, one job each. Name components in PascalCase, everything else camelCase.
 
 ## Definition of done

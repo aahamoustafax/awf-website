@@ -60,6 +60,9 @@ export type ProgramRegion = "hamilton" | "afghanistan";
 
 export type ProgramStatus = "launching" | "active";
 
+/** Which line-art illustration represents the program (see ProgramIllustration). */
+export type ProgramIcon = "education" | "skills" | "essentials" | "care";
+
 export type Program = {
   /** URL segment: /programs/<slug>. Lowercase, kebab-case, never change once published. */
   slug: string;
@@ -68,6 +71,7 @@ export type Program = {
   summary: string;
   region: ProgramRegion;
   status: ProgramStatus;
+  icon: ProgramIcon;
   /** Short focus tags, e.g. ["Weekend classes", "Heritage languages"]. */
   focus: string[];
   /** Detail page body: the problem and our response, one paragraph per entry. */
@@ -102,7 +106,6 @@ export type WayToGive = { title: string; description: string; href: string; link
 
 export type Home = {
   hero: {
-    eyebrow: string;
     title: string;
     lead: string;
     image: Photo;
@@ -120,14 +123,19 @@ export type Home = {
       secondaryAction: { label: string; href: string };
     };
   };
-  /** Full-width Canada ↔ Afghanistan band under the hero. */
-  connection: {
-    /** Accessible name for the band. */
-    label: string;
-    from: { name: string; note: string };
-    to: { name: string; note: string };
+  mission: {
+    eyebrow: string;
+    quote: string;
+    /** Exact phrase inside `quote` to highlight (one phrase only, so it stands out). */
+    emphasis?: string;
+    attribution: string;
+    /** Globe under the quote: the two countries, placed geographically (west left, east right). */
+    map: {
+      label: string;
+      west: { name: string; note: string };
+      east: { name: string; note: string };
+    };
   };
-  mission: { eyebrow: string; quote: string; attribution: string };
   programs: { eyebrow: string; title: string; lead: string };
   goals: { eyebrow: string; title: string; lead: string; items: Goal[]; note: string };
   geographies: {
@@ -138,4 +146,60 @@ export type Home = {
   give: { eyebrow: string; title: string; lead: string; ways: WayToGive[] };
   values: { eyebrow: string; title: string };
   partner: { title: string; body: string; action: { label: string; href: string } };
+};
+
+/** Opening copy of a page: shown in its PageHeader and used for its metadata. */
+export type PageIntro = { eyebrow: string; title: string; lead: string };
+
+/** A card in a grid: optional link (site path without the language). */
+export type CardItem = { title: string; description: string; href?: string; linkLabel?: string };
+
+/** A titled grid of cards. */
+export type CardSection = { eyebrow: string; title: string; lead?: string; items: CardItem[] };
+
+/** Closing call to action of a page. */
+export type Cta = { title: string; body: string; action: { label: string; href: string } };
+
+export type FaqItem = { question: string; answer: string };
+
+/** A block of a text page (privacy, accessibility). */
+export type ProseSection = { heading: string; paragraphs: string[] };
+
+/** Content of every standalone page, by route. */
+export type SitePages = {
+  programs: { intro: PageIntro };
+  about: {
+    intro: PageIntro;
+    story: { eyebrow: string; title: string };
+    missionLabel: string;
+    visionLabel: string;
+    values: { eyebrow: string; title: string };
+    leadership: { eyebrow: string; title: string };
+    cta: Cta;
+  };
+  governance: { intro: PageIntro; commitments: CardSection; cta: Cta };
+  whoWeServe: {
+    intro: PageIntro;
+    groups: CardSection;
+    base: { eyebrow: string; title: string; paragraphs: string[] };
+    cta: Cta;
+  };
+  partner: {
+    intro: PageIntro;
+    why: CardSection;
+    ways: CardSection;
+    process: CardSection;
+    cta: Cta;
+  };
+  getInvolved: { intro: PageIntro; ways: CardSection; roles: CardSection; cta: Cta };
+  donate: {
+    intro: PageIntro;
+    ways: CardSection;
+    receipts: { title: string; body: string };
+    cta: Cta;
+  };
+  contact: { intro: PageIntro; reasons: CardSection };
+  faq: { intro: PageIntro; items: FaqItem[]; cta: Cta };
+  privacy: { intro: PageIntro; updated: string; sections: ProseSection[] };
+  accessibility: { intro: PageIntro; updated: string; sections: ProseSection[] };
 };

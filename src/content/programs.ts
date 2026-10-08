@@ -12,6 +12,7 @@ export const programs: Program[] = [
       "Weekend classes at the Azan Center for Child Programs (ACCP), helping newcomer and refugee children build academic confidence while keeping their language and heritage.",
     region: "hamilton",
     status: "launching",
+    icon: "education",
     focus: ["Weekend classes", "Heritage languages", "Newcomer children"],
     overview: [
       "Children who arrive in Canada as newcomers or refugees often start school while still learning the language, adjusting to a new system and, for many, catching up on interrupted education.",
@@ -59,6 +60,7 @@ export const programs: Program[] = [
       "Practical training in tailoring, cooking, barbering, computer skills and financial literacy, helping women, men and seniors move toward employment and economic independence.",
     region: "hamilton",
     status: "launching",
+    icon: "skills",
     focus: ["Vocational training", "Employment", "Entrepreneurship"],
     overview: [
       "Many newcomer adults arrive with determination and experience but without Canadian credentials, formal schooling or a network. Without practical, recognized skills, the path to stable income is long.",
@@ -112,6 +114,7 @@ export const programs: Program[] = [
       "Food, clothing, school supplies and hygiene kits for children aged 1–14 from low-income, newcomer and refugee families in Hamilton.",
     region: "hamilton",
     status: "launching",
+    icon: "essentials",
     focus: ["Child nutrition", "Clothing", "School supplies", "Hygiene"],
     overview: [
       "In Hamilton, many children from low-income, newcomer and vulnerable families face several barriers at once: hunger, a lack of proper clothing, no school supplies and poor access to hygiene essentials. Each one affects their health, their confidence and their ability to succeed in school.",
@@ -200,6 +203,7 @@ export const programs: Program[] = [
       "Medical equipment collected from donors across Canada and shipped to hospitals and clinics in underserved regions of Afghanistan.",
     region: "afghanistan",
     status: "launching",
+    icon: "care",
     focus: ["Medical equipment", "Logistics", "Trusted local partners"],
     overview: [
       "Hospitals and clinics in underserved regions of Afghanistan face critical shortages of basic medical equipment. At the same time, usable equipment in Canada is often retired or stored unused.",

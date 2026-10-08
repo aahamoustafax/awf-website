@@ -2,9 +2,10 @@ import "server-only";
 
 import { about } from "@/content/about";
 import { home } from "@/content/home";
+import { pages, type PageKey } from "@/content/pages";
 import { programs } from "@/content/programs";
 import { site } from "@/content/site";
-import type { About, Home, Program, Site } from "@/content/types";
+import type { About, Home, Program, Site, SitePages } from "@/content/types";
 
 /**
  * The content layer: the ONLY module pages and components use to get content.
@@ -32,4 +33,9 @@ export async function getPrograms(): Promise<Program[]> {
 
 export async function getProgram(slug: string): Promise<Program | undefined> {
   return programs.find((program) => program.slug === slug);
+}
+
+/** Content of a standalone page, e.g. getPage("partner"). */
+export async function getPage<K extends PageKey>(key: K): Promise<SitePages[K]> {
+  return pages[key];
 }

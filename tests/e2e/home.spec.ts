@@ -1,5 +1,6 @@
-import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+
+import { expectNoSeriousA11yViolations } from "./a11y";
 
 test.describe("home page", () => {
   test("hero has the headline, photo and the help card", async ({ page }) => {
@@ -20,11 +21,11 @@ test.describe("home page", () => {
     );
   });
 
-  test("hero arc names both countries", async ({ page }) => {
+  test("mission globe shows both countries", async ({ page }) => {
     await page.goto("/en");
-    const band = page.getByRole("group", { name: /two countries AWF serves/ });
-    await expect(band).toContainText("Canada");
-    await expect(band).toContainText("Afghanistan");
+    const globe = page.getByRole("img", { name: /two countries AWF serves/ });
+    await expect(globe).toContainText("Canada");
+    await expect(globe).toContainText("Afghanistan");
   });
 
   test("program cards link to each program page", async ({ page }) => {
@@ -47,16 +48,6 @@ test.describe("home page", () => {
   });
 
   test("has no serious accessibility violations", async ({ page }) => {
-    await page.goto("/en");
-    const results = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-      .analyze();
-    const serious = results.violations.filter(
-      (v) => v.impact === "serious" || v.impact === "critical",
-    );
-    expect(
-      serious,
-      JSON.stringify(serious.map((v) => [v.id, v.nodes.map((n) => n.target)])),
-    ).toEqual([]);
+    await expectNoSeriousA11yViolations(page, "/en");
   });
 });

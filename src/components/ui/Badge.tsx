@@ -6,6 +6,8 @@ const tones = {
   neutral: "bg-surface-muted text-foreground",
   primary: "bg-primary text-on-primary",
   cta: "bg-cta text-on-cta",
+  /** Subtle tag on navy backgrounds. */
+  onDark: "bg-on-primary/10 text-on-primary ring-1 ring-on-primary/15",
 } as const;
 
 /** Small label, e.g. "Hamilton" or "Afghanistan" on a program card. */

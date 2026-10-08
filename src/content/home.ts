@@ -7,7 +7,6 @@ import type { Home } from "./types";
  */
 export const home: Home = {
   hero: {
-    eyebrow: "Canada · Afghanistan",
     title: "Education, skills and care for families building a new life",
     lead: "We help newcomer and refugee families in Canada build their future, and stand with communities in Afghanistan through humanitarian and healthcare support.",
     // Stock photo until AWF has consented photos of its own programs. Credit kept for records.
@@ -34,17 +33,19 @@ export const home: Home = {
       secondaryAction: { label: "Explore our programs", href: "/programs" },
     },
   },
-  connection: {
-    label: "Afghanistan and Canada: the two countries AWF serves",
-    // Left to right: where AWF began → where it is today. The line fills in this direction.
-    from: { name: "Afghanistan", note: "Where we began" },
-    to: { name: "Canada", note: "Our home today" },
-  },
   mission: {
     eyebrow: "Our mission",
     quote:
       "To empower vulnerable individuals through inclusive education, life skills and humanitarian support, fostering dignity, opportunity and hope for a better future.",
+    // Highlight the outcomes, not the activity: what families gain is what sponsors respond to.
+    emphasis: "dignity, opportunity and hope",
     attribution: "Azan Welfare Foundation",
+    map: {
+      label:
+        "Globe showing the two countries AWF serves: Canada, our home today, and Afghanistan, where we began.",
+      west: { name: "Canada", note: "Our home today" },
+      east: { name: "Afghanistan", note: "Where we began" },
+    },
   },
   programs: {
     eyebrow: "Our programs",
