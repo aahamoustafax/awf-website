@@ -54,3 +54,14 @@ CanadaHelps) touches one file. See [ADR 0004](decisions/0004-donations-deferred.
 
 `npm run check` (format, lint, typecheck, unit, build) and `npm run test:e2e` (Playwright on desktop
 and mobile + axe accessibility scan) run in GitHub Actions on every PR.
+
+## Design system
+
+- **Tokens** live only in `src/styles/globals.css` (`@theme`). Each colour lists its contrast ratio.
+  Tailwind turns each token into classes (`--color-primary` → `bg-primary`, `text-primary`).
+- **Fonts** load in `src/styles/fonts.ts` (Fraunces for display, Inter for body), self-hosted at
+  build time.
+- **Primitives** live in `src/components/ui`, imported from `@/components/ui`. They own their visual
+  style. A `className` passed in should only add layout (margin, width, colour inheritance).
+- **`/en/styleguide`** shows every token and primitive. It's hidden from search engines and covered
+  by an axe contrast test, so a token change that breaks contrast fails CI.
