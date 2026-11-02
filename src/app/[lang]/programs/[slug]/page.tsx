@@ -18,9 +18,9 @@ import { getPage, getProgram, getPrograms } from "@/lib/content";
 import { pageSeo } from "@/lib/pageHelpers";
 import { toProgramCard } from "@/lib/programs";
 
-/** Every program page is prerendered at build time. */
+/** Every program page is prerendered at build time, hidden ones too (the proxy 404s those). */
 export async function generateStaticParams() {
-  const programs = await getPrograms();
+  const programs = await getPrograms({ includeHidden: true });
   return programs.map((program) => ({ slug: program.slug }));
 }
 
@@ -119,12 +119,14 @@ export default async function ProgramPage({ params }: PageProps<"/[lang]/program
         action={{ label: t.contactUs, href: localePath(locale, "/contact") }}
       />
 
-      <ProgramGrid
-        id="other-programs"
-        intro={{ eyebrow: t.otherProgramsEyebrow, title: t.otherProgramsTitle }}
-        learnMoreLabel={t.learnMore}
-        programs={others.map((p) => toProgramCard(p, dict, locale))}
-      />
+      {others.length > 0 && (
+        <ProgramGrid
+          id="other-programs"
+          intro={{ eyebrow: t.otherProgramsEyebrow, title: t.otherProgramsTitle }}
+          learnMoreLabel={t.learnMore}
+          programs={others.map((p) => toProgramCard(p, dict, locale))}
+        />
+      )}
     </>
   );
 }

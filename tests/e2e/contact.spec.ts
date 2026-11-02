@@ -27,8 +27,10 @@ test.describe("contact form", () => {
     const form = formSection(page);
     await input(page, /^Full name/).fill("Amina Rahimi");
     await input(page, /^Email/).fill("amina@example.org");
-    await form.getByRole("combobox", { name: /^What is this about/ }).selectOption("enroll");
-    await input(page, /^Message/).fill("I'd like to enroll my daughter in the weekend classes.");
+    await form.getByRole("combobox", { name: /^What is this about/ }).selectOption("donate");
+    await input(page, /^Message/).fill(
+      "I'd like to donate two wheelchairs and some wound care supplies.",
+    );
     await page.waitForTimeout(2100);
     await form.getByRole("button", { name: "Send message" }).click();
 

@@ -1,9 +1,8 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 import { Container, Heading } from "@/components/ui";
 import type { Photo } from "@/content/types";
-
-import { HeroGiveCard, type HeroGiveCardProps } from "./HeroGiveCard";
 
 export type HeroProps = {
   title: string;
@@ -11,7 +10,8 @@ export type HeroProps = {
   image: Photo;
   /** CSS object-position keeping the photo's subject in view. */
   imageFocus: string;
-  giveCard: HeroGiveCardProps;
+  /** Card under the headline: the donation box. */
+  card: ReactNode;
 };
 
 /**
@@ -19,7 +19,7 @@ export type HeroProps = {
  * navy on the left, where the headline and the action card sit. On phones the photo sits on top
  * and fades into the navy below it.
  */
-export function Hero({ title, lead, image, imageFocus, giveCard }: HeroProps) {
+export function Hero({ title, lead, image, imageFocus, card }: HeroProps) {
   return (
     <section
       aria-labelledby="hero-title"
@@ -54,9 +54,7 @@ export function Hero({ title, lead, image, imageFocus, giveCard }: HeroProps) {
             {title}
           </Heading>
           <p className="mt-5 max-w-lg text-lg text-pretty text-on-primary/90">{lead}</p>
-          <div className="mt-8">
-            <HeroGiveCard {...giveCard} />
-          </div>
+          <div className="mt-8">{card}</div>
         </div>
       </Container>
     </section>

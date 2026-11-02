@@ -17,16 +17,16 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "About us",
       title: "Who we are",
-      lead: "A non-profit founded in Afghanistan and now building programs in Hamilton, Ontario, for newcomer families and the communities we began with.",
+      lead: "A non-profit established in 2020 and based in Hamilton, Ontario, getting medicines and medical supplies to people in need, with a focus on Afghanistan.",
     },
-    story: { eyebrow: "Our story", title: "From Afghanistan to Hamilton" },
+    story: { eyebrow: "Our story", title: "One clear purpose" },
     missionLabel: "Mission",
     visionLabel: "Vision",
     values: { eyebrow: "Our values", title: "How we work" },
     leadership: { eyebrow: "Leadership", title: "Who leads AWF" },
     cta: {
       title: "Work with us",
-      body: "Whether you represent an institution, a company or a community organization, we'd welcome a conversation about supporting our programs.",
+      body: "Whether you represent an institution, a company, a supplier or a healthcare organization, we'd welcome a conversation about supporting our work.",
       action: { label: "Partner with us", href: "/partner" },
     },
   },
@@ -44,12 +44,12 @@ export const pages: SitePages = {
         {
           title: "Annual report",
           description:
-            "Our first annual report will follow our first full year of programs, with results measured against the goals published on this site.",
+            "Our first annual report will follow our first full year of operations, with results measured against the goals published on this site.",
         },
         {
           title: "Financial accountability",
           description:
-            "We will publish how funds are used across programs, logistics and administration.",
+            "We will publish how funds are used across medicines and supplies, shipping and administration.",
         },
         {
           title: "Leadership",
@@ -74,6 +74,37 @@ export const pages: SitePages = {
     cta: {
       title: "Questions about how we work?",
       body: "We're happy to share more detail with partners and donors.",
+      action: { label: "Contact us", href: "/contact" },
+    },
+  },
+
+  ourWork: {
+    intro: {
+      eyebrow: "Our work",
+      title: "Medicines and supplies, from around the world to people in need",
+      lead: "How we get medicines, medical supplies and equipment to the hospitals, clinics and patients who need them most, with a focus on Afghanistan.",
+    },
+    story: {
+      eyebrow: "Why it matters",
+      title: "Medicine only helps when it arrives",
+      paragraphs: [
+        "In Afghanistan, many hospitals and clinics struggle to get basic medicines, supplies and equipment. Patients go without treatment that would be routine elsewhere.",
+        "AWF connects that need with supply. We source quality medicines and medical supplies from around the world, take care of shipping and documentation, and work with trusted partners on the ground, so supplies reach the facilities and patients who need them most.",
+      ],
+    },
+    howWeWork: {
+      eyebrow: "How we work",
+      title: "From need to delivery",
+      lead: "Four steps, each one documented, so donors and partners can see where their support went.",
+    },
+    supplies: {
+      eyebrow: "What we supply",
+      title: "What we source and accept",
+      lead: "Medicines are bought from licensed suppliers. Medical equipment and unopened supplies can be donated in working condition.",
+    },
+    cta: {
+      title: "Donate supplies or fund a shipment",
+      body: "Have equipment or supplies to give, or want to cover the cost of medicines and shipping? Get in touch and we'll arrange it.",
       action: { label: "Contact us", href: "/contact" },
     },
   },
@@ -136,7 +167,7 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Partner with us",
       title: "Partner with a foundation built for lasting impact",
-      lead: "AWF works with institutions, companies, diplomatic missions and community organizations to launch and sustain programs for newcomer families in Canada and communities in Afghanistan.",
+      lead: "AWF works with institutions, companies, diplomatic missions, suppliers and healthcare organizations to get medicines and medical supplies to people in need, with a focus on Afghanistan.",
     },
     why: {
       eyebrow: "Why partner with AWF",
@@ -144,22 +175,22 @@ export const pages: SitePages = {
       items: [
         {
           title: "Clear, published goals",
-          description: "Every program has public targets, and we report against them openly.",
+          description: "Our goals are public, and we report against them openly.",
         },
         {
-          title: "Transparent reporting",
+          title: "Every shipment documented",
           description:
-            "Partners receive regular updates on how their support is used, and results are published in our annual report.",
+            "Partners see what was sent, where it went and what it cost, and results are published in our annual report.",
         },
         {
-          title: "Community-led programs",
+          title: "Supplies matched to need",
           description:
-            "Programs are designed with the families we serve, by people who share their languages and experiences.",
+            "We source what hospitals and clinics ask for, not what happens to be available.",
         },
         {
-          title: "Reach across two countries",
+          title: "Trusted partners on the ground",
           description:
-            "Your support can strengthen newcomer families in Canada and communities in Afghanistan.",
+            "Local partners in Afghanistan make sure supplies reach the facilities and patients they were sent for.",
         },
       ],
     },
@@ -168,28 +199,28 @@ export const pages: SitePages = {
       title: "Find the right partnership",
       items: [
         {
-          title: "Program sponsor",
+          title: "Shipment sponsor",
           description:
-            "Fund a program, a classroom, a training track or a shipment of medical equipment, with dedicated reporting on outcomes.",
-          href: "/programs",
-          linkLabel: "See our programs",
+            "Fund medicines, supplies or the cost of a shipment, with dedicated reporting on where it went.",
+          href: "/our-work",
+          linkLabel: "See how we work",
         },
         {
-          title: "In-kind partner",
+          title: "Supplier & in-kind partner",
           description:
-            "Provide food, clothing, school supplies, hygiene products or medical equipment.",
-          href: "/programs/kids-essentials-bank",
-          linkLabel: "Most-needed items",
+            "Manufacturers, distributors and healthcare organizations can supply medicines, equipment and consumables.",
+          href: "/our-work#what-we-supply",
+          linkLabel: "What we supply",
         },
         {
           title: "Institutional & diplomatic partner",
           description:
-            "Collaborate on newcomer integration in Canada or humanitarian support in Afghanistan.",
+            "Collaborate on humanitarian and healthcare support for communities in Afghanistan.",
         },
         {
-          title: "Community partner",
+          title: "Healthcare partner",
           description:
-            "Schools, social workers and community organizations can refer families and co-host activities.",
+            "Hospitals and clinics in Afghanistan can work with us to receive the supplies their patients need.",
         },
       ],
     },
@@ -224,52 +255,36 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Get involved",
       title: "There's a place for you in this work",
-      lead: "Teach, train, donate, refer a family or enroll your child. Every role helps families build a stable future.",
+      lead: "Donate supplies, fund medicines, volunteer or partner with us. Every role helps get medical care to people who need it.",
     },
     ways: {
       eyebrow: "Ways to help",
       title: "Choose how to get involved",
       items: [
         {
-          title: "Volunteer",
+          title: "Donate equipment & supplies",
           description:
-            "Teach a weekend class, lead a training track or help coordinate distributions.",
+            "Medical equipment and unopened supplies in working condition, for hospitals and clinics in Afghanistan.",
+          href: "/our-work#what-we-supply",
+          linkLabel: "What we supply",
+        },
+        {
+          title: "Fund medicines",
+          description: "Financial support pays for medicines, supplies and the cost of shipping.",
+          href: "/donate",
+          linkLabel: "Ways to give",
+        },
+        {
+          title: "Volunteer",
+          description: "Help with packing, documentation, logistics or outreach.",
           href: "/contact",
           linkLabel: "Contact us to volunteer",
         },
         {
-          title: "Enroll a child",
-          description:
-            "Weekend classes for children from newcomer and refugee families in Hamilton.",
-          href: "/programs/children-education",
-          linkLabel: "Children's Education",
-        },
-        {
-          title: "Join a training track",
-          description:
-            "Tailoring, cooking, barbering, computer skills, and life skills and financial literacy.",
-          href: "/programs/skills-livelihoods",
-          linkLabel: "Skills & Livelihoods",
-        },
-        {
-          title: "Donate essentials",
-          description: "Food, clothing, school supplies and hygiene items for children aged 1–14.",
-          href: "/programs/kids-essentials-bank",
-          linkLabel: "Most-needed items",
-        },
-        {
-          title: "Donate medical equipment",
-          description:
-            "Equipment in working or restorable condition, for hospitals and clinics in Afghanistan.",
-          href: "/programs/healthcare-afghanistan",
-          linkLabel: "What we accept",
-        },
-        {
-          title: "Refer a family",
-          description:
-            "Schools, social workers and community organizations can refer families to the Kids Essentials Bank.",
-          href: "/contact",
-          linkLabel: "Make a referral",
+          title: "Partner or sponsor",
+          description: "Sponsor a shipment or supply medicines, with dedicated reporting.",
+          href: "/partner",
+          linkLabel: "Partner with us",
         },
       ],
     },
@@ -278,18 +293,17 @@ export const pages: SitePages = {
       title: "Where volunteers make the biggest difference",
       items: [
         {
-          title: "Weekend teacher",
-          description:
-            "Basic science, Islamic studies, or heritage languages such as Arabic, Dari and Pashto.",
+          title: "Logistics coordinator",
+          description: "Help collect, pack, document and ship supplies.",
         },
         {
-          title: "Skills trainer",
+          title: "Healthcare professional",
           description:
-            "Tailoring, cooking, barbering, computer skills, or life skills and financial literacy.",
+            "Advise on what to source, and check that donated equipment is safe and in working condition.",
         },
         {
-          title: "Coordinator",
-          description: "Help organize distributions, equipment collection and logistics.",
+          title: "Outreach & fundraising",
+          description: "Connect us with donors, suppliers and partners in your community.",
         },
       ],
     },
@@ -311,29 +325,22 @@ export const pages: SitePages = {
       title: "How you can give today",
       items: [
         {
-          title: "Donate essentials",
+          title: "Fund medicines & shipping",
           description:
-            "Food, clothing, school supplies and hygiene items for children in Hamilton.",
-          href: "/programs/kids-essentials-bank",
-          linkLabel: "See the most-needed list",
-        },
-        {
-          title: "Donate medical equipment",
-          description:
-            "Equipment in working or restorable condition, for hospitals and clinics in Afghanistan.",
-          href: "/programs/healthcare-afghanistan",
-          linkLabel: "What we accept",
-        },
-        {
-          title: "Financial support",
-          description:
-            "Contact us to make a financial contribution to our programs, or to cover shipping and logistics for medical equipment.",
+            "Contact us to make a financial contribution toward medicines, supplies and the cost of shipping them.",
           href: "/contact",
           linkLabel: "Contact us",
         },
         {
-          title: "Sponsor a program",
-          description: "Fund a program, a classroom or a shipment, with dedicated reporting.",
+          title: "Donate equipment & supplies",
+          description:
+            "Medical equipment and unopened supplies in working condition, for hospitals and clinics in Afghanistan.",
+          href: "/our-work#what-we-supply",
+          linkLabel: "What we supply",
+        },
+        {
+          title: "Sponsor a shipment",
+          description: "Fund a full shipment, with dedicated reporting on where it went.",
           href: "/partner",
           linkLabel: "Partner with us",
         },
@@ -354,27 +361,27 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Contact",
       title: "Get in touch",
-      lead: "We'd love to hear from you, whether you want to enroll a child, donate, volunteer or partner with us.",
+      lead: "We'd love to hear from you, whether you want to donate, supply, volunteer or partner with us.",
     },
     reasons: {
       eyebrow: "How we can help",
       title: "Common reasons to reach out",
       items: [
         {
-          title: "Enroll a child",
-          description: "Weekend classes at the Azan Center for Child Programs in Hamilton.",
+          title: "Donate supplies",
+          description: "Medical equipment and supplies for healthcare facilities in Afghanistan.",
         },
         {
-          title: "Donate equipment",
-          description: "Medical equipment for healthcare facilities in Afghanistan.",
+          title: "Fund medicines",
+          description: "Financial support for medicines, supplies and shipping.",
         },
         {
           title: "Volunteer",
-          description: "As a teacher, trainer or coordinator.",
+          description: "In logistics, healthcare or outreach.",
         },
         {
-          title: "Support our work",
-          description: "Financial support, sponsorship or partnership.",
+          title: "Partner with us",
+          description: "As a sponsor, supplier, institution or healthcare organization.",
         },
       ],
     },
@@ -384,38 +391,33 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "FAQ",
       title: "Frequently asked questions",
-      lead: "Answers to the questions families, donors and partners ask most.",
+      lead: "Answers to the questions donors, suppliers and partners ask most.",
     },
     items: [
       {
-        question: "Who can attend the weekend classes?",
+        question: "What does AWF do?",
         answer:
-          "Children from newcomer and refugee families in Hamilton who would benefit from support alongside their regular Canadian schooling. Contact us to enroll.",
+          "We source medicines, medical supplies and equipment from around the world and deliver them to hospitals, clinics and patients in need, with a focus on Afghanistan.",
       },
       {
-        question: "When do classes run?",
+        question: "Where do the supplies go?",
         answer:
-          "Saturdays and Sundays, with a morning shift from 8:00 AM to 12:00 PM and an afternoon shift from 1:00 PM to 4:00 PM.",
+          "To hospitals, clinics and patients in Afghanistan, delivered through trusted local partners. We send what facilities tell us they need most.",
       },
       {
-        question: "What do children learn?",
+        question: "Where do the medicines come from?",
         answer:
-          "Basic science, Islamic studies, and heritage languages including Arabic, Dari and Pashto.",
+          "Medicines are bought from licensed suppliers around the world. Medical equipment and unopened supplies can also be donated.",
       },
       {
-        question: "Who can join the skills training?",
+        question: "What can I donate?",
         answer:
-          "Women, men and seniors from newcomer, refugee and underserved communities in Hamilton who want practical skills for employment or to start a small business.",
+          "Medical equipment and unopened supplies in working condition, such as diagnostic equipment, mobility aids and wound care supplies. Our work page lists what we supply.",
       },
       {
-        question: "What items can I donate?",
+        question: "Why thalassemia?",
         answer:
-          "Food, clothing, school supplies and hygiene products for children aged 1–14. The Kids Essentials Bank page lists the items we need most.",
-      },
-      {
-        question: "What medical equipment do you accept?",
-        answer:
-          "Equipment and supplies in working or restorable condition, including diagnostic equipment, mobility aids, wound care and surgical supplies, and general clinic consumables.",
+          "Thalassemia is an inherited blood disorder that needs regular, lifelong treatment. Supporting patients' access to that treatment is one of our focus areas.",
       },
       {
         question: "Can I get a tax receipt?",
@@ -425,17 +427,17 @@ export const pages: SitePages = {
       {
         question: "How is my support used?",
         answer:
-          "Support goes to our programs in Hamilton and to collecting and shipping medical equipment to Afghanistan. We report how funds are used, and results will be published in our annual report.",
+          "Support pays for medicines, supplies and the cost of shipping them. We document every shipment, and results will be published in our annual report.",
       },
       {
         question: "How can I volunteer?",
         answer:
-          "We welcome volunteer teachers, skills trainers and coordinators. Contact us and tell us how you'd like to help.",
+          "We welcome help with logistics, healthcare advice and outreach. Contact us and tell us how you'd like to help.",
       },
       {
         question: "Where are you based?",
         answer:
-          "Hamilton, Ontario, Canada. We run programs in Hamilton and support communities in Afghanistan.",
+          "Our head office is in Hamilton, Ontario, Canada. Our work is focused on Afghanistan.",
       },
     ],
     cta: {
@@ -452,19 +454,19 @@ export const pages: SitePages = {
       title: "Privacy statement",
       lead: "How Azan Welfare Foundation collects, uses and protects your personal information.",
     },
-    updated: "October 2026",
+    updated: "November 2026",
     sections: [
       {
         heading: "What we collect",
         paragraphs: [
-          "We only collect the information you choose to send us, for example your name, email address, phone number and message when you contact us about enrolling, donating, volunteering or partnering.",
+          "We only collect the information you choose to send us, for example your name, email address, phone number and message when you contact us about donating, volunteering or partnering.",
           "This website does not require an account and does not collect payment information.",
         ],
       },
       {
         heading: "How we use it",
         paragraphs: [
-          "We use your information to respond to you and to coordinate enrollment, donations, volunteering or partnerships. We do not sell or rent personal information.",
+          "We use your information to respond to you and to coordinate donations, volunteering or partnerships. We do not sell or rent personal information.",
         ],
       },
       {

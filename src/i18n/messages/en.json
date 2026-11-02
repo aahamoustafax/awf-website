@@ -10,6 +10,7 @@
     "whoWeAre": "Who we are",
     "whoWeServe": "Who we serve",
     "governance": "Governance & reports",
+    "ourWork": "Our work",
     "programs": "Programs",
     "allPrograms": "All programs",
     "getInvolved": "Get involved",
@@ -22,13 +23,15 @@
   },
   "footer": {
     "about": "About",
-    "programs": "Programs",
+    "ourWork": "Our work",
+    "howWeWork": "How we work",
+    "whatWeSupply": "What we supply",
     "getInvolved": "Get involved",
     "volunteer": "Volunteer",
     "faq": "FAQ",
     "privacy": "Privacy",
     "accessibility": "Accessibility",
-    "basedIn": "Based in Hamilton, Ontario. Serving communities in Canada and Afghanistan.",
+    "basedIn": "Head office in Hamilton, Ontario. Established 2020.",
     "followUs": "Follow us",
     "rights": "All rights reserved."
   },
@@ -82,8 +85,7 @@
     "topic": "What is this about?",
     "topicPlaceholder": "Choose a topic",
     "topics": {
-      "enroll": "Enrolling a child",
-      "donate": "Donating items or equipment",
+      "donate": "Donating supplies or equipment",
       "volunteer": "Volunteering",
       "partner": "Partnership or sponsorship",
       "other": "Something else"

@@ -1,6 +1,6 @@
-import { Eyebrow, Section } from "@/components/ui";
+import type { ReactNode } from "react";
 
-import { GlobeMap, type GlobeMapProps } from "./GlobeMap";
+import { Eyebrow, Section } from "@/components/ui";
 
 type MissionQuoteProps = {
   eyebrow: string;
@@ -8,19 +8,15 @@ type MissionQuoteProps = {
   /** Phrase inside the quote to highlight. */
   emphasis?: string;
   attribution: string;
-  map: GlobeMapProps;
+  /** Beside the quote on desktop, below it on phones: the help card, or `GlobeMap`. */
+  aside: ReactNode;
 };
 
-/**
- * Mission statement with the globe of the two countries: quote first, then the globe (on the
- * right on desktop, below on phones). Desktop: side by side. The globe sits in an absolutely positioned box, so it always takes
- * exactly the quote's height (from the eyebrow to the attribution) and never adds height itself.
- * Phones: stacked, globe at a compact fixed height below the quote.
- */
-export function MissionQuote({ eyebrow, quote, emphasis, attribution, map }: MissionQuoteProps) {
+/** Mission statement with an aside (on the right on desktop, below the quote on phones). */
+export function MissionQuote({ eyebrow, quote, emphasis, attribution, aside }: MissionQuoteProps) {
   return (
     <Section aria-labelledby="mission-title">
-      <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+      <div className="grid items-center gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
         <figure className="text-center lg:text-left">
           <Eyebrow id="mission-title" className="text-accent">
             {eyebrow}
@@ -32,11 +28,7 @@ export function MissionQuote({ eyebrow, quote, emphasis, attribution, map }: Mis
           </blockquote>
           <figcaption className="mt-6 text-muted">{attribution}</figcaption>
         </figure>
-        <div className="relative h-72 sm:h-80 lg:h-auto">
-          <div className="absolute inset-0">
-            <GlobeMap {...map} />
-          </div>
-        </div>
+        {aside}
       </div>
     </Section>
   );

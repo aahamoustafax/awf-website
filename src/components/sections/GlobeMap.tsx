@@ -11,95 +11,105 @@ export type GlobeMapProps = {
   east: Place;
 };
 
-// Drawn from Afghanistan (east, where AWF began) to Canada (west, home today); pins set wide apart.
-const ARC = "M450 252 Q 280 0 110 232";
+// Drawn from Canada (west, head office) to Afghanistan (east, where supplies go); pins set wide apart.
+const ARC = "M110 232 Q 280 0 450 252";
 
 /**
  * Line-art globe for light backgrounds: a navy latitude/longitude grid with an arc from
- * Afghanistan (east, where AWF began) to Canada (west, home today). No arrow: the destination is
- * shown by the pins. Afghanistan is a small, quiet blue dot; Canada is a larger gold dot whose glow
+ * Canada (west, head office) to Afghanistan (east, where supplies go). No arrow: the destination is
+ * shown by the pins. Canada is a small, quiet blue dot; Afghanistan is a larger gold dot whose glow
  * blooms and pulses when the arc arrives.
  * The arc draws itself once when the globe first comes into view (InView); reduced motion and
  * no-JS show it complete.
+ * Not on any page for now: the help card took its place beside the mission quote (ADR 0007).
+ * To bring it back, pass it as MissionQuote's `aside`. On desktop it takes the quote's height
+ * (absolutely positioned box) and never adds height itself; on phones it has a compact fixed height.
  */
 export function GlobeMap({ label, west, east }: GlobeMapProps) {
   const latitudes = [100, 150, 200, 250, 300, 350, 400];
   const meridians = [55, 115, 165];
 
   return (
-    <InView animateOnLoad threshold={0.4} className="group size-full">
-      <svg
-        viewBox="40 40 480 460"
-        role="img"
-        aria-label={label}
-        className="size-full overflow-visible"
-      >
-        <defs>
-          <clipPath id="globe-clip">
-            <circle cx="280" cy="260" r="200" />
-          </clipPath>
-          <linearGradient
-            id="globe-arc"
-            gradientUnits="userSpaceOnUse"
-            x1="450"
-            x2="110"
-            y1="0"
-            y2="0"
+    <div className="relative h-72 self-stretch sm:h-80 lg:h-auto">
+      <InView animateOnLoad threshold={0.4} className="group absolute inset-0">
+        <svg
+          viewBox="40 40 480 460"
+          role="img"
+          aria-label={label}
+          className="size-full overflow-visible"
+        >
+          <defs>
+            <clipPath id="globe-clip">
+              <circle cx="280" cy="260" r="200" />
+            </clipPath>
+            <linearGradient
+              id="globe-arc"
+              gradientUnits="userSpaceOnUse"
+              x1="110"
+              x2="450"
+              y1="0"
+              y2="0"
+            >
+              <stop offset="0" stopColor="var(--color-accent)" />
+              <stop offset="1" stopColor="var(--color-cta)" />
+            </linearGradient>
+            <radialGradient id="globe-glow" cx="0.5" cy="0.45" r="0.6">
+              <stop offset="0" stopColor="var(--color-brand-sky)" stopOpacity="0.16" />
+              <stop offset="1" stopColor="var(--color-brand-sky)" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+
+          {/* Globe: soft glow, then the grid, then the rim. */}
+          <circle cx="280" cy="260" r="200" fill="url(#globe-glow)" />
+          <g
+            clipPath="url(#globe-clip)"
+            fill="none"
+            className="stroke-primary"
+            strokeOpacity="0.12"
           >
-            <stop offset="0" stopColor="var(--color-accent)" />
-            <stop offset="1" stopColor="var(--color-cta)" />
-          </linearGradient>
-          <radialGradient id="globe-glow" cx="0.5" cy="0.45" r="0.6">
-            <stop offset="0" stopColor="var(--color-brand-sky)" stopOpacity="0.16" />
-            <stop offset="1" stopColor="var(--color-brand-sky)" stopOpacity="0" />
-          </radialGradient>
-        </defs>
+            {latitudes.map((y) => (
+              <line key={y} x1="60" x2="500" y1={y} y2={y} />
+            ))}
+            {meridians.map((rx) => (
+              <ellipse key={rx} cx="280" cy="260" rx={rx} ry="200" />
+            ))}
+            <line x1="280" x2="280" y1="40" y2="480" />
+          </g>
+          <circle
+            cx="280"
+            cy="260"
+            r="200"
+            fill="none"
+            className="stroke-primary"
+            strokeOpacity="0.25"
+          />
 
-        {/* Globe: soft glow, then the grid, then the rim. */}
-        <circle cx="280" cy="260" r="200" fill="url(#globe-glow)" />
-        <g clipPath="url(#globe-clip)" fill="none" className="stroke-primary" strokeOpacity="0.12">
-          {latitudes.map((y) => (
-            <line key={y} x1="60" x2="500" y1={y} y2={y} />
-          ))}
-          {meridians.map((rx) => (
-            <ellipse key={rx} cx="280" cy="260" rx={rx} ry="200" />
-          ))}
-          <line x1="280" x2="280" y1="40" y2="480" />
-        </g>
-        <circle
-          cx="280"
-          cy="260"
-          r="200"
-          fill="none"
-          className="stroke-primary"
-          strokeOpacity="0.25"
-        />
+          {/* Route: dotted guide, then the arc that draws in. */}
+          <path
+            d={ARC}
+            fill="none"
+            className="stroke-primary"
+            strokeOpacity="0.25"
+            strokeWidth="2"
+            strokeDasharray="2 8"
+            strokeLinecap="round"
+          />
+          <path
+            d={ARC}
+            fill="none"
+            stroke="url(#globe-arc)"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+            pathLength={1}
+            strokeDasharray="1"
+            className={drawOnViewClass}
+          />
 
-        {/* Route: dotted guide, then the arc that draws in. */}
-        <path
-          d={ARC}
-          fill="none"
-          className="stroke-primary"
-          strokeOpacity="0.25"
-          strokeWidth="2"
-          strokeDasharray="2 8"
-          strokeLinecap="round"
-        />
-        <path
-          d={ARC}
-          fill="none"
-          stroke="url(#globe-arc)"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-          pathLength={1}
-          strokeDasharray="1"
-          className={drawOnViewClass}
-        />
-
-        <MapPin x={110} y={232} place={west} align="start" destination />
-        <MapPin x={450} y={252} place={east} align="end" />
-      </svg>
-    </InView>
+          <MapPin x={110} y={232} place={west} align="start" />
+          <MapPin x={450} y={252} place={east} align="end" destination />
+        </svg>
+      </InView>
+    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /** Why someone is getting in touch. Keys are stable; labels live in the dictionary. */
-export const contactTopics = ["enroll", "donate", "volunteer", "partner", "other"] as const;
+export const contactTopics = ["donate", "volunteer", "partner", "other"] as const;
 export type ContactTopic = (typeof contactTopics)[number];
 
 /**

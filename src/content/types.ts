@@ -50,7 +50,7 @@ export type Item = { title: string; description?: string };
  * When real results exist, add an `Impact` type rather than reusing this one.
  */
 export type Goal = {
-  /** Short figure, e.g. "50–100". */
+  /** Short figure, e.g. "50–100", or a short headline ("First shipment") until a number is set. */
   value: string;
   label: string;
 };
@@ -83,7 +83,7 @@ export type Program = {
   /** Optional key facts, e.g. schedule rows. */
   facts?: { label: string; value: string }[];
   /** Optional in-kind donation needs, grouped. */
-  needs?: { category: string; items: string[] }[];
+  needs?: NeedGroup[];
   goals?: Goal[];
   /** Closing call to action on the detail page. */
   action: { heading: string; body: string };
@@ -101,9 +101,6 @@ export type About = {
   leadership: Person[];
 };
 
-/** A way to support AWF that works today (before online giving exists). */
-export type WayToGive = { title: string; description: string; href: string; linkLabel: string };
-
 export type Home = {
   hero: {
     title: string;
@@ -111,17 +108,6 @@ export type Home = {
     image: Photo;
     /** CSS object-position for the photo, keeping the subject in view, e.g. "60% 30%". */
     imageFocus: string;
-    /**
-     * Charity: water-style action card. Until online giving exists its options link to the ways to
-     * help; later they become donation amounts (ADR 0004).
-     */
-    giveCard: {
-      title: string;
-      options: { label: string; href: string }[];
-      note: string;
-      action: { label: string; href: string };
-      secondaryAction: { label: string; href: string };
-    };
   };
   mission: {
     eyebrow: string;
@@ -129,23 +115,47 @@ export type Home = {
     /** Exact phrase inside `quote` to highlight (one phrase only, so it stands out). */
     emphasis?: string;
     attribution: string;
-    /** Globe under the quote: the two countries, placed geographically (west left, east right). */
-    map: {
-      label: string;
-      west: { name: string; note: string };
-      east: { name: string; note: string };
-    };
   };
-  programs: { eyebrow: string; title: string; lead: string };
-  goals: { eyebrow: string; title: string; lead: string; items: Goal[]; note: string };
-  geographies: {
-    eyebrow: string;
+  /** Donation box in the hero. */
+  donate: DonationBoxContent;
+  /** Ways to help today, beside the mission quote (in place of the globe for now, ADR 0007). */
+  help: {
     title: string;
-    places: { name: string; title: string; body: string; points: string[] }[];
+    options: { label: string; href: string }[];
+    note: string;
+    action: { label: string; href: string };
+    secondaryAction: { label: string; href: string };
   };
-  give: { eyebrow: string; title: string; lead: string; ways: WayToGive[] };
-  values: { eyebrow: string; title: string };
+  focusAreas: { eyebrow: string; title: string; lead: string };
+  howWeWork: { eyebrow: string; title: string; lead: string };
+  goals: { eyebrow: string; title: string; lead: string; items: Goal[]; note: string };
   partner: { title: string; body: string; action: { label: string; href: string } };
+};
+
+/** In-kind or sourced items, grouped, e.g. { category: "Mobility aids", items: ["Wheelchairs"] }. */
+export type NeedGroup = { category: string; items: string[] };
+
+/** What AWF does (focus areas) and how (the supply steps, what we supply). Used by home and /our-work. */
+export type Work = {
+  focusAreas: CardItem[];
+  /** Steps from a facility's request to a reported delivery, in order. */
+  howWeWork: CardItem[];
+  supplies: NeedGroup[];
+};
+
+/** Donation box copy. Visual only until online giving launches (ADR 0004). */
+export type DonationBoxContent = {
+  title: string;
+  lead: string;
+  frequency: { legend: string; once: string; monthly: string };
+  /** Preset amounts in whole dollars; the second one is selected first. */
+  amounts: { legend: string; presets: number[]; other: string };
+  /** Button text: `label`, then the amount, then `monthlySuffix` for monthly gifts. */
+  action: { label: string; monthlySuffix: string; href: string };
+  note: string;
+  /** Number formatting, e.g. "en-CA" and "CAD". */
+  locale: string;
+  currency: string;
 };
 
 /** Opening copy of a page: shown in its PageHeader and used for its metadata. */
@@ -178,6 +188,13 @@ export type SitePages = {
     cta: Cta;
   };
   governance: { intro: PageIntro; commitments: CardSection; cta: Cta };
+  ourWork: {
+    intro: PageIntro;
+    story: { eyebrow: string; title: string; paragraphs: string[] };
+    howWeWork: { eyebrow: string; title: string; lead: string };
+    supplies: { eyebrow: string; title: string; lead: string };
+    cta: Cta;
+  };
   whoWeServe: {
     intro: PageIntro;
     groups: CardSection;

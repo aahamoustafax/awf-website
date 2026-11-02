@@ -6,16 +6,16 @@ test.describe("desktop navigation", () => {
   test("dropdown opens with the keyboard and closes with Escape", async ({ page }) => {
     await page.goto("/en");
     const nav = page.getByRole("navigation", { name: "Main" });
-    const programs = nav.getByRole("button", { name: "Programs" });
+    const about = nav.getByRole("button", { name: "About" });
 
-    await programs.focus();
+    await about.focus();
     await page.keyboard.press("Enter");
-    await expect(programs).toHaveAttribute("aria-expanded", "true");
-    await expect(nav.getByRole("link", { name: "Healthcare for Afghanistan" })).toBeVisible();
+    await expect(about).toHaveAttribute("aria-expanded", "true");
+    await expect(nav.getByRole("link", { name: "Governance & reports" })).toBeVisible();
 
     await page.keyboard.press("Escape");
-    await expect(programs).toHaveAttribute("aria-expanded", "false");
-    await expect(programs).toBeFocused();
+    await expect(about).toHaveAttribute("aria-expanded", "false");
+    await expect(about).toBeFocused();
   });
 
   test("dropdown stays open when clicked after hovering", async ({ page }) => {
@@ -46,8 +46,8 @@ test.describe("mobile navigation", () => {
     const dialog = page.getByRole("dialog", { name: "Menu" });
     await expect(dialog).toBeVisible();
 
-    await dialog.getByText("Programs", { exact: true }).click();
-    await expect(dialog.getByRole("link", { name: "Kids Essentials Bank" })).toBeVisible();
+    await dialog.getByText("About", { exact: true }).click();
+    await expect(dialog.getByRole("link", { name: "Governance & reports" })).toBeVisible();
 
     await dialog.getByRole("button", { name: "Close menu" }).click();
     await expect(dialog).toBeHidden();
@@ -61,12 +61,12 @@ test.describe("mobile navigation", () => {
   });
 });
 
-test("footer links to every program and the legal pages", async ({ page }) => {
+test("footer links to our work and the legal pages", async ({ page }) => {
   await page.goto("/en");
   const footer = page.getByRole("contentinfo");
-  await expect(footer.getByRole("link", { name: "Children's Education" })).toHaveAttribute(
+  await expect(footer.getByRole("link", { name: "What we supply" })).toHaveAttribute(
     "href",
-    "/en/programs/children-education",
+    "/en/our-work#what-we-supply",
   );
   await expect(footer.getByRole("link", { name: "Accessibility" })).toBeVisible();
   await expect(footer).toContainText(String(new Date().getFullYear()));

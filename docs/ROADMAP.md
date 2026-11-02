@@ -29,6 +29,8 @@ Build a mailing list of supporters who opted in, to send updates and appeals.
 
 ## Other planned work
 
+- **Bring back the Hamilton programs** when the foundation is ready: remove them from `hiddenRoutes`
+  (ADR 0007) and review their copy.
 - **Online donations** (after CRA registration): `DonationWidget` with Zeffy or CanadaHelps, in the
   hero help card and on /donate. See ADR 0004.
 - **Headless CMS** (Sanity), so staff can edit content. Only `src/lib/content` changes. See ADR 0002.

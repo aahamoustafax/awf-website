@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/ui";
 
 type Link = { label: string; href: string };
 
-export type HeroGiveCardProps = {
+export type HelpCardProps = {
   title: string;
   options: Link[];
   note: string;
@@ -12,14 +12,10 @@ export type HeroGiveCardProps = {
   secondaryAction: Link;
 };
 
-/**
- * White action card in the hero (inspired by charity: water's donation box).
- * Options link to the ways to help today; when online giving launches they become donation
- * amounts inside the same card (ADR 0004).
- */
-export function HeroGiveCard({ title, options, note, action, secondaryAction }: HeroGiveCardProps) {
+/** White card of the ways to help today, beside the mission quote on the home page. */
+export function HelpCard({ title, options, note, action, secondaryAction }: HelpCardProps) {
   return (
-    <div className="w-full max-w-md rounded-2xl bg-surface p-5 text-foreground shadow-2xl sm:p-6">
+    <div className="rounded-2xl border border-border bg-surface p-5 text-foreground shadow-lg sm:p-6">
       <h2 className="text-sm font-semibold tracking-[0.12em] text-primary uppercase">{title}</h2>
       <ul className="mt-4 grid grid-cols-2 gap-2.5">
         {options.map((option) => (

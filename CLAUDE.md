@@ -4,10 +4,14 @@
 
 ## What this is
 
-Website for **Azan Welfare Foundation (AWF)**, a non-profit in Hamilton, Ontario, with programs in
-Hamilton and Afghanistan. The main audience is **diplomatic and institutional sponsors**, followed by
-families who want to enroll and people who want to donate or volunteer. The site must feel
-credible: evidence, transparency, real photography, no hype.
+Website for **Azan Welfare Foundation (AWF)**, a non-profit with its head office in Hamilton, Ontario
+(est. 2020). AWF sources medicines and medical supplies from around the world for people in need,
+with a focus on Afghanistan. The main audience is **diplomatic and institutional sponsors**, followed
+by suppliers, donors and volunteers. The site must feel credible: evidence, transparency, real
+photography, no hype.
+
+The Hamilton programs are **hidden, not deleted** (ADR 0007): see `hiddenRoutes` in `src/lib/routes.ts`.
+Never link to a hidden page; a unit test checks this.
 
 ## Stack
 
