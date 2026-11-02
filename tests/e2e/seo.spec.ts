@@ -10,22 +10,19 @@ test.describe("SEO and sharing", () => {
     expect(body).toMatch(/Sitemap: .*\/sitemap\.xml/);
   });
 
-  test("sitemap lists every page, including programs, but not the style guide", async ({
+  test("sitemap lists every shown page, but not hidden pages or the style guide", async ({
     request,
   }) => {
     const body = await (await request.get("/sitemap.xml")).text();
-    for (const path of [
-      "/en</loc>",
-      "/en/partner</loc>",
-      "/en/programs/kids-essentials-bank</loc>",
-      "/en/faq</loc>",
-    ]) {
+    for (const path of ["/en</loc>", "/en/partner</loc>", "/en/our-work</loc>", "/en/faq</loc>"]) {
       expect(body).toContain(path);
     }
     expect(body).not.toContain("styleguide");
+    expect(body).not.toContain("/programs");
+    expect(body).not.toContain("/who-we-serve");
   });
 
-  for (const path of ["/en", "/en/partner", "/en/programs/children-education"]) {
+  for (const path of ["/en", "/en/partner", "/en/our-work"]) {
     test(`${path} has a canonical link, a page title and the share image`, async ({
       page,
       request,

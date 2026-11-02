@@ -4,17 +4,25 @@ How to change words, numbers and images on the site. (Later, a CMS dashboard wil
 
 ## Where content lives
 
-| What                                                                  | File                        |
-| --------------------------------------------------------------------- | --------------------------- |
-| Organization name, description, contact details, social links         | `src/content/site.ts`       |
-| Programs: summaries, detail text, schedules, most-needed items, goals | `src/content/programs.ts`   |
-| Home page: hero, goals, ways to help, partner band                    | `src/content/home.ts`       |
-| About: intro, mission, vision, values, leadership                     | `src/content/about.ts`      |
-| Buttons, menu labels, form messages                                   | `src/i18n/messages/en.json` |
-| Photos                                                                | `public/images/`            |
+| What                                                                | File                        |
+| ------------------------------------------------------------------- | --------------------------- |
+| Organization name, description, contact details, social links       | `src/content/site.ts`       |
+| Focus areas, how we work (the 4 steps), what we supply              | `src/content/work.ts`       |
+| Home page: hero, mission, section titles, goals, partner band       | `src/content/home.ts`       |
+| Other pages (About, Our work, Partner, Donate, FAQ…)                | `src/content/pages.ts`      |
+| Programs (hidden for now): summaries, detail text, schedules, goals | `src/content/programs.ts`   |
+| About: intro, mission, vision, values, leadership                   | `src/content/about.ts`      |
+| Buttons, menu labels, form messages                                 | `src/i18n/messages/en.json` |
+| Photos                                                              | `public/images/`            |
 
 The allowed fields for each item are defined in `src/content/types.ts`. If you leave out a required
 field, `npm run check` fails and names the missing field.
+
+## Hiding and showing pages
+
+Some pages are switched off for now (the Hamilton programs, Who we serve). The list is `hiddenRoutes`
+in `src/lib/routes.ts`. To bring a page back, delete its line, check its text is still right, then run
+`npm run check`. To hide a page, add its path. Its content stays in the repo. See ADR 0007.
 
 ## Steps
 
@@ -26,7 +34,8 @@ Or ask Claude Code: _"use the content-editor agent to update the impact numbers 
 
 ## Writing style
 
-- **Goals, not results.** Programs are launching, so figures are labelled as goals or targets.
+- **Goals, not results.** Our work is launching, so figures are labelled as goals or targets. Until
+  a goal has a confirmed number, its `value` is a short headline, e.g. "First shipment".
   When real results exist, publish them as results and keep the goals for comparison.
 - Links in content are site paths without the language, e.g. `/partner`. The site adds `/en`.
 

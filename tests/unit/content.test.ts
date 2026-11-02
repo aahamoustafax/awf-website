@@ -1,7 +1,21 @@
 import { describe, expect, it } from "vitest";
 
 import { home } from "@/content/home";
+import { pages } from "@/content/pages";
 import { programs } from "@/content/programs";
+import { work } from "@/content/work";
+import { hiddenRoutes, isHiddenRoute } from "@/lib/routes";
+
+/** Every `href` string inside a content object, at any depth. */
+function hrefsIn(value: unknown): string[] {
+  if (Array.isArray(value)) return value.flatMap(hrefsIn);
+  if (value && typeof value === "object") {
+    return Object.entries(value).flatMap(([key, child]) =>
+      key === "href" && typeof child === "string" ? [child] : hrefsIn(child),
+    );
+  }
+  return [];
+}
 
 describe("program content", () => {
   it("uses unique, URL-safe slugs", () => {
@@ -21,17 +35,27 @@ describe("program content", () => {
 
 describe("home content", () => {
   it("links only to site paths without a language prefix", () => {
-    const hrefs = [
-      ...home.hero.giveCard.options.map((o) => o.href),
-      home.hero.giveCard.action.href,
-      home.hero.giveCard.secondaryAction.href,
-      home.partner.action.href,
-      ...home.give.ways.map((w) => w.href),
-    ];
-    for (const href of hrefs) expect(href).toMatch(/^\/(?!en\/)/);
+    for (const href of hrefsIn(home)) expect(href).toMatch(/^\/(?!en\/)/);
   });
 
-  it("labels its figures as goals, not results, while programs are launching", () => {
+  it("labels its figures as goals, not results, while operations are launching", () => {
     expect(home.goals.eyebrow.toLowerCase()).toContain("goal");
+  });
+});
+
+describe("hidden pages", () => {
+  it("ignores anchors and trailing slashes", () => {
+    expect(isHiddenRoute("/who-we-serve/")).toBe(true);
+    expect(isHiddenRoute("/programs#top")).toBe(true);
+    expect(isHiddenRoute("/our-work#what-we-supply")).toBe(false);
+  });
+
+  it("are never linked from a page that is shown", () => {
+    // Content of the hidden pages themselves may link to each other.
+    const hiddenPages = new Set(["whoWeServe", "programs"]);
+    const shownPages = Object.entries(pages).filter(([key]) => !hiddenPages.has(key));
+    const hrefs = [...hrefsIn(home), ...hrefsIn(work), ...hrefsIn(shownPages)];
+    const linked = hrefs.filter((href) => isHiddenRoute(href));
+    expect(linked, `links to hidden pages (${hiddenRoutes.join(", ")})`).toEqual([]);
   });
 });

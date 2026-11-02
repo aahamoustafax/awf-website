@@ -3,11 +3,7 @@ import type { Program } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
-
-/** Program detail page path, without the language prefix. */
-export function programPath(slug: string): string {
-  return `/programs/${slug}`;
-}
+import { programPath } from "@/lib/routes";
 
 /** Turns a program into the props of a card in ProgramGrid (home, programs index, detail pages). */
 export function toProgramCard(program: Program, dict: Dictionary, locale: Locale): ProgramCard {

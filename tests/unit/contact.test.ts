@@ -7,8 +7,8 @@ const valid = {
   name: "Amina Rahimi",
   email: "amina@example.org",
   phone: "",
-  topic: "enroll",
-  message: "I'd like to enroll my daughter in the weekend classes.",
+  topic: "donate",
+  message: "I'd like to donate two wheelchairs and some wound care supplies.",
 };
 
 describe("contactSchema", () => {

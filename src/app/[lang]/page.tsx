@@ -1,32 +1,24 @@
 import type { Metadata } from "next";
 
 import {
+  CardGrid,
   CtaBand,
-  Geographies,
+  DonationBox,
   GoalsBand,
+  HelpCard,
   Hero,
   MissionQuote,
-  ProgramGrid,
-  ValuesList,
-  WaysToGive,
 } from "@/components/sections";
-import { getDictionary, getLocale } from "@/i18n/dictionaries";
+import { getLocale } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
-import { getAbout, getHome, getPrograms } from "@/lib/content";
-import { toProgramCard } from "@/lib/programs";
+import { getHome, getWork } from "@/lib/content";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { alternates: { canonical: localePath(await getLocale(), "/") } };
 }
 
 export default async function HomePage() {
-  const [home, about, programs, dict, locale] = await Promise.all([
-    getHome(),
-    getAbout(),
-    getPrograms(),
-    getDictionary(),
-    getLocale(),
-  ]);
+  const [home, work, locale] = await Promise.all([getHome(), getWork(), getLocale()]);
 
   // Content stores paths without the language; add it here, once, for every link on the page.
   const path = (href: string) => localePath(locale, href);
@@ -36,23 +28,22 @@ export default async function HomePage() {
     <>
       <Hero
         {...home.hero}
-        giveCard={{
-          ...home.hero.giveCard,
-          options: home.hero.giveCard.options.map(link),
-          action: link(home.hero.giveCard.action),
-          secondaryAction: link(home.hero.giveCard.secondaryAction),
-        }}
+        card={<DonationBox {...home.donate} action={link(home.donate.action)} />}
       />
-      <MissionQuote {...home.mission} />
-      <ProgramGrid
-        intro={home.programs}
-        learnMoreLabel={dict.programs.learnMore}
-        programs={programs.map((program) => toProgramCard(program, dict, locale))}
+      <MissionQuote
+        {...home.mission}
+        aside={
+          <HelpCard
+            {...home.help}
+            options={home.help.options.map(link)}
+            action={link(home.help.action)}
+            secondaryAction={link(home.help.secondaryAction)}
+          />
+        }
       />
+      <CardGrid id="focus-areas" tone="muted" {...home.focusAreas} items={work.focusAreas} />
+      <CardGrid id="how-we-work" numbered columns={4} {...home.howWeWork} items={work.howWeWork} />
       <GoalsBand {...home.goals} />
-      <Geographies {...home.geographies} />
-      <WaysToGive {...home.give} ways={home.give.ways.map(link)} />
-      <ValuesList {...home.values} values={about.values} />
       <CtaBand {...home.partner} action={link(home.partner.action)} />
     </>
   );

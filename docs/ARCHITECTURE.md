@@ -72,7 +72,9 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
   navigation, and renders `Header` → page → `Footer` around every page.
 - `src/lib/navigation.ts` is the **single menu definition**, used by the desktop menu, the mobile
   menu and the footer. The Programs submenu is generated from `getPrograms()`, so adding a program
-  adds it to every menu.
+  adds it to every menu. The submenu only appears while at least one program is visible.
+- **Hidden pages** (ADR 0007): `hiddenRoutes` in `src/lib/routes.ts`. The proxy answers them with a
+  404, and the menu, footer, sitemap and `getPrograms()` leave them out.
 - Every internal link goes through `localePath(locale, path)` in `src/i18n/paths.ts`.
 - Interactive parts are small Client Components:
   - `DesktopNav`: dropdowns. Hover opens them for mouse users; click or keyboard toggles them;
@@ -88,15 +90,18 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
 - A route gets content, adds the language to every href (`localePath`), and passes the result in.
   See `app/[lang]/page.tsx`.
 - The hero is a background photo (`next/image` `fill`, static import, blur placeholder) fading into
-  navy, with `HeroGiveCard` (charity: water-style help card; becomes the donation module later). The two countries
-  appear as `GlobeMap` under the mission quote (line-art globe; the arc draws in once via `InView`).
-- `WaysToGive` is the reserved slot for the home-page donation module (ADR 0004).
+  navy, with `DonationBox` (a small Client Component: frequency, amount, Donate button; visual only
+  until online giving launches). Beside the mission quote sits `HelpCard` (the ways to help today). `GlobeMap` (line-art globe, Canada → Afghanistan) is kept for later (ADR 0007).
+- The home-page donation module (ADR 0004) is the hero's `DonationBox`. (`WaysToGive`, the earlier
+  slot, was removed in the medical-aid refocus, ADR 0007.)
 
 ## Inner pages and motion
 
 - Every inner page opens with `PageHeader` (breadcrumb, title, lead, optional illustration).
-- Program pages live at `app/[lang]/programs/[slug]`. All slugs are prerendered from `getPrograms()`.
-  Unknown slugs get a real 404 from `proxy.ts`, because a streamed page can only return 200.
+- Program pages live at `app/[lang]/programs/[slug]`. All slugs, hidden ones included, are prerendered
+  from `getPrograms({ includeHidden: true })`. Unknown and hidden slugs get a real 404 from `proxy.ts`,
+  because a streamed page can only return 200.
+- `/our-work` and the home page share `src/content/work.ts` (focus areas, the four steps, supplies).
 - `ProgramIllustration` draws one line-art mark per program (the `icon` field). It's animated in
   page headers and static on cards.
 - `src/components/motion` holds the motion helpers:
