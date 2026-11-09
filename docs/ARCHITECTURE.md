@@ -68,13 +68,10 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
 
 ## Site layout and navigation
 
-- `app/[lang]/layout.tsx` loads site content, programs and the dictionary once, builds the
+- `app/[lang]/layout.tsx` loads site content and the dictionary once, builds the
   navigation, and renders `Header` → page → `Footer` around every page.
 - `src/lib/navigation.ts` is the **single menu definition**, used by the desktop menu, the mobile
-  menu and the footer. The Programs submenu is generated from `getPrograms()`, so adding a program
-  adds it to every menu. The submenu only appears while at least one program is visible.
-- **Hidden pages** (ADR 0007): `hiddenRoutes` in `src/lib/routes.ts`. The proxy answers them with a
-  404, and the menu, footer, sitemap and `getPrograms()` leave them out.
+  menu and the footer.
 - Every internal link goes through `localePath(locale, path)` in `src/i18n/paths.ts`.
 - Interactive parts are small Client Components:
   - `DesktopNav`: dropdowns. Hover opens them for mouse users; click or keyboard toggles them;
@@ -85,7 +82,7 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
 
 ## Page sections
 
-- `src/components/sections/` holds page-level blocks (Hero, ProgramGrid, GoalsBand…), exported from
+- `src/components/sections/` holds page-level blocks (Hero, CardGrid, GoalsBand…), exported from
   `@/components/sections`. They take plain props and know nothing about where content comes from.
 - A route gets content, adds the language to every href (`localePath`), and passes the result in.
   See `app/[lang]/page.tsx`.
@@ -98,12 +95,8 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
 ## Inner pages and motion
 
 - Every inner page opens with `PageHeader` (breadcrumb, title, lead, optional illustration).
-- Program pages live at `app/[lang]/programs/[slug]`. All slugs, hidden ones included, are prerendered
-  from `getPrograms({ includeHidden: true })`. Unknown and hidden slugs get a real 404 from `proxy.ts`,
-  because a streamed page can only return 200.
-- `/our-work` and the home page share `src/content/work.ts` (focus areas, the four steps, supplies).
-- `ProgramIllustration` draws one line-art mark per program (the `icon` field). It's animated in
-  page headers and static on cards.
+- `/our-work` and the home page share `src/content/work.ts` (the seven programs, the four steps, supplies).
+- `ProgramIllustration` draws a line-art mark (the `icon` prop). It's animated in page headers.
 - `src/components/motion` holds the motion helpers:
   - `InView` marks an element when it first scrolls into view.
   - `Reveal` fades content up as it appears.
@@ -127,7 +120,7 @@ limit → `sendEmail()` (Resend or log). It works as a plain HTML form without J
 ## SEO, sharing and performance
 
 - `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt`. Add new static
-  pages to `src/lib/routes.ts`; program pages are added automatically.
+  pages to `src/lib/routes.ts`.
 - Every page sets a canonical URL and its own share title through `pageMetadata` / `pageSeo`
   (`src/lib/pageHelpers.ts`). These spread the parent's Open Graph data, so the generated share image
   (`app/[lang]/opengraph-image.tsx`) isn't lost.

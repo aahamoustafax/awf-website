@@ -7,8 +7,8 @@ import type { Home } from "./types";
  */
 export const home: Home = {
   hero: {
-    title: "Essential medicines and medical supplies for people in need",
-    lead: "We source medicines, medical supplies and equipment from around the world and deliver them to hospitals, clinics and patients who need them most, with a focus on Afghanistan.",
+    title: "Bridging the gap. Supporting healthcare. Changing lives.",
+    lead: "We work to connect hospitals, clinics and vulnerable communities with essential medical resources and humanitarian support, with a primary focus on Afghanistan.",
     // Stock photo until AWF has consented photos of its own work. Credit kept for records.
     image: {
       src: heroKabulGirls,
@@ -23,10 +23,11 @@ export const home: Home = {
   },
   mission: {
     eyebrow: "Our mission",
+    // Word for word from the Organization Profile, matching the About page.
     quote:
-      "To source quality medicines and medical supplies from around the world and deliver them, through trusted partners, to the people who need them most.",
+      "To improve access to essential healthcare and humanitarian assistance by mobilizing donations, partnerships, medical resources and community support for hospitals and vulnerable communities throughout Afghanistan, while also advancing education, poverty relief, child and family well-being, and sustainable community development.",
     // Highlight the outcome, not the activity: who receives the care is what sponsors respond to.
-    emphasis: "the people who need them most",
+    emphasis: "hospitals and vulnerable communities throughout Afghanistan",
     attribution: "Azan Welfare Foundation",
   },
   help: {
@@ -37,14 +38,14 @@ export const home: Home = {
       { label: "Volunteer", href: "/get-involved" },
       { label: "Sponsor a shipment", href: "/partner" },
     ],
-    note: "Every contribution, in money or in kind, is reported transparently.",
+    note: "Contributions, in money or in kind, are recorded and used for the foundation's purposes.",
     action: { label: "Partner with us", href: "/partner" },
     secondaryAction: { label: "See how we work", href: "/our-work" },
   },
   // No "$50 buys X" lines until the foundation confirms real costs.
   donate: {
     title: "Give today",
-    lead: "Your gift pays for medicines, medical supplies and the cost of shipping them.",
+    lead: "Your gift supports healthcare and humanitarian assistance for people in need.",
     frequency: { legend: "How often", once: "One-time", monthly: "Monthly" },
     amounts: { legend: "Amount", presets: [25, 50, 100, 250], other: "Other amount" },
     action: { label: "Donate", monthlySuffix: "monthly", href: "/donate" },
@@ -52,21 +53,21 @@ export const home: Home = {
     locale: "en-CA",
     currency: "CAD",
   },
-  focusAreas: {
-    eyebrow: "Core objectives",
-    title: "Our focus areas",
-    lead: "Everything we do serves one purpose: getting medical care to people who would otherwise go without.",
+  programs: {
+    eyebrow: "What we do",
+    title: "Our programs",
+    lead: "Healthcare comes first, alongside support for education, families and communities. What we take on depends on available resources and applicable law.",
   },
   howWeWork: {
     eyebrow: "How we work",
     title: "From need to delivery",
-    lead: "Every shipment starts with a request from the people who will use it, and ends with a report to the people who paid for it.",
+    lead: "We start with what hospitals and communities tell us they need, and aim to keep appropriate records of what was given and who received it.",
   },
   // Goals without figures until the foundation sets targets. Each `value` is a short headline.
   goals: {
     eyebrow: "Our first-year goals",
     title: "What we're building toward",
-    lead: "Our operations are launching now. These are the commitments we are working to meet, and we will report against them openly.",
+    lead: "Our operations are launching now. These are the goals we are working toward.",
     items: [
       {
         value: "First shipment",
@@ -81,15 +82,15 @@ export const home: Home = {
         label: "around the world for quality medicines and equipment",
       },
       {
-        value: "Open reporting",
-        label: "of every shipment: what was sent, where it went and what it cost",
+        value: "Sound records",
+        label: "of donations, spending, donated goods and the institutions that receive them",
       },
     ],
-    note: "Goals for our launch year. Results will be published in our annual report.",
+    note: "Goals for our launch year, not results.",
   },
   partner: {
     title: "Help us get medicines where they're needed",
-    body: "We are seeking institutional, corporate and diplomatic partners to fund shipments, supply medicines and strengthen healthcare in Afghanistan. Every partnership is reported transparently.",
+    body: "We are seeking institutional, corporate and diplomatic partners to fund shipments, supply medicines and strengthen healthcare in Afghanistan.",
     action: { label: "Partner with us", href: "/partner" },
   },
 };

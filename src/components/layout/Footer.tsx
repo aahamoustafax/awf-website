@@ -1,23 +1,21 @@
 import Link from "next/link";
 
 import { Container, Logo } from "@/components/ui";
-import type { Program, Site } from "@/content/types";
+import type { Site } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
 import type { Navigation } from "@/lib/navigation";
-import { isHiddenRoute, programPath } from "@/lib/routes";
 
 type FooterProps = {
   site: Site;
-  programs: Program[];
   navigation: Navigation;
   locale: Locale;
   dict: Dictionary;
 };
 
-/** Site footer: mission, link columns, transparency/legal links. Hidden pages are left out. */
-export function Footer({ site, programs, navigation, locale, dict }: FooterProps) {
+/** Site footer: mission, link columns, transparency/legal links. */
+export function Footer({ site, navigation, locale, dict }: FooterProps) {
   const path = (p: string) => localePath(locale, p);
   const { footer, nav } = dict;
 
@@ -25,20 +23,16 @@ export function Footer({ site, programs, navigation, locale, dict }: FooterProps
     {
       title: footer.about,
       links: [
-        { label: nav.whoWeAre, href: "/about" },
-        { label: nav.whoWeServe, href: "/who-we-serve" },
-        { label: nav.governance, href: "/about/governance" },
-        { label: footer.faq, href: "/faq" },
-      ]
-        .filter((link) => !isHiddenRoute(link.href))
-        .map((link) => ({ ...link, href: path(link.href) })),
+        { label: nav.whoWeAre, href: path("/about") },
+        { label: nav.governance, href: path("/about/governance") },
+        { label: footer.faq, href: path("/faq") },
+      ],
     },
     {
       title: footer.ourWork,
       links: [
         { label: footer.howWeWork, href: path("/our-work") },
         { label: footer.whatWeSupply, href: path("/our-work#what-we-supply") },
-        ...programs.map((p) => ({ label: p.title, href: path(programPath(p.slug)) })),
       ],
     },
     {

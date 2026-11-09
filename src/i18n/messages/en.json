@@ -8,11 +8,8 @@
     "home": "Home",
     "about": "About",
     "whoWeAre": "Who we are",
-    "whoWeServe": "Who we serve",
     "governance": "Governance & reports",
     "ourWork": "Our work",
-    "programs": "Programs",
-    "allPrograms": "All programs",
     "getInvolved": "Get involved",
     "contact": "Contact",
     "partner": "Partner with us",
@@ -39,29 +36,6 @@
     "title": "We couldn't find that page",
     "body": "The page may have moved, or the link may be out of date.",
     "home": "Go to the home page"
-  },
-  "programs": {
-    "learnMore": "Learn more",
-    "regions": {
-      "hamilton": "Hamilton, ON",
-      "afghanistan": "Afghanistan"
-    },
-    "status": {
-      "launching": "Launching",
-      "active": "Active"
-    },
-    "whyItMatters": "Why it matters",
-    "whoWeServe": "Who we serve",
-    "keyDetails": "Key details",
-    "mostNeeded": "Most-needed items",
-    "mostNeededLead": "In-kind donations make a direct difference. These are the items we need most.",
-    "goalsEyebrow": "Program goals",
-    "goalsTitle": "What we're working toward",
-    "goalsNote": "Targets for our launch year. Results will be published in our annual report.",
-    "contactUs": "Contact us",
-    "otherProgramsEyebrow": "Keep exploring",
-    "otherProgramsTitle": "Our other programs",
-    "mostNeededTitle": "What you can donate"
   },
   "breadcrumb": {
     "label": "Breadcrumb",

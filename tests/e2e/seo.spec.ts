@@ -10,7 +10,7 @@ test.describe("SEO and sharing", () => {
     expect(body).toMatch(/Sitemap: .*\/sitemap\.xml/);
   });
 
-  test("sitemap lists every shown page, but not hidden pages or the style guide", async ({
+  test("sitemap lists every page, but not removed pages or the style guide", async ({
     request,
   }) => {
     const body = await (await request.get("/sitemap.xml")).text();

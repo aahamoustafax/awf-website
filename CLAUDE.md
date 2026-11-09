@@ -10,8 +10,8 @@ with a focus on Afghanistan. The main audience is **diplomatic and institutional
 by suppliers, donors and volunteers. The site must feel credible: evidence, transparency, real
 photography, no hype.
 
-The Hamilton programs are **hidden, not deleted** (ADR 0007): see `hiddenRoutes` in `src/lib/routes.ts`.
-Never link to a hidden page; a unit test checks this.
+The old Hamilton programs were removed (ADR 0008). The Organization Profile and draft Memorandum of
+Association are the source of truth for what AWF does.
 
 ## Stack
 

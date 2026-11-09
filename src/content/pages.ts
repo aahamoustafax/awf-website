@@ -5,21 +5,13 @@ import type { SitePages } from "./types";
  * Only state facts the foundation has confirmed; anything pending is worded as such.
  */
 export const pages: SitePages = {
-  programs: {
-    intro: {
-      eyebrow: "Our programs",
-      title: "Programs that build independence",
-      lead: "Four programs, from weekend classrooms in Hamilton to humanitarian support in Afghanistan. Each one meets a concrete need and is designed for lasting impact, not dependency.",
-    },
-  },
-
   about: {
     intro: {
       eyebrow: "About us",
       title: "Who we are",
-      lead: "A non-profit established in 2020 and based in Hamilton, Ontario, getting medicines and medical supplies to people in need, with a focus on Afghanistan.",
+      lead: "An independent non-profit humanitarian initiative established in 2020 and based in Hamilton, Ontario, with a primary focus on Afghanistan.",
     },
-    story: { eyebrow: "Our story", title: "One clear purpose" },
+    story: { eyebrow: "Our story", title: "Our purpose" },
     missionLabel: "Mission",
     visionLabel: "Vision",
     values: { eyebrow: "Our values", title: "How we work" },
@@ -35,21 +27,21 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Governance & reports",
       title: "Transparency is part of the work",
-      lead: "Partners and donors should be able to see exactly how AWF is run and how support is used. This page is where we publish it.",
+      lead: "Partners and donors should be able to understand how AWF is run and how support is used. This page sets out what we are putting in place.",
     },
     commitments: {
       eyebrow: "Our commitments",
-      title: "What we publish",
+      title: "What we are putting in place",
       items: [
         {
-          title: "Annual report",
+          title: "Reporting",
           description:
-            "Our first annual report will follow our first full year of operations, with results measured against the goals published on this site.",
+            "Financial statements and activity reports are to be prepared at appropriate intervals once operations are under way.",
         },
         {
-          title: "Financial accountability",
+          title: "Records and oversight",
           description:
-            "We will publish how funds are used across medicines and supplies, shipping and administration.",
+            "We aim to keep appropriate records of donations, expenditures, donated goods, recipient institutions and governance decisions. Funds and donated items are to be used for authorized purposes.",
         },
         {
           title: "Leadership",
@@ -64,10 +56,10 @@ export const pages: SitePages = {
           href: "/privacy",
           linkLabel: "Privacy statement",
         },
-        // TODO(foundation): add registration details once confirmed.
+        // TODO(foundation): add legal status and any registration details once confirmed.
         {
-          title: "Registration details",
-          description: "We will publish our registration details here once confirmed.",
+          title: "Legal status",
+          description: "Details of AWF's legal status will be added here once confirmed.",
         },
       ],
     },
@@ -81,84 +73,35 @@ export const pages: SitePages = {
   ourWork: {
     intro: {
       eyebrow: "Our work",
-      title: "Medicines and supplies, from around the world to people in need",
-      lead: "How we get medicines, medical supplies and equipment to the hospitals, clinics and patients who need them most, with a focus on Afghanistan.",
+      title: "Healthcare and humanitarian support, where it is needed most",
+      lead: "Our programs, how we work, and the medical equipment and supplies we seek, with a primary focus on Afghanistan.",
     },
     story: {
       eyebrow: "Why it matters",
       title: "Medicine only helps when it arrives",
       paragraphs: [
         "In Afghanistan, many hospitals and clinics struggle to get basic medicines, supplies and equipment. Patients go without treatment that would be routine elsewhere.",
-        "AWF connects that need with supply. We source quality medicines and medical supplies from around the world, take care of shipping and documentation, and work with trusted partners on the ground, so supplies reach the facilities and patients who need them most.",
+        "AWF works to connect that need with supply. Our work is not limited to one province, city or hospital: we may support hospitals, clinics, laboratories, blood banks, rehabilitation centres and other recognized healthcare facilities throughout the country.",
       ],
+    },
+    programs: {
+      eyebrow: "Programs and areas of work",
+      title: "Seven areas of work",
+      lead: "Healthcare comes first. What we take on at any time depends on available resources and applicable law.",
     },
     howWeWork: {
       eyebrow: "How we work",
       title: "From need to delivery",
-      lead: "Four steps, each one documented, so donors and partners can see where their support went.",
+      lead: "Four steps, with appropriate records kept along the way.",
     },
     supplies: {
       eyebrow: "What we supply",
       title: "What we source and accept",
-      lead: "Medicines are bought from licensed suppliers. Medical equipment and unopened supplies can be donated in working condition.",
+      lead: "We seek new or gently used medical equipment and supplies. Medicines are handled only where the law permits. We will not knowingly accept expired items, and unsafe, damaged, recalled, counterfeit or improperly stored items must not be distributed.",
     },
     cta: {
       title: "Donate supplies or fund a shipment",
       body: "Have equipment or supplies to give, or want to cover the cost of medicines and shipping? Get in touch and we'll arrange it.",
-      action: { label: "Contact us", href: "/contact" },
-    },
-  },
-
-  whoWeServe: {
-    intro: {
-      eyebrow: "Who we serve",
-      title: "People with the fewest opportunities",
-      lead: "Our programs are open to people of every background, with a focus on newcomers, refugees and those who had little access to education.",
-    },
-    groups: {
-      eyebrow: "Our communities",
-      title: "Four groups at the heart of our work",
-      items: [
-        {
-          title: "Newcomer & refugee children",
-          description:
-            "Weekend academic support in Hamilton to build confidence and ease integration into Canadian schools, plus essentials like food, clothing and school supplies.",
-          href: "/programs/children-education",
-          linkLabel: "Children's Education",
-        },
-        {
-          title: "Women & girls",
-          description:
-            "Skills training and education designed to promote independence and opportunity.",
-          href: "/programs/skills-livelihoods",
-          linkLabel: "Skills & Livelihoods",
-        },
-        {
-          title: "Seniors & men",
-          description: "Practical vocational training to support employment and entrepreneurship.",
-          href: "/programs/skills-livelihoods",
-          linkLabel: "Skills & Livelihoods",
-        },
-        {
-          title: "Communities in Afghanistan",
-          description:
-            "Humanitarian and healthcare support, including medical equipment for hospitals and clinics in underserved regions.",
-          href: "/programs/healthcare-afghanistan",
-          linkLabel: "Healthcare for Afghanistan",
-        },
-      ],
-    },
-    base: {
-      eyebrow: "Based in Hamilton",
-      title: "Rooted locally, reaching further",
-      paragraphs: [
-        "AWF is headquartered in Hamilton, Ontario, with programs serving the local newcomer community and extending humanitarian support to Afghanistan.",
-        "Founded by Nasratullah Rahim, the organization works with a commitment to transparency, community-led programming and long-term impact.",
-      ],
-    },
-    cta: {
-      title: "Know a family who could use support?",
-      body: "Schools, social workers and community organizations can refer families to our programs.",
       action: { label: "Contact us", href: "/contact" },
     },
   },
@@ -174,23 +117,23 @@ export const pages: SitePages = {
       title: "What partners can expect",
       items: [
         {
-          title: "Clear, published goals",
-          description: "Our goals are public, and we report against them openly.",
+          title: "Clear goals",
+          description: "We agree goals, scope and reporting with each partner from the start.",
         },
         {
-          title: "Every shipment documented",
+          title: "Appropriate records",
           description:
-            "Partners see what was sent, where it went and what it cost, and results are published in our annual report.",
+            "We aim to keep appropriate records of donations, donated goods, spending and recipient institutions, with appropriate oversight.",
         },
         {
           title: "Supplies matched to need",
           description:
-            "We source what hospitals and clinics ask for, not what happens to be available.",
+            "We aim to connect donors and medical institutions with facilities that have identified needs.",
         },
         {
-          title: "Trusted partners on the ground",
+          title: "Working with local institutions",
           description:
-            "Local partners in Afghanistan make sure supplies reach the facilities and patients they were sent for.",
+            "We work with hospitals and community organizations in Afghanistan to help supplies reach the people they are meant for.",
         },
       ],
     },
@@ -201,7 +144,7 @@ export const pages: SitePages = {
         {
           title: "Shipment sponsor",
           description:
-            "Fund medicines, supplies or the cost of a shipment, with dedicated reporting on where it went.",
+            "Fund medical supplies or the cost of a shipment, with reporting agreed at the start.",
           href: "/our-work",
           linkLabel: "See how we work",
         },
@@ -226,7 +169,7 @@ export const pages: SitePages = {
     },
     process: {
       eyebrow: "How it works",
-      title: "From first conversation to final report",
+      title: "From first conversation to agreed reporting",
       items: [
         {
           title: "Conversation",
@@ -240,7 +183,7 @@ export const pages: SitePages = {
         { title: "Agreement", description: "We agree on scope, timeline and reporting together." },
         {
           title: "Reporting",
-          description: "You receive regular updates and a final report on outcomes.",
+          description: "We share updates and reports as agreed with you.",
         },
       ],
     },
@@ -264,7 +207,7 @@ export const pages: SitePages = {
         {
           title: "Donate equipment & supplies",
           description:
-            "Medical equipment and unopened supplies in working condition, for hospitals and clinics in Afghanistan.",
+            "New or gently used medical equipment and supplies, for healthcare facilities in Afghanistan.",
           href: "/our-work#what-we-supply",
           linkLabel: "What we supply",
         },
@@ -282,7 +225,8 @@ export const pages: SitePages = {
         },
         {
           title: "Partner or sponsor",
-          description: "Sponsor a shipment or supply medicines, with dedicated reporting.",
+          description:
+            "Sponsor a shipment or supply medical goods, with reporting agreed at the start.",
           href: "/partner",
           linkLabel: "Partner with us",
         },
@@ -318,7 +262,7 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Donate",
       title: "Support our work",
-      lead: "Online giving is launching soon. Until then, here is how you can give today, and every contribution is reported transparently.",
+      lead: "Online giving is launching soon. Until then, here is how you can give today.",
     },
     ways: {
       eyebrow: "Ways to give",
@@ -334,13 +278,13 @@ export const pages: SitePages = {
         {
           title: "Donate equipment & supplies",
           description:
-            "Medical equipment and unopened supplies in working condition, for hospitals and clinics in Afghanistan.",
+            "New or gently used medical equipment and supplies, for healthcare facilities in Afghanistan.",
           href: "/our-work#what-we-supply",
           linkLabel: "What we supply",
         },
         {
           title: "Sponsor a shipment",
-          description: "Fund a full shipment, with dedicated reporting on where it went.",
+          description: "Fund a full shipment, with reporting agreed at the start.",
           href: "/partner",
           linkLabel: "Partner with us",
         },
@@ -397,27 +341,27 @@ export const pages: SitePages = {
       {
         question: "What does AWF do?",
         answer:
-          "We source medicines, medical supplies and equipment from around the world and deliver them to hospitals, clinics and patients in need, with a focus on Afghanistan.",
+          "We work to improve access to essential healthcare and humanitarian assistance, with a primary focus on Afghanistan. Alongside healthcare, our programs cover education and child well-being, poverty relief, women's skills and emergency response.",
       },
       {
         question: "Where do the supplies go?",
         answer:
-          "To hospitals, clinics and patients in Afghanistan, delivered through trusted local partners. We send what facilities tell us they need most.",
+          "To healthcare facilities and communities with identified needs in Afghanistan. Our work is not limited to one province, city or hospital, and may include hospitals, clinics, laboratories, blood banks and rehabilitation centres.",
       },
       {
-        question: "Where do the medicines come from?",
+        question: "Does AWF handle medicines?",
         answer:
-          "Medicines are bought from licensed suppliers around the world. Medical equipment and unopened supplies can also be donated.",
+          "Only where the applicable laws and regulations permit. We will not knowingly accept or distribute expired medicines or medical supplies.",
       },
       {
         question: "What can I donate?",
         answer:
-          "Medical equipment and unopened supplies in working condition, such as diagnostic equipment, mobility aids and wound care supplies. Our work page lists what we supply.",
+          "New or gently used medical equipment and supplies, such as diagnostic, laboratory, monitoring, rehabilitation and patient-care items. Medical items are assessed for safety and condition wherever reasonably practicable. Our work page lists what we seek.",
       },
       {
         question: "Why thalassemia?",
         answer:
-          "Thalassemia is an inherited blood disorder that needs regular, lifelong treatment. Supporting patients' access to that treatment is one of our focus areas.",
+          "Thalassemia is an inherited blood disorder that needs regular, lifelong treatment. Supporting patients' access to that treatment is one of our programs.",
       },
       {
         question: "Can I get a tax receipt?",
@@ -427,7 +371,7 @@ export const pages: SitePages = {
       {
         question: "How is my support used?",
         answer:
-          "Support pays for medicines, supplies and the cost of shipping them. We document every shipment, and results will be published in our annual report.",
+          "Funds and donated items are to be used for the foundation's authorized purposes, with appropriate records and oversight.",
       },
       {
         question: "How can I volunteer?",
@@ -437,7 +381,7 @@ export const pages: SitePages = {
       {
         question: "Where are you based?",
         answer:
-          "Our head office is in Hamilton, Ontario, Canada. Our work is focused on Afghanistan.",
+          "Our head office is in Hamilton, Ontario, Canada. Afghanistan is our primary focus.",
       },
     ],
     cta: {

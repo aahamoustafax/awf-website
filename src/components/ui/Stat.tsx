@@ -6,7 +6,7 @@ type StatProps = {
   className?: string;
 };
 
-/** A large impact figure with its label, e.g. "120+" / "children in weekend classes". */
+/** A large impact figure with its label, e.g. "120+" / "hospitals supported". */
 export function Stat({ value, label, className }: StatProps) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>

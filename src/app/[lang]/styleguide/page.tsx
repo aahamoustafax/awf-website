@@ -83,13 +83,11 @@ export default function StyleguidePage() {
           <p className="font-display text-display-md font-semibold">Display MD: sub-sections</p>
           <p className="font-display text-display-sm font-semibold">Display SM: card titles</p>
           <Lead className="text-foreground">
-            Lead paragraph: weekend educational support for newcomer and refugee children in
-            Hamilton.
+            Lead paragraph: medicines and medical supplies for hospitals and clinics in Afghanistan.
           </Lead>
           <p className="max-w-prose text-foreground">
             Body text (Inter). Azan Welfare Foundation runs programs designed to uplift vulnerable
-            individuals, from newcomer children and families in Hamilton, Ontario to patients in
-            underserved Afghan communities.{" "}
+            individuals, from hospitals and clinics to patients in underserved Afghan communities.{" "}
             <a href="#sg-type" className="text-accent underline underline-offset-2">
               This is a link.
             </a>
@@ -121,7 +119,7 @@ export default function StyleguidePage() {
           Our impact so far
         </Heading>
         <StatList className="mt-10">
-          <Stat value="120+" label="Sample figure: children in weekend classes" />
+          <Stat value="120+" label="Sample figure: hospitals supported" />
           <Stat value="4" label="Programs" />
           <Stat value="2" label="Countries served" />
           <Stat value="1400" label="Founding year (Solar Hijri)" />
@@ -143,12 +141,12 @@ export default function StyleguidePage() {
         </Heading>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           <Card>
-            <Badge>Hamilton</Badge>
+            <Badge>Healthcare</Badge>
             <Heading level={3} size="sm" className="mt-4 text-primary">
-              Children&apos;s Education
+              Thalassemia support
             </Heading>
             <p className="mt-3 text-muted">
-              Weekend academic support for newcomer and refugee children through ACCP.
+              Sample text: support for patients living with blood disorders.
             </p>
           </Card>
           <Card>
@@ -160,7 +158,7 @@ export default function StyleguidePage() {
               Medical equipment from donors across Canada, shipped to underserved clinics.
             </p>
           </Card>
-          <ImagePlaceholder description="Children in a weekend class at ACCP (faces not identifiable)" />
+          <ImagePlaceholder description="Medical supplies being unpacked at a clinic" />
         </div>
         <div className="mt-10">
           <Logo name="Azan Welfare Foundation" />
@@ -174,7 +172,7 @@ export default function StyleguidePage() {
       </Section>
       <AlertBanner
         label="Announcement"
-        message="Sample urgent appeal: winter clothing drive for newcomer families."
+        message="Sample urgent appeal: emergency medical shipment."
         link={{ href: "#sg-alert", label: "How to help" }}
       />
     </>

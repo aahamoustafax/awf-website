@@ -32,15 +32,9 @@ export default async function OurWorkPage() {
         art={<ProgramIllustration icon="care" animated />}
       />
       <StorySection id="story" {...page.story} />
-      <CardGrid
-        id="how-we-work"
-        tone="muted"
-        numbered
-        columns={4}
-        {...page.howWeWork}
-        items={work.howWeWork}
-      />
-      <ProgramNeeds id="what-we-supply" {...page.supplies} needs={work.supplies} />
+      <CardGrid id="programs" tone="muted" {...page.programs} items={work.programs} />
+      <CardGrid id="how-we-work" numbered columns={4} {...page.howWeWork} items={work.howWeWork} />
+      <ProgramNeeds id="what-we-supply" tone="muted" {...page.supplies} needs={work.supplies} />
       <CtaBand
         {...page.cta}
         action={{ ...page.cta.action, href: localePath(locale, page.cta.action.href) }}

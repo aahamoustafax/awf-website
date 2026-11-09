@@ -4,9 +4,8 @@ export const site: Site = {
   name: "Azan Welfare Foundation",
   shortName: "AWF",
   description:
-    "A Hamilton, Ontario non-profit sourcing medicines and medical supplies from around the world for people in need, with a focus on Afghanistan.",
-  tagline:
-    "Medicines and medical supplies from around the world, for the people who need them most, with a focus on Afghanistan.",
+    "An independent non-profit humanitarian initiative based in Hamilton, Ontario, working to improve access to essential healthcare and humanitarian assistance, with a primary focus on Afghanistan.",
+  tagline: "Bridging the Gap. Supporting Healthcare. Changing Lives.",
   location: { city: "Hamilton", region: "Ontario", country: "Canada" },
   email: "awf.kefb@gmail.com",
   phone: "+1 365 323 6555",

@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/motion";
-import { Section } from "@/components/ui";
+import { Section, type SectionTone } from "@/components/ui";
 import type { NeedGroup } from "@/content/types";
 
 import { SectionIntro } from "./SectionIntro";
@@ -11,12 +11,13 @@ type ProgramNeedsProps = {
   title: string;
   lead: string;
   needs: NeedGroup[];
+  tone?: SectionTone;
 };
 
 /** In-kind donation list, grouped by category. */
-export function ProgramNeeds({ id, eyebrow, title, lead, needs }: ProgramNeedsProps) {
+export function ProgramNeeds({ id, eyebrow, title, lead, needs, tone }: ProgramNeedsProps) {
   return (
-    <Section id={id} aria-labelledby="needs-title">
+    <Section id={id} tone={tone} aria-labelledby="needs-title">
       <SectionIntro id="needs-title" eyebrow={eyebrow} title={title} lead={lead} />
       <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
         {needs.map((group, index) => (

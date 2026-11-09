@@ -1,4 +1,4 @@
-import { useId } from "react";
+import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
@@ -10,35 +10,27 @@ type LogoProps = {
 };
 
 /**
- * TEMPORARY logo: a drawn crescent mark plus the name as text.
- * TODO(foundation): replace the <svg> with the official logo file (SVG preferred).
+ * The foundation's logo with its name beside it. Both files are transparent, so the logo blends into
+ * whatever is behind it; the navy version has white lettering. `alt` is empty because the name is
+ * right next to it.
  */
 export function Logo({ name, variant = "default", className }: LogoProps) {
-  // Unique per instance: the logo appears in both header and footer.
-  const maskId = useId();
+  const onNavy = variant === "light";
   return (
     <span
       className={cn(
         "inline-flex items-center gap-3",
-        variant === "light" ? "text-on-primary" : "text-primary",
+        onNavy ? "text-on-primary" : "text-primary",
         className,
       )}
     >
-      <svg viewBox="0 0 48 48" aria-hidden="true" className="size-10 shrink-0">
-        <defs>
-          <mask id={maskId}>
-            <rect width="48" height="48" fill="white" />
-            <circle cx="30" cy="20" r="16" fill="black" />
-          </mask>
-        </defs>
-        <circle
-          cx="22"
-          cy="25"
-          r="19"
-          mask={`url(#${maskId})`}
-          className={variant === "light" ? "fill-brand-sky" : "fill-accent"}
-        />
-      </svg>
+      <Image
+        src={onNavy ? "/images/logo-white-text.png" : "/images/logo.png"}
+        alt=""
+        width={60}
+        height={56}
+        className="h-14 w-auto shrink-0"
+      />
       <span className="font-display text-lg leading-tight font-semibold">{name}</span>
     </span>
   );

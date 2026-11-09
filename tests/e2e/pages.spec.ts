@@ -7,7 +7,7 @@ const pages = [
   { path: "/en/about/governance", title: "Transparency is part of the work" },
   {
     path: "/en/our-work",
-    title: "Medicines and supplies, from around the world to people in need",
+    title: "Healthcare and humanitarian support, where it is needed most",
   },
   { path: "/en/partner", title: "Partner with a foundation built for lasting impact" },
   { path: "/en/get-involved", title: "There's a place for you in this work" },

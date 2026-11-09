@@ -2,8 +2,8 @@ import { expect, test } from "@playwright/test";
 
 import { expectNoSeriousA11yViolations } from "./a11y";
 
-// The Hamilton programs and the program pages are hidden for now (ADR 0007).
-const hiddenPaths = [
+// Pages removed for good (ADR 0008). Old links must get a real 404.
+const removedPaths = [
   "/en/programs",
   "/en/programs/children-education",
   "/en/programs/skills-livelihoods",
@@ -13,12 +13,15 @@ const hiddenPaths = [
 ];
 
 test.describe("our work", () => {
-  test("renders the story, the steps and what we supply", async ({ page }) => {
+  test("renders the story, the programs, the steps and what we supply", async ({ page }) => {
     const response = await page.goto("/en/our-work");
     expect(response?.status()).toBe(200);
     await expect(
       page.getByRole("heading", { name: "Medicine only helps when it arrives" }),
     ).toBeVisible();
+    await expect(
+      page.getByRole("region", { name: "Seven areas of work" }).getByRole("listitem"),
+    ).toHaveCount(7);
     await expect(
       page.getByRole("region", { name: "From need to delivery" }).getByRole("listitem"),
     ).toHaveCount(4);
@@ -41,17 +44,12 @@ test.describe("our work", () => {
   });
 });
 
-test.describe("hidden pages", () => {
-  for (const path of hiddenPaths) {
+test.describe("removed pages", () => {
+  for (const path of removedPaths) {
     test(`${path} returns a real 404`, async ({ page }) => {
       const response = await page.goto(path);
       expect(response?.status()).toBe(404);
       await expect(page.getByRole("heading", { name: "We couldn't find that page" })).toBeVisible();
     });
   }
-
-  test("unknown program returns a real 404 with the styled page", async ({ page }) => {
-    const response = await page.goto("/en/programs/does-not-exist");
-    expect(response?.status()).toBe(404);
-  });
 });
