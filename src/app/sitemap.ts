@@ -2,24 +2,18 @@ import type { MetadataRoute } from "next";
 
 import { locales } from "@/i18n/config";
 import { localePath } from "@/i18n/paths";
-import { getPrograms } from "@/lib/content";
-import { isHiddenRoute, programPath, staticRoutes } from "@/lib/routes";
+import { staticRoutes } from "@/lib/routes";
 import { siteUrl } from "@/lib/siteUrl";
 
-/** /sitemap.xml: every public page in every language. The style guide and hidden pages are left out. */
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const programs = await getPrograms();
-  const paths = [
-    ...staticRoutes.filter((path) => !isHiddenRoute(path)),
-    ...programs.map((program) => programPath(program.slug)),
-  ];
+/** /sitemap.xml: every public page in every language. The style guide is left out. */
+export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl();
 
   return locales.flatMap((locale) =>
-    paths.map((path) => ({
+    staticRoutes.map((path) => ({
       url: new URL(localePath(locale, path), base).toString(),
       changeFrequency: "monthly" as const,
-      priority: path === "/" ? 1 : path === "/partner" || path.startsWith("/programs") ? 0.8 : 0.6,
+      priority: path === "/" ? 1 : path === "/partner" ? 0.8 : 0.6,
     })),
   );
 }

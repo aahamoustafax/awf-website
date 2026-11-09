@@ -41,7 +41,7 @@ export default async function HomePage() {
           />
         }
       />
-      <CardGrid id="focus-areas" tone="muted" {...home.focusAreas} items={work.focusAreas} />
+      <CardGrid id="programs" tone="muted" {...home.programs} items={work.programs} />
       <CardGrid id="how-we-work" numbered columns={4} {...home.howWeWork} items={work.howWeWork} />
       <GoalsBand {...home.goals} />
       <CtaBand {...home.partner} action={link(home.partner.action)} />

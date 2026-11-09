@@ -42,11 +42,8 @@ export type Photo = {
   credit?: { name: string; url: string; source: string };
 };
 
-/** A titled item with optional detail: a course, an activity, a step. */
-export type Item = { title: string; description?: string };
-
 /**
- * A forward-looking target. Programs are launching, so the site shows goals, never claimed results.
+ * A forward-looking target. Operations are launching, so the site shows goals, never claimed results.
  * When real results exist, add an `Impact` type rather than reusing this one.
  */
 export type Goal = {
@@ -55,39 +52,8 @@ export type Goal = {
   label: string;
 };
 
-/** Where a program operates. */
-export type ProgramRegion = "hamilton" | "afghanistan";
-
-export type ProgramStatus = "launching" | "active";
-
-/** Which line-art illustration represents the program (see ProgramIllustration). */
+/** Which line-art illustration to draw (see ProgramIllustration). */
 export type ProgramIcon = "education" | "skills" | "essentials" | "care";
-
-export type Program = {
-  /** URL segment: /programs/<slug>. Lowercase, kebab-case, never change once published. */
-  slug: string;
-  title: string;
-  /** One or two sentences for cards and menus. */
-  summary: string;
-  region: ProgramRegion;
-  status: ProgramStatus;
-  icon: ProgramIcon;
-  /** Short focus tags, e.g. ["Weekend classes", "Heritage languages"]. */
-  focus: string[];
-  /** Detail page body: the problem and our response, one paragraph per entry. */
-  overview: string[];
-  /** Who the program is for. */
-  audience: string;
-  /** What the program delivers: courses, activities or steps. */
-  offerings: { heading: string; items: Item[] };
-  /** Optional key facts, e.g. schedule rows. */
-  facts?: { label: string; value: string }[];
-  /** Optional in-kind donation needs, grouped. */
-  needs?: NeedGroup[];
-  goals?: Goal[];
-  /** Closing call to action on the detail page. */
-  action: { heading: string; body: string };
-};
 
 export type Value = { title: string; description: string };
 
@@ -126,7 +92,7 @@ export type Home = {
     action: { label: string; href: string };
     secondaryAction: { label: string; href: string };
   };
-  focusAreas: { eyebrow: string; title: string; lead: string };
+  programs: { eyebrow: string; title: string; lead: string };
   howWeWork: { eyebrow: string; title: string; lead: string };
   goals: { eyebrow: string; title: string; lead: string; items: Goal[]; note: string };
   partner: { title: string; body: string; action: { label: string; href: string } };
@@ -135,10 +101,10 @@ export type Home = {
 /** In-kind or sourced items, grouped, e.g. { category: "Mobility aids", items: ["Wheelchairs"] }. */
 export type NeedGroup = { category: string; items: string[] };
 
-/** What AWF does (focus areas) and how (the supply steps, what we supply). Used by home and /our-work. */
+/** What AWF does (programs) and how (the supply steps, what we supply). Used by home and /our-work. */
 export type Work = {
-  focusAreas: CardItem[];
-  /** Steps from a facility's request to a reported delivery, in order. */
+  programs: CardItem[];
+  /** Steps from a facility's request to a recorded delivery, in order. */
   howWeWork: CardItem[];
   supplies: NeedGroup[];
 };
@@ -177,7 +143,6 @@ export type ProseSection = { heading: string; paragraphs: string[] };
 
 /** Content of every standalone page, by route. */
 export type SitePages = {
-  programs: { intro: PageIntro };
   about: {
     intro: PageIntro;
     story: { eyebrow: string; title: string };
@@ -191,14 +156,9 @@ export type SitePages = {
   ourWork: {
     intro: PageIntro;
     story: { eyebrow: string; title: string; paragraphs: string[] };
+    programs: { eyebrow: string; title: string; lead: string };
     howWeWork: { eyebrow: string; title: string; lead: string };
     supplies: { eyebrow: string; title: string; lead: string };
-    cta: Cta;
-  };
-  whoWeServe: {
-    intro: PageIntro;
-    groups: CardSection;
-    base: { eyebrow: string; title: string; paragraphs: string[] };
     cta: Cta;
   };
   partner: {

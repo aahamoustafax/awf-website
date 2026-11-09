@@ -1,6 +1,6 @@
 # 0007. Focus the site on medical aid; hide the Hamilton programs
 
-- **Status:** accepted
+- **Status:** accepted; "hide, don't delete" replaced by ADR 0008
 - **Date:** 2026-11-02
 
 ## Context

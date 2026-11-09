@@ -6,7 +6,7 @@ import { SmoothScroll } from "@/components/motion";
 import { getDirection, locales } from "@/i18n/config";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/paths";
-import { getPrograms, getSite } from "@/lib/content";
+import { getSite } from "@/lib/content";
 import { buildNavigation } from "@/lib/navigation";
 import { siteUrl } from "@/lib/siteUrl";
 import { jsonLdScript, organizationJsonLd } from "@/lib/structuredData";
@@ -42,8 +42,8 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const locale = await getLocale();
-  const [dict, site, programs] = await Promise.all([getDictionary(), getSite(), getPrograms()]);
-  const navigation = buildNavigation(dict, locale, programs);
+  const [dict, site] = await Promise.all([getDictionary(), getSite()]);
+  const navigation = buildNavigation(dict, locale);
 
   return (
     <html
@@ -72,13 +72,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer
-          site={site}
-          programs={programs}
-          navigation={navigation}
-          locale={locale}
-          dict={dict}
-        />
+        <Footer site={site} navigation={navigation} locale={locale} dict={dict} />
       </body>
     </html>
   );

@@ -5,8 +5,8 @@ import { expectNoSeriousA11yViolations } from "./a11y";
 test.describe("home page", () => {
   test("hero has the headline, photo and the donation box", async ({ page }) => {
     await page.goto("/en");
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("medical supplies");
-    const hero = page.getByRole("region", { name: /medical supplies for people in need/ });
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Supporting healthcare");
+    const hero = page.getByRole("region", { name: /Supporting healthcare/ });
     await expect(hero.getByRole("img", { name: /smiles broadly/ })).toBeVisible();
     await expect(hero.getByRole("heading", { name: "Give today" })).toBeVisible();
   });
@@ -27,7 +27,7 @@ test.describe("home page", () => {
 
   test("donation box follows the chosen amount and frequency", async ({ page }) => {
     await page.goto("/en");
-    const box = page.getByRole("region", { name: /medical supplies for people in need/ });
+    const box = page.getByRole("region", { name: /Supporting healthcare/ });
     const donate = box.getByRole("link", { name: /^Donate/ });
     await expect(donate).toHaveText("Donate $50");
     await expect(donate).toHaveAttribute("href", "/en/donate");
@@ -41,11 +41,11 @@ test.describe("home page", () => {
     await expect(box.getByRole("radio", { name: "$100" })).not.toBeChecked();
   });
 
-  test("shows the six focus areas and the four steps", async ({ page }) => {
+  test("shows the seven programs and the four steps", async ({ page }) => {
     await page.goto("/en");
-    const focusAreas = page.getByRole("region", { name: "Our focus areas" });
-    await expect(focusAreas.getByRole("listitem")).toHaveCount(6);
-    await expect(focusAreas).toContainText("thalassemia");
+    const programs = page.getByRole("region", { name: "Our programs" });
+    await expect(programs.getByRole("listitem")).toHaveCount(7);
+    await expect(programs).toContainText("thalassemia");
     const steps = page.getByRole("region", { name: "From need to delivery" });
     await expect(steps.getByRole("listitem")).toHaveCount(4);
   });

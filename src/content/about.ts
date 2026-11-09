@@ -1,35 +1,38 @@
 import type { About } from "./types";
 
+// Mission and vision are quoted word for word from the Organization Profile. Do not paraphrase them.
 export const about: About = {
   intro: [
-    "Azan Welfare Foundation (AWF) is a non-profit organization, established in 2020, with its head office in Hamilton, Ontario, Canada.",
-    "We source medicines, medical supplies and equipment from around the world and deliver them to people in need, with a focus on Afghanistan. Our work covers healthcare and medical support, specialized care for thalassemia, women's and children's health, emergency response, health education, and the partnerships and logistics that make delivery possible.",
+    "Azan Welfare Foundation (AWF) is an independent, non-profit humanitarian initiative established in 2020. Headquartered in Hamilton, Ontario, Canada, AWF works to improve the well-being of vulnerable people and underserved communities, with a primary program focus on Afghanistan.",
+    "The Foundation seeks to connect people, hospitals and community organizations with essential resources, partnerships and practical support. Healthcare comes first, alongside education, poverty relief, child and family well-being, women's skills and emergency response.",
   ],
   mission:
-    "To source quality medicines and medical supplies from around the world and deliver them, through trusted partners, to the people who need them most.",
+    "To improve access to essential healthcare and humanitarian assistance by mobilizing donations, partnerships, medical resources and community support for hospitals and vulnerable communities throughout Afghanistan, while also advancing education, poverty relief, child and family well-being, and sustainable community development.",
   vision:
-    "A world where no one goes without essential medicines or basic medical care because of where they live.",
+    "A world in which children, women, men and families—regardless of their circumstances or background—can access essential care, education and opportunities, live with dignity, and build a safer and healthier future.",
   values: [
     {
-      title: "Inclusivity",
-      description:
-        "Care for people of every background, with special focus on the most vulnerable.",
-    },
-    {
       title: "Dignity",
-      description: "Every person deserves respect, opportunity and a path forward.",
+      description: "Every person deserves care and respect, whatever their circumstances.",
     },
     {
-      title: "Transparency",
-      description: "We operate with full financial accountability to donors and partners.",
+      title: "Compassion",
+      description: "Our work starts with the people who are going without.",
+    },
+    {
+      title: "Fairness",
+      description:
+        "Assistance is intended to be needs-based, without distinction based on age, gender, disability, ethnicity, religion or political belief.",
     },
     {
       title: "Led by need",
-      description: "We send what hospitals, clinics and communities tell us they need most.",
+      description:
+        "We aim to send what hospitals, clinics and communities have identified as needed.",
     },
     {
-      title: "Long-term impact",
-      description: "We build local capacity and resilience, not dependency.",
+      title: "Accountability",
+      description:
+        "We aim to keep appropriate records of donations, spending and donated goods, with appropriate oversight.",
     },
   ],
   // TODO(foundation): short founder bio and any board members.

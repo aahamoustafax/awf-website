@@ -1,8 +1,7 @@
 # Azan Welfare Foundation: website
 
 The public website of the Azan Welfare Foundation (AWF), a non-profit in Hamilton, Ontario
-supporting newcomer families through education, skills training and humanitarian work, with
-healthcare programs in Afghanistan.
+improving access to healthcare and humanitarian assistance, with a primary focus on Afghanistan.
 
 ## Quick start
 
@@ -34,7 +33,7 @@ src/
   components/
     ui/               Reusable primitives: Button, Container, Heading…
     layout/           Header, Footer, navigation
-    sections/         Page sections: Hero, ImpactStats, ProgramGrid…
+    sections/         Page sections: Hero, CardGrid, GoalsBand…
   content/            All site content as typed TypeScript objects
   lib/content/        Content layer: the only way routes read content
   i18n/               Languages and UI strings (messages/en.json)
@@ -66,7 +65,7 @@ The repo is set up for Claude Code and other coding agents:
 - `CLAUDE.md`: project rules for agents (imports `AGENTS.md`, which Next.js manages).
 - `.claude/settings.json`: safe defaults. Quality commands are allowed; installs, pushes and deploys
   ask first; `.env` files can't be read. A hook auto-formats every file an agent edits.
-- Slash commands: `/check`, `/new-section`, `/new-program`, `/review-a11y`.
+- Slash commands: `/check`, `/new-section`, `/review-a11y`.
 - Subagents: `a11y-reviewer` (read-only WCAG review) and `content-editor` (content files only).
 
 Personal overrides go in `.claude/settings.local.json` (git-ignored).

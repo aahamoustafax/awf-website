@@ -7,21 +7,23 @@ import { getSite } from "@/lib/content";
 
 /**
  * Social share preview (1200×630) used by every page unless a page defines its own: navy card
- * with the crescent mark, name and mission. Generated at build time.
+ * with the logo, name and tagline. Generated at build time.
  */
 export const alt =
-  "Azan Welfare Foundation: education, skills and care for families building a new life";
+  "Azan Welfare Foundation: bridging the gap, supporting healthcare, changing lives";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const fonts = join(process.cwd(), "src/assets/fonts");
 
 export default async function OpenGraphImage() {
-  const [site, fraunces, inter] = await Promise.all([
+  const [site, fraunces, inter, logoFile] = await Promise.all([
     getSite(),
     readFile(join(fonts, "Fraunces-SemiBold.ttf")),
     readFile(join(fonts, "Inter-Medium.ttf")),
+    readFile(join(process.cwd(), "public/images/logo-white-text.png")),
   ]);
+  const logo = `data:image/png;base64,${logoFile.toString("base64")}`;
 
   return new ImageResponse(
     <div
@@ -38,37 +40,14 @@ export default async function OpenGraphImage() {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-        {/* Crescent: a sky circle with an offset navy circle on top. */}
-        <div style={{ display: "flex", position: "relative", width: 64, height: 64 }}>
-          <div
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 6,
-              width: 58,
-              height: 58,
-              borderRadius: 999,
-              background: "#4a9fd8",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              left: 18,
-              top: -2,
-              width: 48,
-              height: 48,
-              borderRadius: 999,
-              background: "#0b2545",
-            }}
-          />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse only renders <img>. */}
+        <img src={logo} alt="" width={150} height={140} />
         <div style={{ fontFamily: "Fraunces", fontSize: 36 }}>{site.name}</div>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
         <div style={{ fontFamily: "Fraunces", fontSize: 72, lineHeight: 1.05, maxWidth: 950 }}>
-          Education, skills and care for families building a new life
+          Bridging the gap. Supporting healthcare. Changing lives.
         </div>
         <div
           style={{

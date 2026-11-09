@@ -1,41 +1,46 @@
 import type { Work } from "./types";
 
 /**
- * What AWF does and how, following the foundation's own outline (Nov 2026): six focus areas, the
- * supply process, and what we supply. Operations are launching, so this describes the approach and
- * never claims shipments or results that haven't happened yet.
+ * What AWF does and how. The seven programs follow the Organization Profile (section 5), which is
+ * the source of truth, and keep its careful wording ("may", "aims to", "where lawful"). Operations
+ * are launching, so never claim shipments or results that haven't happened yet.
  */
 export const work: Work = {
-  focusAreas: [
+  programs: [
     {
-      title: "Healthcare & medical support",
+      title: "Healthcare and medical resource support",
       description:
-        "Medicines, medical supplies and equipment for hospitals and clinics, matched to what each facility tells us it needs.",
+        "We seek donations of new or gently used medical equipment and supplies, and aim to connect donors and medical institutions with healthcare facilities that have identified needs.",
     },
     {
-      title: "Specialized care: thalassemia",
+      title: "Thalassemia and blood disorder support",
       description:
-        "Support for patients living with thalassemia and other blood disorders, who depend on regular treatment and the supplies that go with it.",
+        "We may support patients and institutions addressing thalassemia and other blood disorders through patient assistance, diagnostics, treatment-related support, medicines where lawful, and public awareness.",
     },
     {
-      title: "Women's & children's health",
+      title: "Women's, newborn and children's health",
       description:
-        "Supplies for maternal, newborn and child health, where shortages put the most vulnerable patients at risk.",
+        "We may promote maternal, newborn, child and adolescent health through essential medical supplies, nutrition support, vitamins and health education, subject to professional guidance and applicable laws.",
     },
     {
-      title: "Emergency & humanitarian response",
+      title: "Education and child well-being",
       description:
-        "Medical and humanitarian relief for communities facing crises, disasters and emergencies.",
+        "We aim to improve access to learning through school supplies, awareness programs and life skills, and to support orphans and vulnerable children through safe, appropriately safeguarded initiatives.",
     },
     {
-      title: "Education & community development",
+      title: "Poverty relief and family support",
       description:
-        "Health awareness campaigns, training, and work that helps communities move out of poverty.",
+        "Depending on available resources, we may provide or coordinate food, clothing, baby essentials, hygiene items and other necessities, including food assistance during Ramadan and Eid gifts for families in need.",
     },
     {
-      title: "Partnerships & logistics",
+      title: "Women's skills and community development",
       description:
-        "Procurement, international shipping and cooperation with institutions, so supplies arrive safely and are put to good use.",
+        "We may support skills training and practical learning, such as sewing and cooking, to help women and families strengthen their capabilities, confidence and economic resilience.",
+    },
+    {
+      title: "Emergency and humanitarian response",
+      description:
+        "We may assist communities affected by earthquakes, floods, conflict, displacement and disease outbreaks with medical resources, essential relief items and coordination with partners.",
     },
   ],
 
@@ -43,42 +48,55 @@ export const work: Work = {
     {
       title: "Identify needs",
       description:
-        "Hospitals, clinics and partners in Afghanistan tell us which medicines and supplies they need most.",
+        "Hospitals, clinics and community organizations in Afghanistan tell us what they need most.",
     },
     {
-      title: "Source",
+      title: "Source and assess",
       description:
-        "We procure quality medicines and supplies from trusted suppliers around the world, and accept donated equipment.",
+        "We seek donated and purchased supplies, and assess medical items for safety, condition and suitability wherever reasonably practicable.",
     },
     {
       title: "Ship",
       description:
-        "We handle packaging, documentation and international shipping, so supplies arrive safely and on time.",
+        "We arrange packaging, documentation and shipping, directly or through qualified service providers and partners.",
     },
     {
-      title: "Deliver & report",
+      title: "Deliver and record",
       description:
-        "Trusted local partners deliver to facilities and patients, and we report each shipment to our donors.",
+        "Supplies go to recipient facilities with our partners, and we aim to keep appropriate records of what was given and who received it.",
     },
   ],
 
-  // TODO(foundation): confirm this list, and whether donated medicines are ever accepted.
+  // TODO(foundation): confirm the specific items. The categories come from the Organization Profile.
   supplies: [
     {
-      category: "Medicines",
+      category: "Diagnostic and monitoring",
       items: [
-        "Essential medicines, bought from licensed suppliers",
-        "Treatment for thalassemia and other blood disorders",
+        "Diagnostic and laboratory equipment",
+        "Blood pressure monitors",
+        "Glucometers",
+        "Stethoscopes",
       ],
     },
     {
-      category: "Medical supplies",
-      items: ["Wound care and dressings", "Surgical supplies", "Gloves, syringes and consumables"],
+      category: "Surgical and treatment",
+      items: [
+        "Surgical supplies",
+        "Treatment equipment",
+        "Wound care and dressings",
+        "Gloves, syringes and consumables",
+      ],
     },
     {
-      category: "Equipment",
-      items: ["Blood pressure monitors", "Glucometers", "Stethoscopes"],
+      category: "Rehabilitation and patient care",
+      items: ["Wheelchairs", "Crutches", "Walkers", "Patient-care items"],
     },
-    { category: "Mobility aids", items: ["Wheelchairs", "Crutches", "Walkers"] },
+    {
+      category: "Medicines",
+      items: [
+        "Essential medicines, only where the law permits",
+        "Treatment for blood disorders, only where the law permits",
+      ],
+    },
   ],
 };
