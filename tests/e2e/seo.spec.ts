@@ -40,13 +40,13 @@ test.describe("SEO and sharing", () => {
     });
   }
 
-  test("home page describes AWF as an NGO in structured data", async ({ page }) => {
+  test("home page describes AIO as an NGO in structured data", async ({ page }) => {
     await page.goto("/en");
     const json = JSON.parse(
       (await page.locator('script[type="application/ld+json"]').textContent())!,
     );
     expect(json["@type"]).toBe("NGO");
-    expect(json.name).toBe("Azan Welfare Foundation");
+    expect(json.name).toBe("Azan International Organization");
     expect(json.areaServed).toEqual(["Canada", "Afghanistan"]);
   });
 });

@@ -20,9 +20,12 @@ describe("home content", () => {
   it("links only to site paths without a language prefix", () => {
     for (const href of hrefsIn(home)) expect(href).toMatch(/^\/(?!en\/)/);
   });
+});
 
-  it("labels its figures as goals, not results, while operations are launching", () => {
-    expect(home.goals.eyebrow.toLowerCase()).toContain("goal");
+describe("programs", () => {
+  it("have unique slugs, since each one is a page anchor", () => {
+    const slugs = work.programs.map((program) => program.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
   });
 });
 

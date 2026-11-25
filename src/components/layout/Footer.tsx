@@ -32,6 +32,7 @@ export function Footer({ site, navigation, locale, dict }: FooterProps) {
       title: footer.ourWork,
       links: [
         { label: footer.howWeWork, href: path("/our-work") },
+        { label: footer.kidsEssentials, href: path("/our-work#kids-essentials-bank") },
         { label: footer.whatWeSupply, href: path("/our-work#what-we-supply") },
       ],
     },

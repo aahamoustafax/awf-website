@@ -13,32 +13,43 @@ const removedPaths = [
 ];
 
 test.describe("our work", () => {
-  test("renders the story, the programs, the steps and what we supply", async ({ page }) => {
+  test("lists the eight programs as closed panels, then the story", async ({ page }) => {
     const response = await page.goto("/en/our-work");
     expect(response?.status()).toBe(200);
+    const programs = page.getByRole("region", { name: "Our programs" });
+    await expect(programs.locator("details")).toHaveCount(8);
+    await expect(programs.locator("details[open]")).toHaveCount(0);
     await expect(
       page.getByRole("heading", { name: "Medicine only helps when it arrives" }),
     ).toBeVisible();
-    await expect(
-      page.getByRole("region", { name: "Seven areas of work" }).getByRole("listitem"),
-    ).toHaveCount(7);
-    await expect(
-      page.getByRole("region", { name: "From need to delivery" }).getByRole("listitem"),
-    ).toHaveCount(4);
-    await expect(page.getByRole("heading", { name: "What we source and accept" })).toBeVisible();
     await expectNoSeriousA11yViolations(page, "/en/our-work");
   });
 
-  test("the supplies anchor lands on the list", async ({ page }) => {
+  test("a panel opens on click and shows its details", async ({ page }) => {
+    await page.goto("/en/our-work");
+    const programs = page.getByRole("region", { name: "Our programs" });
+    await programs.getByText("Kids Essentials Bank", { exact: true }).click();
+    await expect(page.getByText("Most needed items")).toBeVisible();
+    await expect(page.getByText("50–100")).toBeVisible();
+    await expect(page.getByText("not a result")).toBeVisible();
+  });
+
+  test("a link to a program opens its panel", async ({ page }) => {
+    await page.goto("/en/our-work#kids-essentials-bank");
+    await expect(page.locator("#kids-essentials-bank")).toHaveAttribute("open", "");
+    await expect(page.getByText("Clothing bank")).toBeVisible();
+  });
+
+  test("the supplies anchor opens healthcare and lands on the list", async ({ page }) => {
     await page.goto("/en/our-work#what-we-supply");
     await expect(page.getByRole("heading", { name: "What we source and accept" })).toBeInViewport();
   });
 
-  test("content is visible for visitors who prefer reduced motion", async ({ browser }) => {
+  test("panels open for visitors who prefer reduced motion", async ({ browser }) => {
     const context = await browser.newContext({ reducedMotion: "reduce" });
     const page = await context.newPage();
     await page.goto("/en/our-work");
-    await page.getByRole("heading", { name: "What we source and accept" }).scrollIntoViewIfNeeded();
+    await page.getByText("Healthcare and medical resource support", { exact: true }).click();
     await expect(page.getByText("Wheelchairs")).toBeVisible();
     await context.close();
   });

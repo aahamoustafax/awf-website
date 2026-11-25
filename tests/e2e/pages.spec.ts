@@ -11,7 +11,7 @@ const pages = [
   },
   { path: "/en/partner", title: "Partner with a foundation built for lasting impact" },
   { path: "/en/get-involved", title: "There's a place for you in this work" },
-  { path: "/en/donate", title: "Support our work" },
+  { path: "/en/donate", title: "Donations opening soon" },
   { path: "/en/contact", title: "Get in touch" },
   { path: "/en/faq", title: "Frequently asked questions" },
   { path: "/en/privacy", title: "Privacy statement" },
@@ -44,8 +44,11 @@ test.describe("standalone pages", () => {
     }
   });
 
-  test("contact page offers email and phone links", async ({ page }) => {
+  test("contact page offers email, phone and the address, and no form", async ({ page }) => {
     await page.goto("/en/contact");
+    await expect(page.getByText("778 King St E, Hamilton, Ontario, Canada")).toBeVisible();
+    await expect(page.getByRole("form")).toHaveCount(0);
+    await expect(page.getByRole("textbox")).toHaveCount(0);
     await expect(page.getByRole("link", { name: "awf.kefb@gmail.com" })).toHaveAttribute(
       "href",
       "mailto:awf.kefb@gmail.com",

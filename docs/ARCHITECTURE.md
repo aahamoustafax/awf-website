@@ -95,7 +95,7 @@ and mobile + axe accessibility scan) run in GitHub Actions on every PR.
 ## Inner pages and motion
 
 - Every inner page opens with `PageHeader` (breadcrumb, title, lead, optional illustration).
-- `/our-work` and the home page share `src/content/work.ts` (the seven programs, the four steps, supplies).
+- `/our-work` and the home page share `src/content/work.ts` (the eight programs; the four steps and supplies sit inside the healthcare program). `/our-work` shows them as expanding panels (`ProgramList`, ADR 0009).
 - `ProgramIllustration` draws a line-art mark (the `icon` prop). It's animated in page headers.
 - `src/components/motion` holds the motion helpers:
   - `InView` marks an element when it first scrolls into view.

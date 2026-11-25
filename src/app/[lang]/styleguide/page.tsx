@@ -45,7 +45,7 @@ export default function StyleguidePage() {
       <Section aria-labelledby="sg-title">
         <Eyebrow className="text-accent">Design system</Eyebrow>
         <Heading level={1} id="sg-title" className="mt-3 text-primary">
-          AWF style guide
+          AIO style guide
         </Heading>
         <Lead className="mt-6 text-muted">
           Every colour, type style and building block used on the site. Change tokens in
@@ -86,8 +86,9 @@ export default function StyleguidePage() {
             Lead paragraph: medicines and medical supplies for hospitals and clinics in Afghanistan.
           </Lead>
           <p className="max-w-prose text-foreground">
-            Body text (Inter). Azan Welfare Foundation runs programs designed to uplift vulnerable
-            individuals, from hospitals and clinics to patients in underserved Afghan communities.{" "}
+            Body text (Inter). Azan International Organization runs programs designed to uplift
+            vulnerable individuals, from hospitals and clinics to patients in underserved Afghan
+            communities.{" "}
             <a href="#sg-type" className="text-accent underline underline-offset-2">
               This is a link.
             </a>
@@ -131,7 +132,7 @@ export default function StyleguidePage() {
           <Button variant="outline">Outline on dark</Button>
         </div>
         <div className="mt-10">
-          <Logo name="Azan Welfare Foundation" variant="light" />
+          <Logo name="Azan International Organization" variant="light" />
         </div>
       </Section>
 
@@ -161,7 +162,7 @@ export default function StyleguidePage() {
           <ImagePlaceholder description="Medical supplies being unpacked at a clinic" />
         </div>
         <div className="mt-10">
-          <Logo name="Azan Welfare Foundation" />
+          <Logo name="Azan International Organization" />
         </div>
       </Section>
 

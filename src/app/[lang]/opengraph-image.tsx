@@ -7,10 +7,10 @@ import { getSite } from "@/lib/content";
 
 /**
  * Social share preview (1200×630) used by every page unless a page defines its own: navy card
- * with the logo, name and tagline. Generated at build time.
+ * with the logo (which spells out the name) and tagline. Generated at build time.
  */
 export const alt =
-  "Azan Welfare Foundation: bridging the gap, supporting healthcare, changing lives";
+  "Azan International Organization: bridging the gap, supporting healthcare, changing lives";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -39,10 +39,9 @@ export default async function OpenGraphImage() {
         fontFamily: "Inter",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+      <div style={{ display: "flex" }}>
         {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse only renders <img>. */}
-        <img src={logo} alt="" width={150} height={140} />
-        <div style={{ fontFamily: "Fraunces", fontSize: 36 }}>{site.name}</div>
+        <img src={logo} alt={site.name} width={480} height={112} />
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>

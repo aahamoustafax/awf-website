@@ -15,7 +15,7 @@ export const pages: SitePages = {
     missionLabel: "Mission",
     visionLabel: "Vision",
     values: { eyebrow: "Our values", title: "How we work" },
-    leadership: { eyebrow: "Leadership", title: "Who leads AWF" },
+    leadership: { eyebrow: "Leadership", title: "Who leads AIO" },
     cta: {
       title: "Work with us",
       body: "Whether you represent an institution, a company, a supplier or a healthcare organization, we'd welcome a conversation about supporting our work.",
@@ -27,7 +27,7 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Governance & reports",
       title: "Transparency is part of the work",
-      lead: "Partners and donors should be able to understand how AWF is run and how support is used. This page sets out what we are putting in place.",
+      lead: "Partners and donors should be able to understand how AIO is run and how support is used. This page sets out what we are putting in place.",
     },
     commitments: {
       eyebrow: "Our commitments",
@@ -45,7 +45,7 @@ export const pages: SitePages = {
         },
         {
           title: "Leadership",
-          description: "AWF is led by its founder and president, Nasratullah Rahim.",
+          description: "AIO is led by its founder and president, Nasratullah Rahim.",
           href: "/about",
           linkLabel: "About us",
         },
@@ -59,7 +59,7 @@ export const pages: SitePages = {
         // TODO(foundation): add legal status and any registration details once confirmed.
         {
           title: "Legal status",
-          description: "Details of AWF's legal status will be added here once confirmed.",
+          description: "Details of AIO's legal status will be added here once confirmed.",
         },
       ],
     },
@@ -72,32 +72,22 @@ export const pages: SitePages = {
 
   ourWork: {
     intro: {
-      eyebrow: "Our work",
+      eyebrow: "Programs",
       title: "Healthcare and humanitarian support, where it is needed most",
-      lead: "Our programs, how we work, and the medical equipment and supplies we seek, with a primary focus on Afghanistan.",
+      lead: "Our eight programs: healthcare first, with a primary focus on Afghanistan, and support for children and families, including in Hamilton.",
     },
     story: {
       eyebrow: "Why it matters",
       title: "Medicine only helps when it arrives",
       paragraphs: [
         "In Afghanistan, many hospitals and clinics struggle to get basic medicines, supplies and equipment. Patients go without treatment that would be routine elsewhere.",
-        "AWF works to connect that need with supply. Our work is not limited to one province, city or hospital: we may support hospitals, clinics, laboratories, blood banks, rehabilitation centres and other recognized healthcare facilities throughout the country.",
+        "AIO works to connect that need with supply. Our work is not limited to one province, city or hospital: we may support hospitals, clinics, laboratories, blood banks, rehabilitation centres and other recognized healthcare facilities throughout the country.",
       ],
     },
     programs: {
       eyebrow: "Programs and areas of work",
-      title: "Seven areas of work",
-      lead: "Healthcare comes first. What we take on at any time depends on available resources and applicable law.",
-    },
-    howWeWork: {
-      eyebrow: "How we work",
-      title: "From need to delivery",
-      lead: "Four steps, with appropriate records kept along the way.",
-    },
-    supplies: {
-      eyebrow: "What we supply",
-      title: "What we source and accept",
-      lead: "We seek new or gently used medical equipment and supplies. Medicines are handled only where the law permits. We will not knowingly accept expired items, and unsafe, damaged, recalled, counterfeit or improperly stored items must not be distributed.",
+      title: "Our programs",
+      lead: "Open a program to see what it includes. What we take on at any time depends on available resources and applicable law.",
     },
     cta: {
       title: "Donate supplies or fund a shipment",
@@ -110,10 +100,10 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Partner with us",
       title: "Partner with a foundation built for lasting impact",
-      lead: "AWF works with institutions, companies, diplomatic missions, suppliers and healthcare organizations to get medicines and medical supplies to people in need, with a focus on Afghanistan.",
+      lead: "AIO works with institutions, companies, diplomatic missions, suppliers and healthcare organizations to get medicines and medical supplies to people in need, with a focus on Afghanistan.",
     },
     why: {
-      eyebrow: "Why partner with AWF",
+      eyebrow: "Why partner with AIO",
       title: "What partners can expect",
       items: [
         {
@@ -261,38 +251,12 @@ export const pages: SitePages = {
   donate: {
     intro: {
       eyebrow: "Donate",
-      title: "Support our work",
-      lead: "Online giving is launching soon. Until then, here is how you can give today.",
-    },
-    ways: {
-      eyebrow: "Ways to give",
-      title: "How you can give today",
-      items: [
-        {
-          title: "Fund medicines & shipping",
-          description:
-            "Contact us to make a financial contribution toward medicines, supplies and the cost of shipping them.",
-          href: "/contact",
-          linkLabel: "Contact us",
-        },
-        {
-          title: "Donate equipment & supplies",
-          description:
-            "New or gently used medical equipment and supplies, for healthcare facilities in Afghanistan.",
-          href: "/our-work#what-we-supply",
-          linkLabel: "What we supply",
-        },
-        {
-          title: "Sponsor a shipment",
-          description: "Fund a full shipment, with reporting agreed at the start.",
-          href: "/partner",
-          linkLabel: "Partner with us",
-        },
-      ],
+      title: "Donations opening soon",
+      lead: "We're getting online giving ready. In the meantime, if you'd like to give supplies or support a program, please get in touch.",
     },
     receipts: {
       title: "About tax receipts",
-      body: "AWF is not yet able to issue official tax receipts for donations. We will update this page as soon as that changes.",
+      body: "AIO is not yet able to issue official tax receipts for donations. We will update this page as soon as that changes.",
     },
     cta: {
       title: "Have a question about giving?",
@@ -339,7 +303,7 @@ export const pages: SitePages = {
     },
     items: [
       {
-        question: "What does AWF do?",
+        question: "What does AIO do?",
         answer:
           "We work to improve access to essential healthcare and humanitarian assistance, with a primary focus on Afghanistan. Alongside healthcare, our programs cover education and child well-being, poverty relief, women's skills and emergency response.",
       },
@@ -349,7 +313,7 @@ export const pages: SitePages = {
           "To healthcare facilities and communities with identified needs in Afghanistan. Our work is not limited to one province, city or hospital, and may include hospitals, clinics, laboratories, blood banks and rehabilitation centres.",
       },
       {
-        question: "Does AWF handle medicines?",
+        question: "Does AIO handle medicines?",
         answer:
           "Only where the applicable laws and regulations permit. We will not knowingly accept or distribute expired medicines or medical supplies.",
       },
@@ -366,7 +330,7 @@ export const pages: SitePages = {
       {
         question: "Can I get a tax receipt?",
         answer:
-          "Not yet. AWF is not currently able to issue official tax receipts. We will update this answer as soon as that changes.",
+          "Not yet. AIO is not currently able to issue official tax receipts. We will update this answer as soon as that changes.",
       },
       {
         question: "How is my support used?",
@@ -396,7 +360,7 @@ export const pages: SitePages = {
     intro: {
       eyebrow: "Privacy",
       title: "Privacy statement",
-      lead: "How Azan Welfare Foundation collects, uses and protects your personal information.",
+      lead: "How Azan International Organization collects, uses and protects your personal information.",
     },
     updated: "November 2026",
     sections: [

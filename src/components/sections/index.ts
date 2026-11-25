@@ -7,6 +7,7 @@ export { HelpCard } from "./HelpCard";
 export { MissionQuote } from "./MissionQuote";
 export { PageHeader } from "./PageHeader";
 export { ProgramIllustration } from "./ProgramIllustration";
+export { ProgramList } from "./ProgramList";
 export { ProgramNeeds } from "./ProgramNeeds";
 export { SectionIntro } from "./SectionIntro";
 export { ValuesList } from "./ValuesList";

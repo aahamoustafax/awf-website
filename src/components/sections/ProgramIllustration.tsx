@@ -83,6 +83,41 @@ const drawings: Record<ProgramIcon, Stroke[]> = {
     { d: "M74 132 H126" },
     { d: "M74 78 C88 88 112 88 126 78", accent: true },
   ],
+  // A blood drop with a highlight, and a small second drop: blood disorders.
+  blood: [
+    {
+      d: "M100 24 C100 24 50 86 50 122 C50 152 72 174 100 174 C128 174 150 152 150 122 C150 86 100 24 100 24 Z",
+    },
+    { d: "M76 124 C76 140 86 152 100 154" },
+    {
+      d: "M164 52 C164 52 150 70 150 80 C150 88 156 94 164 94 C172 94 178 88 178 80 C178 70 164 52 164 52 Z",
+      accent: true,
+    },
+  ],
+  // A mother with her arm around a child: women's, newborn and children's health.
+  family: [
+    { d: "M88 44 m-20 0 a20 20 0 1 0 40 0 a20 20 0 1 0 -40 0" },
+    { d: "M50 176 C50 120 62 84 88 84 C114 84 126 120 126 176" },
+    { d: "M70 132 C90 148 112 148 126 136" },
+    { d: "M140 102 m-14 0 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0", accent: true },
+    { d: "M120 176 C120 144 126 128 140 128 C154 128 160 144 160 176", accent: true },
+  ],
+  // A house with a heart inside: support for families.
+  home: [
+    { d: "M28 98 L100 36 L172 98" },
+    { d: "M48 82 V170 H152 V82" },
+    {
+      d: "M100 150 C76 134 70 120 78 110 C86 100 98 104 100 114 C102 104 114 100 122 110 C130 120 124 134 100 150 Z",
+      accent: true,
+    },
+  ],
+  // A tent on the ground with wind lines: emergency shelter and relief.
+  shelter: [
+    { d: "M100 40 L28 166 H172 Z" },
+    { d: "M100 100 L80 166 M100 100 L120 166" },
+    { d: "M12 176 H188" },
+    { d: "M136 50 C148 42 164 42 176 50 M146 70 C156 64 168 64 178 70", accent: true },
+  ],
   // Two cupped hands holding a heart with a heartbeat: care and humanitarian support.
   care: [
     {
