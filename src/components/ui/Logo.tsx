@@ -10,28 +10,18 @@ type LogoProps = {
 };
 
 /**
- * The foundation's logo with its name beside it. Both files are transparent, so the logo blends into
- * whatever is behind it; the navy version has white lettering. `alt` is empty because the name is
- * right next to it.
+ * The organization's logo. The image already spells out the name, so it stands alone and `name`
+ * becomes its alt text. Both files are transparent; the navy version has white lettering.
  */
 export function Logo({ name, variant = "default", className }: LogoProps) {
   const onNavy = variant === "light";
   return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-3",
-        onNavy ? "text-on-primary" : "text-primary",
-        className,
-      )}
-    >
-      <Image
-        src={onNavy ? "/images/logo-white-text.png" : "/images/logo.png"}
-        alt=""
-        width={60}
-        height={56}
-        className="h-14 w-auto shrink-0"
-      />
-      <span className="font-display text-lg leading-tight font-semibold">{name}</span>
-    </span>
+    <Image
+      src={onNavy ? "/images/logo-white-text.png" : "/images/logo.png"}
+      alt={name}
+      width={960}
+      height={224}
+      className={cn("h-10 w-auto shrink-0 sm:h-11", className)}
+    />
   );
 }

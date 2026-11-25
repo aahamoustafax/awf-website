@@ -9,7 +9,7 @@
     "about": "About",
     "whoWeAre": "Who we are",
     "governance": "Governance & reports",
-    "ourWork": "Our work",
+    "ourWork": "Programs",
     "getInvolved": "Get involved",
     "contact": "Contact",
     "partner": "Partner with us",
@@ -20,9 +20,10 @@
   },
   "footer": {
     "about": "About",
-    "ourWork": "Our work",
-    "howWeWork": "How we work",
+    "ourWork": "Programs",
+    "howWeWork": "All programs",
     "whatWeSupply": "What we supply",
+    "kidsEssentials": "Kids Essentials Bank",
     "getInvolved": "Get involved",
     "volunteer": "Volunteer",
     "faq": "FAQ",
@@ -41,11 +42,19 @@
     "label": "Breadcrumb",
     "home": "Home"
   },
+  "programs": {
+    "learnMore": "Learn more",
+    "provides": "What it provides",
+    "includes": "What this can include",
+    "howItWorks": "How it works",
+    "goal": "Our goal",
+    "goalNote": "A target for when the program is running, not a result."
+  },
   "contact": {
     "detailsTitle": "Contact details",
     "email": "Email",
     "phone": "Phone",
-    "location": "Location"
+    "location": "Address"
   },
   "legal": {
     "updated": "Last updated"

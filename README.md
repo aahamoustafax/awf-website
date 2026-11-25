@@ -1,6 +1,6 @@
-# Azan Welfare Foundation: website
+# Azan International Organization: website
 
-The public website of the Azan Welfare Foundation (AWF), a non-profit in Hamilton, Ontario
+The public website of the Azan International Organization (AIO), a non-profit in Hamilton, Ontario
 improving access to healthcare and humanitarian assistance, with a primary focus on Afghanistan.
 
 ## Quick start

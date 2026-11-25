@@ -4,15 +4,15 @@ How to change words, numbers and images on the site. (Later, a CMS dashboard wil
 
 ## Where content lives
 
-| What                                                          | File                        |
-| ------------------------------------------------------------- | --------------------------- |
-| Organization name, description, contact details, social links | `src/content/site.ts`       |
-| The 7 programs, how we work (the 4 steps), what we supply     | `src/content/work.ts`       |
-| Home page: hero, mission, section titles, goals, partner band | `src/content/home.ts`       |
-| Other pages (About, Our work, Partner, Donate, FAQ…)          | `src/content/pages.ts`      |
-| About: intro, mission, vision, values, leadership             | `src/content/about.ts`      |
-| Buttons, menu labels, form messages                           | `src/i18n/messages/en.json` |
-| Photos                                                        | `public/images/`            |
+| What                                                               | File                        |
+| ------------------------------------------------------------------ | --------------------------- |
+| Organization name, description, contact details, social links      | `src/content/site.ts`       |
+| The 8 programs, incl. steps, supplies and the Kids Essentials Bank | `src/content/work.ts`       |
+| Home page: hero, mission, section titles, goals, partner band      | `src/content/home.ts`       |
+| Other pages (About, Our work, Partner, Donate, FAQ…)               | `src/content/pages.ts`      |
+| About: intro, mission, vision, values, leadership                  | `src/content/about.ts`      |
+| Buttons, menu labels, form messages                                | `src/i18n/messages/en.json` |
+| Photos                                                             | `public/images/`            |
 
 The allowed fields for each item are defined in `src/content/types.ts`. If you leave out a required
 field, `npm run check` fails and names the missing field.

@@ -24,6 +24,8 @@ export type Site = {
   /** Short mission line for the footer. */
   tagline: string;
   location: { city: string; region: string; country: string };
+  /** Street address of the head office, e.g. "778 King St E". */
+  address?: string;
   email?: string;
   /** Display format, e.g. "+1 365 323 6555". */
   phone?: string;
@@ -33,7 +35,7 @@ export type Site = {
 
 /**
  * A photo. `src` is a static import, which gives next/image its dimensions and a blur placeholder.
- * `credit` records where a stock photo came from (not displayed); omit it for AWF's own photos.
+ * `credit` records where a stock photo came from (not displayed); omit it for the organization's own photos.
  */
 export type Photo = {
   src: StaticImageData;
@@ -53,7 +55,8 @@ export type Goal = {
 };
 
 /** Which line-art illustration to draw (see ProgramIllustration). */
-export type ProgramIcon = "education" | "skills" | "essentials" | "care";
+export type ProgramIcon =
+  "care" | "blood" | "family" | "education" | "home" | "skills" | "shelter" | "essentials";
 
 export type Value = { title: string; description: string };
 
@@ -75,6 +78,8 @@ export type Home = {
     /** CSS object-position for the photo, keeping the subject in view, e.g. "60% 30%". */
     imageFocus: string;
   };
+  /** Buttons under the headline. */
+  actions: { primary: Action; secondary: Action };
   mission: {
     eyebrow: string;
     quote: string;
@@ -82,32 +87,43 @@ export type Home = {
     emphasis?: string;
     attribution: string;
   };
-  /** Donation box in the hero. */
-  donate: DonationBoxContent;
-  /** Ways to help today, beside the mission quote (in place of the globe for now, ADR 0007). */
-  help: {
-    title: string;
-    options: { label: string; href: string }[];
-    note: string;
-    action: { label: string; href: string };
-    secondaryAction: { label: string; href: string };
-  };
   programs: { eyebrow: string; title: string; lead: string };
-  howWeWork: { eyebrow: string; title: string; lead: string };
-  goals: { eyebrow: string; title: string; lead: string; items: Goal[]; note: string };
-  partner: { title: string; body: string; action: { label: string; href: string } };
+  contact: Cta;
 };
+
+export type Action = { label: string; href: string };
 
 /** In-kind or sourced items, grouped, e.g. { category: "Mobility aids", items: ["Wheelchairs"] }. */
 export type NeedGroup = { category: string; items: string[] };
 
-/** What AWF does (programs) and how (the supply steps, what we supply). Used by home and /our-work. */
-export type Work = {
-  programs: CardItem[];
-  /** Steps from a facility's request to a recorded delivery, in order. */
-  howWeWork: CardItem[];
-  supplies: NeedGroup[];
+/**
+ * One program, shown as an expanding panel on /our-work and as a card on the home page.
+ * Only `description` is required in the panel; the optional parts appear when present.
+ */
+export type Program = {
+  /** URL anchor, e.g. "kids-essentials-bank" (/our-work#kids-essentials-bank opens it). */
+  slug: string;
+  icon: ProgramIcon;
+  title: string;
+  /** One line, shown while the panel is closed and on the home page card. */
+  summary: string;
+  /** Where it runs, if it is a local program, e.g. "Hamilton, Ontario". */
+  place?: string;
+  description: string;
+  /** Short list of what the program can include. */
+  includes?: string[];
+  /** Ordered steps, drawn as a numbered flow. */
+  steps?: CardItem[];
+  /** The main parts of the program, as tiles. */
+  parts?: CardItem[];
+  /** Items the program seeks, grouped. `id` gives the block its own anchor. */
+  needs?: { id?: string; title: string; note?: string; groups: NeedGroup[] };
+  /** A target, never a result. */
+  goal?: Goal;
 };
+
+/** What the organization does. Used by home and /our-work. */
+export type Work = { programs: Program[] };
 
 /** Donation box copy. Visual only until online giving launches (ADR 0004). */
 export type DonationBoxContent = {
@@ -157,8 +173,6 @@ export type SitePages = {
     intro: PageIntro;
     story: { eyebrow: string; title: string; paragraphs: string[] };
     programs: { eyebrow: string; title: string; lead: string };
-    howWeWork: { eyebrow: string; title: string; lead: string };
-    supplies: { eyebrow: string; title: string; lead: string };
     cta: Cta;
   };
   partner: {
@@ -171,7 +185,6 @@ export type SitePages = {
   getInvolved: { intro: PageIntro; ways: CardSection; roles: CardSection; cta: Cta };
   donate: {
     intro: PageIntro;
-    ways: CardSection;
     receipts: { title: string; body: string };
     cta: Cta;
   };

@@ -1,11 +1,10 @@
 import type { ResolvingMetadata } from "next";
 
 import {
-  CardGrid,
   CtaBand,
   PageHeader,
   ProgramIllustration,
-  ProgramNeeds,
+  ProgramList,
   StorySection,
 } from "@/components/sections";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
@@ -16,6 +15,7 @@ import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
   pageMetadata("ourWork", "/our-work", parent);
 
+/** All programs on one page, each an expanding panel. */
 export default async function OurWorkPage() {
   const [page, work, dict, locale] = await Promise.all([
     getPage("ourWork"),
@@ -31,10 +31,8 @@ export default async function OurWorkPage() {
         {...page.intro}
         art={<ProgramIllustration icon="care" animated />}
       />
+      <ProgramList {...page.programs} programs={work.programs} labels={dict.programs} />
       <StorySection id="story" {...page.story} />
-      <CardGrid id="programs" tone="muted" {...page.programs} items={work.programs} />
-      <CardGrid id="how-we-work" numbered columns={4} {...page.howWeWork} items={work.howWeWork} />
-      <ProgramNeeds id="what-we-supply" tone="muted" {...page.supplies} needs={work.supplies} />
       <CtaBand
         {...page.cta}
         action={{ ...page.cta.action, href: localePath(locale, page.cta.action.href) }}

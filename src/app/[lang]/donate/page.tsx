@@ -1,17 +1,17 @@
 import type { ResolvingMetadata } from "next";
 
 import { Reveal } from "@/components/motion";
-import { CardGrid, CtaBand, PageHeader } from "@/components/sections";
+import { CtaBand, PageHeader } from "@/components/sections";
 import { Container, Heading } from "@/components/ui";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
-import { localePath, localizeHrefs } from "@/i18n/paths";
+import { localePath } from "@/i18n/paths";
 import { getPage } from "@/lib/content";
 import { breadcrumb, pageMetadata } from "@/lib/pageHelpers";
 
 export const generateMetadata = (_props: unknown, parent: ResolvingMetadata) =>
   pageMetadata("donate", "/donate", parent);
 
-/** Ways to give today. Online giving (DonationWidget) arrives after registration (ADR 0004). */
+/** "Donations opening soon". Online giving arrives after registration (ADR 0004). */
 export default async function DonatePage() {
   const [page, dict, locale] = await Promise.all([getPage("donate"), getDictionary(), getLocale()]);
 
@@ -21,14 +21,7 @@ export default async function DonatePage() {
         breadcrumb={breadcrumb(dict, locale, [{ label: page.intro.eyebrow }])}
         {...page.intro}
       />
-      <CardGrid
-        id="ways"
-        columns={2}
-        {...page.ways}
-        items={localizeHrefs(locale, page.ways.items)}
-      />
-
-      <Container className="pb-4">
+      <Container className="pt-16 pb-4 sm:pt-20">
         <Reveal>
           <aside
             aria-labelledby="receipts-title"

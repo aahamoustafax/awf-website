@@ -8,16 +8,23 @@ type MissionQuoteProps = {
   /** Phrase inside the quote to highlight. */
   emphasis?: string;
   attribution: string;
-  /** Beside the quote on desktop, below it on phones: the help card, or `GlobeMap`. */
-  aside: ReactNode;
+  /** Beside the quote on desktop, below it on phones (e.g. the help card or `GlobeMap`). Optional:
+   * without it the quote is centred on its own. */
+  aside?: ReactNode;
 };
 
 /** Mission statement with an aside (on the right on desktop, below the quote on phones). */
 export function MissionQuote({ eyebrow, quote, emphasis, attribution, aside }: MissionQuoteProps) {
   return (
     <Section aria-labelledby="mission-title">
-      <div className="grid items-center gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
-        <figure className="text-center lg:text-left">
+      <div
+        className={
+          aside
+            ? "grid items-center gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16"
+            : "mx-auto max-w-4xl"
+        }
+      >
+        <figure className={aside ? "text-center lg:text-left" : "text-center"}>
           <Eyebrow id="mission-title" className="text-accent">
             {eyebrow}
           </Eyebrow>
