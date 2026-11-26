@@ -6,8 +6,8 @@ import type { Home } from "./types";
  */
 export const home: Home = {
   hero: {
-    title: "Bridging the gap. Supporting healthcare. Changing lives.",
-    lead: "We work to connect hospitals, clinics and vulnerable communities with essential medical resources and humanitarian support, with a primary focus on Afghanistan.",
+    title: "Healthcare, education and the basics, for the people who need them most.",
+    lead: "A non-profit based in Hamilton, Ontario, working in Afghanistan and here at home.",
     // Stock photo until AIO has consented photos of its own work. Credit kept for records.
     image: {
       src: heroKabulGirls,
@@ -26,17 +26,17 @@ export const home: Home = {
   },
   mission: {
     eyebrow: "Our mission",
-    // Word for word from the Organization Profile, matching the About page.
+    // Short mission agreed with the owner (ADR 0011), matching the About page.
     quote:
-      "To improve access to essential healthcare and humanitarian assistance by mobilizing donations, partnerships, medical resources and community support for hospitals and vulnerable communities throughout Afghanistan, while also advancing education, poverty relief, child and family well-being, and sustainable community development.",
-    // Highlight the outcome, not the activity: who receives the care is what sponsors respond to.
-    emphasis: "hospitals and vulnerable communities throughout Afghanistan",
+      "We work to help people in need get healthcare, education and everyday essentials: medical supplies for hospitals in Afghanistan, and schooling, English support and food for children and families in Hamilton.",
+    // Highlight the streams of work: they are what a first-time reader needs to take away.
+    emphasis: "healthcare, education and everyday essentials",
     attribution: "Azan International Organization",
   },
   programs: {
     eyebrow: "What we do",
     title: "Our programs",
-    lead: "Healthcare comes first, with a primary focus on Afghanistan, alongside support for children and families, including in Hamilton.",
+    lead: "Four areas of work: healthcare in Afghanistan, and education, newcomer support and children's essentials in Hamilton.",
   },
   contact: {
     title: "Get in touch",

@@ -5,8 +5,10 @@ import { expectNoSeriousA11yViolations } from "./a11y";
 test.describe("home page", () => {
   test("hero has the headline, photo and two buttons", async ({ page }) => {
     await page.goto("/en");
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Supporting healthcare");
-    const hero = page.getByRole("region", { name: /Supporting healthcare/ });
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(
+      "Healthcare, education and the basics",
+    );
+    const hero = page.getByRole("region", { name: /Healthcare, education and the basics/ });
     await expect(hero.getByRole("img", { name: /smiles broadly/ })).toBeVisible();
     await expect(hero.getByRole("link", { name: "Our programs" })).toHaveAttribute(
       "href",
@@ -18,10 +20,10 @@ test.describe("home page", () => {
     );
   });
 
-  test("shows the eight programs, each linking to its panel", async ({ page }) => {
+  test("shows the four programs, each linking to its panel", async ({ page }) => {
     await page.goto("/en");
     const programs = page.getByRole("region", { name: "Our programs" });
-    await expect(programs.getByRole("listitem")).toHaveCount(8);
+    await expect(programs.getByRole("listitem")).toHaveCount(4);
     await expect(programs).toContainText("Kids Essentials Bank");
     await expect(programs.getByRole("link", { name: /Learn more/ }).last()).toHaveAttribute(
       "href",

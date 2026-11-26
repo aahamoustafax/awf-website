@@ -5,10 +5,7 @@ import { expectNoSeriousA11yViolations } from "./a11y";
 const pages = [
   { path: "/en/about", title: "Who we are" },
   { path: "/en/about/governance", title: "Transparency is part of the work" },
-  {
-    path: "/en/our-work",
-    title: "Healthcare and humanitarian support, where it is needed most",
-  },
+  { path: "/en/our-work", title: "Healthcare, education and the basics" },
   { path: "/en/partner", title: "Partner with a foundation built for lasting impact" },
   { path: "/en/get-involved", title: "There's a place for you in this work" },
   { path: "/en/donate", title: "Donations opening soon" },

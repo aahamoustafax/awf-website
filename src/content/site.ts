@@ -4,7 +4,7 @@ export const site: Site = {
   name: "Azan International Organization",
   shortName: "AIO",
   description:
-    "An independent non-profit humanitarian initiative based in Hamilton, Ontario, working to improve access to essential healthcare and humanitarian assistance, with a primary focus on Afghanistan.",
+    "An independent non-profit humanitarian initiative based in Hamilton, Ontario, working to bring healthcare, education and everyday essentials to people in need, in Afghanistan and in Hamilton.",
   tagline: "Bridging the Gap. Supporting Healthcare. Changing Lives.",
   location: { city: "Hamilton", region: "Ontario", country: "Canada" },
   // From the Kids Essentials Bank proposal (Nov 2026).
