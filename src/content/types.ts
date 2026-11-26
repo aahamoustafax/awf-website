@@ -77,6 +77,8 @@ export type Home = {
     image: Photo;
     /** CSS object-position for the photo, keeping the subject in view, e.g. "60% 30%". */
     imageFocus: string;
+    /** Desktop only: the photo's background, mirrored and blurred, shown behind the headline. */
+    backdrop?: StaticImageData;
   };
   /** Buttons under the headline. */
   actions: { primary: Action; secondary: Action };

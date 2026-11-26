@@ -1,4 +1,5 @@
 import heroKabulGirls from "./images/hero-kabul-girls.jpg";
+import heroKabulGirlsBackdrop from "./images/hero-kabul-girls-backdrop.jpg";
 import type { Home } from "./types";
 
 /**
@@ -19,6 +20,8 @@ export const home: Home = {
       },
     },
     imageFocus: "55% 35%",
+    // Made from the photo's left 30% (a soft brick wall): mirrored, stretched and blurred.
+    backdrop: heroKabulGirlsBackdrop,
   },
   actions: {
     primary: { label: "Our programs", href: "/our-work" },
