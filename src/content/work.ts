@@ -1,20 +1,40 @@
 import type { Work } from "./types";
 
 /**
- * The programs. The first seven follow the Organization Profile (section 5), which is the source of
- * truth, and keep its careful wording ("may", "aims to", "where lawful"). The Kids Essentials Bank
- * comes from the foundation's Hamilton program proposal (ADR 0009). Operations are launching, so
- * never claim shipments or results that haven't happened yet.
+ * The four streams of work, each one panel (ADR 0011). Healthcare follows the Organization Profile
+ * and keeps its careful wording ("may", "aims to", "where lawful"). Education and Newcomer families
+ * come from the owner's voice note; the Kids Essentials Bank from its Hamilton proposal (ADR 0009).
+ * Operations are launching, so never claim shipments or results that haven't happened yet.
  */
 export const work: Work = {
   programs: [
     {
       slug: "healthcare",
       icon: "care",
-      title: "Healthcare and medical resource support",
-      summary: "Medical equipment and supplies for hospitals and clinics with identified needs.",
+      title: "Healthcare",
+      summary:
+        "Medicines, medical equipment and supplies for hospitals and clinics in Afghanistan.",
+      place: "Afghanistan",
       description:
         "We seek donations of new or gently used medical equipment and supplies, and aim to connect donors and medical institutions with healthcare facilities that have identified needs. Medical items are assessed for safety, condition and suitability before distribution wherever reasonably practicable.",
+      parts: [
+        {
+          title: "Medical supplies and equipment",
+          description: "For hospitals, clinics and laboratories with identified needs.",
+        },
+        {
+          title: "Medicines",
+          description: "Essential medicines, only where the law permits.",
+        },
+        {
+          title: "Thalassemia and blood disorders",
+          description: "Support for patients and the institutions that treat them.",
+        },
+        {
+          title: "Women's and children's health",
+          description: "Supplies, nutrition and health education for mothers and children.",
+        },
+      ],
       steps: [
         {
           title: "Identify needs",
@@ -73,85 +93,26 @@ export const work: Work = {
         ],
       },
     },
-    {
-      slug: "thalassemia",
-      icon: "blood",
-      title: "Thalassemia and blood disorder support",
-      summary: "Help for patients and institutions treating thalassemia and other blood disorders.",
-      description:
-        "We may support patients and healthcare institutions addressing thalassemia and other blood disorders.",
-      includes: [
-        "Patient assistance",
-        "Diagnostic resources",
-        "Treatment-related support and equipment",
-        "Medicines, where lawful",
-        "Education and public awareness",
-      ],
-    },
-    {
-      slug: "womens-and-childrens-health",
-      icon: "family",
-      title: "Women's, newborn and children's health",
-      summary: "Supplies, nutrition and health education for mothers, newborns and children.",
-      description:
-        "We may promote maternal, newborn, child and adolescent health, subject to professional guidance and applicable laws.",
-      includes: [
-        "Essential medical supplies",
-        "Nutrition support and vitamins",
-        "Health education",
-      ],
-    },
+    // From the owner's voice note (2026-11-26). Details are not set yet: keep "plan to" wording.
     {
       slug: "education",
       icon: "education",
-      title: "Education and child well-being",
-      summary: "School supplies, learning support and care for vulnerable children.",
+      title: "Education",
+      summary: "A weekend Islamic school for Muslim children in Hamilton.",
+      place: "Hamilton, Ontario",
       description:
-        "We aim to improve access to learning for children and young people, and to support orphans and vulnerable children through safe, caring and appropriately safeguarded initiatives.",
-      includes: [
-        "Learning support and school supplies",
-        "Educational and awareness programs",
-        "Life skills and vocational opportunities",
-        "Support for orphans and children at risk",
-      ],
+        "We plan to open a weekend Islamic school in Hamilton for Muslim children, both Arab and non-Arab. Families in the city have asked for one, and classes are planned for Saturdays and Sundays.",
+      // TODO(foundation): ages, subjects, location and start date once they are set.
     },
     {
-      slug: "family-support",
-      icon: "home",
-      title: "Poverty relief and family support",
-      summary: "Food, clothing and other essentials for families facing hardship.",
+      slug: "newcomer-families",
+      icon: "family",
+      title: "Newcomer families",
+      summary: "English and career support for newcomer parents in Hamilton.",
+      place: "Hamilton, Ontario",
       description:
-        "Depending on available resources, we may provide or coordinate basic necessities for individuals and families facing hardship, including seasonal and emergency support.",
-      includes: [
-        "Food and clothing",
-        "Baby essentials and hygiene items",
-        "Shelter-related assistance",
-        "Food assistance during Ramadan",
-        "Eid gifts for families in need",
-      ],
-    },
-    {
-      slug: "womens-skills",
-      icon: "skills",
-      title: "Women's skills and community development",
-      summary: "Practical skills training that builds confidence and income.",
-      description:
-        "We may support skills training and practical learning to help women and families strengthen their capabilities, confidence and economic resilience.",
-      includes: ["Sewing", "Cooking", "Other livelihood skills"],
-    },
-    {
-      slug: "emergency-response",
-      icon: "shelter",
-      title: "Emergency and humanitarian response",
-      summary: "Relief for communities hit by earthquakes, floods, conflict and displacement.",
-      description:
-        "We may assist communities affected by earthquakes, floods, conflict, displacement, disease outbreaks and other emergencies.",
-      includes: [
-        "Medical resources",
-        "Essential relief items",
-        "Coordination with partners",
-        "Help for affected healthcare facilities",
-      ],
+        "Many newcomer parents in Hamilton trained as engineers, doctors and other professionals, but language holds them back from working in their field. We plan a program to help them improve their English and take the next steps toward their careers.",
+      // TODO(foundation): what the program offers, and who runs it, once it is planned.
     },
     // From the Kids Essentials Bank proposal. Budget and named partners are left out on purpose:
     // there are no signed agreements yet (ADR 0009).

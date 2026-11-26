@@ -13,11 +13,11 @@ const removedPaths = [
 ];
 
 test.describe("our work", () => {
-  test("lists the eight programs as closed panels, then the story", async ({ page }) => {
+  test("lists the four programs as closed panels, then the story", async ({ page }) => {
     const response = await page.goto("/en/our-work");
     expect(response?.status()).toBe(200);
     const programs = page.getByRole("region", { name: "Our programs" });
-    await expect(programs.locator("details")).toHaveCount(8);
+    await expect(programs.locator("details")).toHaveCount(4);
     await expect(programs.locator("details[open]")).toHaveCount(0);
     await expect(
       page.getByRole("heading", { name: "Medicine only helps when it arrives" }),
@@ -49,7 +49,7 @@ test.describe("our work", () => {
     const context = await browser.newContext({ reducedMotion: "reduce" });
     const page = await context.newPage();
     await page.goto("/en/our-work");
-    await page.getByText("Healthcare and medical resource support", { exact: true }).click();
+    await page.getByText("Healthcare", { exact: true }).click();
     await expect(page.getByText("Wheelchairs")).toBeVisible();
     await context.close();
   });

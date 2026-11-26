@@ -73,8 +73,8 @@ export const pages: SitePages = {
   ourWork: {
     intro: {
       eyebrow: "Programs",
-      title: "Healthcare and humanitarian support, where it is needed most",
-      lead: "Our eight programs: healthcare first, with a primary focus on Afghanistan, and support for children and families, including in Hamilton.",
+      title: "Healthcare, education and the basics",
+      lead: "Four areas of work: healthcare in Afghanistan, and education, newcomer support and children's essentials in Hamilton.",
     },
     story: {
       eyebrow: "Why it matters",
@@ -305,7 +305,7 @@ export const pages: SitePages = {
       {
         question: "What does AIO do?",
         answer:
-          "We work to improve access to essential healthcare and humanitarian assistance, with a primary focus on Afghanistan. Alongside healthcare, our programs cover education and child well-being, poverty relief, women's skills and emergency response.",
+          "We work to improve access to essential healthcare and humanitarian assistance, with a primary focus on Afghanistan. In Hamilton, we also work on education, support for newcomer families and essentials for children.",
       },
       {
         question: "Where do the supplies go?",
@@ -325,7 +325,7 @@ export const pages: SitePages = {
       {
         question: "Why thalassemia?",
         answer:
-          "Thalassemia is an inherited blood disorder that needs regular, lifelong treatment. Supporting patients' access to that treatment is one of our programs.",
+          "Thalassemia is an inherited blood disorder that needs regular, lifelong treatment. Supporting patients' access to that treatment is part of our healthcare work.",
       },
       {
         question: "Can I get a tax receipt?",
