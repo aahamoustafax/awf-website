@@ -21,9 +21,9 @@ export default async function OpenGraphImage() {
     getSite(),
     readFile(join(fonts, "Fraunces-SemiBold.ttf")),
     readFile(join(fonts, "Inter-Medium.ttf")),
-    readFile(join(process.cwd(), "public/images/logo-white-text.png")),
+    readFile(join(process.cwd(), "public/images/logo-white.svg")),
   ]);
-  const logo = `data:image/png;base64,${logoFile.toString("base64")}`;
+  const logo = `data:image/svg+xml;base64,${logoFile.toString("base64")}`;
 
   return new ImageResponse(
     <div
@@ -40,8 +40,7 @@ export default async function OpenGraphImage() {
       }}
     >
       <div style={{ display: "flex" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse only renders <img>. */}
-        <img src={logo} alt={site.name} width={480} height={112} />
+        <img src={logo} alt={site.name} width={486} height={100} />
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>

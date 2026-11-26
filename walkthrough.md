@@ -3,7 +3,8 @@
 One line per file we created or changed a lot: what it does, in plain words, and why it exists.
 Unreviewed items have an empty box.
 
-- [ ] `public/images/logo.png`, `logo-white-text.png`, `src/app/icon.png`: the new AZAN logo with a see-through background, a white-lettered copy for the navy footer, and the crescent as the browser-tab icon. Made from the image the foundation sent.
+- [ ] `public/images/logo.svg`, `logo-white.svg`, `logo-full.svg`, `src/app/icon.svg`: the star-and-swoosh AZAN logo redrawn as sharp, flat drawings: header version, white footer version, full version with the globe, and the browser-tab icon. The image the client sent is kept in `docs/brand/`.
+- [ ] `docs/decisions/0010-new-logo.md`: why the logo was redrawn instead of used as sent, and which file goes where.
 - [ ] `src/components/ui/Logo.tsx`: shows the logo picture. The picture already spells the name, so the name is only its description for screen readers.
 - [ ] `src/content/work.ts`: the text for all eight programs, including the Kids Essentials Bank. Edit this file to change what the Programs page says.
 - [ ] `src/components/sections/ProgramList.tsx`: draws each program as a card that opens when clicked, showing its lists, steps, tiles and goal.

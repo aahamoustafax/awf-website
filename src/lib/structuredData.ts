@@ -12,7 +12,7 @@ export function organizationJsonLd(site: Site, url: URL) {
     alternateName: site.shortName,
     description: site.description,
     url: url.toString(),
-    logo: new URL("/images/logo.png", url).toString(),
+    logo: new URL("/images/logo.svg", url).toString(),
     email: site.email,
     telephone: site.phone,
     address: {
